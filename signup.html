@@ -11,6 +11,12 @@
       <input type="text" id="name" placeholder="Name" required /><br />
       <input type="email" id="email" placeholder="Email" required /><br />
       <input
+        type="text"
+        id="phone_number"
+        placeholder="Phone Number"
+        required
+      /><br />
+      <input
         type="password"
         id="password"
         placeholder="Password"
@@ -28,15 +34,16 @@
 
           const name = document.getElementById("name").value;
           const email = document.getElementById("email").value;
+          const phone_number = document.getElementById("phone_number").value;
           const password = document.getElementById("password").value;
 
           try {
             const res = await fetch(
-              "https://backend-api-l0y1.onrender.com/api/customer/signup", // ✅ Using your backend URL
+              "https://backend-api-l0y1.onrender.com/api/customer/signup",
               {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ name, email, password }),
+                body: JSON.stringify({ name, email, phone_number, password }),
               }
             );
 

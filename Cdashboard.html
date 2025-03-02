@@ -33,51 +33,68 @@
     ></script>
     
   <style>
-   
-    .category-item {
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+
+    /* Sidebar Overlay */
+  .sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3); /* Light overlay */
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1050;
   }
-  .category-item:hover {
-      background-color: #f1f3f5;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  /* Floating Sidebar */
+  .sidebar-content {
+    background: #ffffff; /* White background */
+    width: 75%; /* Adjust width for mobile */
+    max-width: 280px;
+    height: auto;
+    padding: 20px;
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2); /* Floating effect */
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: transform 0.3s ease-in-out;
+    margin-left: 15px; /* Space from left side */
+    border-radius: 10px; /* Rounded corners */
+    padding-top: 25px; /* Extra top padding */
+    padding-bottom: 25px; /* Extra bottom padding */
   }
-    .text-white {
-      color: #fff !important;
+
+  /* Close "X" Button */
+  .close-x {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 22px;
+    font-weight: bold;
+    color: red; /* X in red */
+    cursor: pointer;
+  }
+
+  /* Sidebar Menu Text */
+  .nav-link {
+    padding: 12px;
+    font-size: 16px;
+    border-bottom: 1px solid #ddd;
+    color: black !important; /* Ensuring black text */
+  }
+
+  /* Mobile Responsive Adjustments */
+  @media (max-width: 768px) {
+    .sidebar-content {
+      width: 85%;
+      max-width: 270px;
+      margin-left: 10px; /* Space from left */
+      padding-top: 30px; /* More top padding */
+      padding-bottom: 30px; /* More bottom padding */
     }
-    .bg-transparent {
-      background-color: transparent !important;
-    }
-    .breadcrumb-item a {
-      color: rgba(255, 255, 255, 0.5);
-    }
-    .card {
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      transition: 0.3s;
-      border-radius: 8px;
   }
-  
-  .card-body {
-      padding: 20px;
-  }
-  
-  .card-title {
-      font-size: 1.2rem;
-      font-weight: bold;
-      margin-bottom: 15px;
-  }
-  
-  .profile-item {
-      margin-bottom: 15px;
-  }
-  
-  .item-label {
-      font-weight: bold;
-  }
-  
-  .item-value {
-      color: #555;
-  }
-  
   </style>
 
   <body class="g-sidenav-show bg-gray-100">
@@ -214,7 +231,7 @@
               </a>
             </li>            
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-white p-0" id="iconNavbarSidenav">
+              <a href="javascript:;" class="nav-link text-white p-0" id="toggleSidebarMenu" data-bs-toggle="offcanvas" data-bs-target="#uniqueSidebarMenu">
                 <div class="sidenav-toggler-inner">
                   <i class="sidenav-toggler-line bg-white"></i>
                   <i class="sidenav-toggler-line bg-white"></i>
@@ -303,6 +320,51 @@
           </ul>
         </div>
       </div>
+
+      <!-- Sidebar Menu -->
+<!-- Sidebar Menu -->
+<!-- <div class="offcanvas offcanvas-start text-bg-dark" id="uniqueSidebarMenu" tabindex="-1">
+  <div class="offcanvas-header d-flex justify-content-between align-items-center w-100">
+    <h5 class="offcanvas-title" id="sidebarMenuTitle">Menu</h5>
+    <button type="button" class="btn-close btn-close-white" id="closeSidebarButton" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link text-white" id="dashboardLink" href="#">Dashboard</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" id="tableLink" href="#">Table</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" id="placeOrderLink" href="#">Place Order List</a>
+      </li>
+    </ul>
+  </div>
+</div> -->
+
+  <!-- Sidebar (Mobile Optimized) -->
+<div id="uniqueSidebarMenu" class="sidebar-overlay">
+  <div class="sidebar-content">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title">Menu</h5>
+      <span id="closeSidebarButton" class="close-x">X</span>
+    </div>
+    <div class="offcanvas-body">
+      <ul class="nav flex-column">
+        <li class="nav-item">
+          <a class="nav-link text-black" id="dashboardLink" href="#">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-black" id="tableLink" href="#">Table</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-black" id="placeOrderLink" href="#">Place Order List</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
     
       <!-- Sign In Modal -->
       <!-- Modal Structure for Sign In -->
@@ -885,6 +947,21 @@
       }
   });
 
+  document.getElementById("toggleSidebarMenu").addEventListener("click", function () {
+    document.getElementById("uniqueSidebarMenu").style.display = "flex";
+  });
+
+  document.getElementById("closeSidebarButton").addEventListener("click", function () {
+    document.getElementById("uniqueSidebarMenu").style.display = "none";
+  });
+
+  // Close sidebar when clicking outside
+  document.getElementById("uniqueSidebarMenu").addEventListener("click", function (event) {
+    if (event.target === this) {
+      this.style.display = "none";
+    }
+  });
+
   
 
       var ctx1 = document.getElementById("chart-line").getContext("2d");
@@ -996,5 +1073,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Bootstrap JS (required for offcanvas) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>

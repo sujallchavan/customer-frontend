@@ -368,85 +368,63 @@
     
       <!-- Sign In Modal -->
       <!-- Modal Structure for Sign In -->
-<div class="modal fade" id="signInModal" tabindex="-1" aria-labelledby="signInModalLabel" aria-hidden="true">
-  <!-- Modal dialog (holds the content of the modal) -->
-  <div class="modal-dialog">
-    <!-- Modal content (everything inside the modal) -->
-    <div class="modal-content">
-      <!-- Modal header (title and close button) -->
-      <div class="modal-header">
-        <!-- Modal title -->
-        <h5 class="modal-title" id="signInModalLabel">Sign In</h5>
-        <!-- Close button for the modal -->
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span> <!-- Close icon (x) -->
-        </button>
-      </div>
-
-      <!-- Modal body (where the content goes) -->
-      <div class="modal-body">
-        <!-- Card component to display customer profile details -->
-        <div class="card">
-          <!-- Card body that contains the actual customer details -->
-          <div class="card-body">
-            <!-- Card title (for Customer Profile) -->
-            <h5 class="card-title">Customer Profile</h5>
-
-            <!-- Row to organize customer data into two columns -->
-            <div class="row">
-              <!-- Loop through the customer profile data (Django template loop) -->
-              <!-- {% for i in customer_profil_data %} -->
-
-              <!-- First column: Customer ID, Name, and Location -->
-              <div class="col-md-6">
-                <!-- Customer ID section -->
-                <div class="profile-item">
-                  <div class="item-label">Customer ID:</div> <!-- Label -->
-                  <div class="item-value"></div> <!-- Value from Django context -->
+      <div
+      class="modal fade"
+      id="signInModal"
+      tabindex="-1"
+      aria-labelledby="signInModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Customer Profile</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Profile Details</h5>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="profile-item">
+                      <div class="item-label">Customer ID:</div>
+                      <div class="item-value" id="customerId"></div>
+                    </div>
+                    <div class="profile-item">
+                      <div class="item-label">Name:</div>
+                      <div class="item-value" id="customerName"></div>
+                    </div>
+                    <div class="profile-item">
+                      <div class="item-label">Location:</div>
+                      <div class="item-value" id="customerLocation"></div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="profile-item">
+                      <div class="item-label">Phone:</div>
+                      <div class="item-value" id="phone_number"></div>
+                    </div>
+                    <div class="profile-item">
+                      <div class="item-label">Email:</div>
+                      <div class="item-value" id="customerEmail"></div>
+                    </div>
+                  </div>
                 </div>
-
-                <!-- Customer Name section -->
-                <div class="profile-item">
-                  <div class="item-label">Customer Name:</div> <!-- Label -->
-                  <div class="item-value"></div> <!-- Value from Django context -->
-                </div>
-
-                <!-- Customer Location section -->
-                <div class="profile-item">
-                  <div class="item-label">Location:</div> <!-- Label -->
-                  <div class="item-value"></div> <!-- Value from Django context -->
-                </div>
-              </div>
-
-              <!-- Second column: Phone Number and Email Address -->
-              <div class="col-md-6">
-                <!-- Customer Phone Number section -->
-                <div class="profile-item">
-                  <div class="item-label">Phone Number:</div> <!-- Label -->
-                  <div class="item-value"></div> <!-- Value from Django context -->
-                </div>
-
-                <!-- Customer Email Address section -->
-                <div class="profile-item">
-                  <div class="item-label">Email Address:</div> <!-- Label -->
-                  <div class="item-value"></div> <!-- Value from Django context -->
+                <div class="text-end mt-3">
+                  <button class="btn btn-danger" id="logoutBtn">Logout</button>
                 </div>
               </div>
-
-            <!-- End of the loop -->
-            </div> <!-- End of row -->
-
-            <!-- Logout Button -->
-            <div class="text-right mt-3">
-              <!-- Logout link that redirects to the logout URL -->
-              <a href="" class="btn btn-danger">Logout</a>
             </div>
-          </div> <!-- End of card-body -->
-        </div> <!-- End of card -->
-      </div> <!-- End of modal-body -->
-    </div> <!-- End of modal-content -->
-  </div> <!-- End of modal-dialog -->
-</div> <!-- End of modal -->
+          </div>
+        </div>
+      </div>
+    </div>
 
     
       </nav>
@@ -877,7 +855,104 @@
         
         </div>
       </div>
+
+      <h2>Welcome, <span id="customerName"></span>!</h2>
+<p>Email: <span id="customerEmail"></span></p>
+<p>Location: <span id="customerLocation"></span></p>
+<p>Customer ID: <span id="customerId"></span></p>
+
+<h3>Login History</h3>
+<table border="1">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Email</th>
+      <th>Login Time</th>
+    </tr>
+  </thead>
+  <tbody id="loginHistory">
+    <!-- Login history will be inserted here -->
+  </tbody>
+</table>
+
+      
     </main>
+
+    <script>
+      fetch("http://localhost:5000/api/customer/profile/table", {
+        method: "GET",
+        credentials: "include", // ✅ Sends session cookies
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.msg) {
+            alert(data.msg); // Show error if not logged in
+          } else {
+            document.getElementById("customerTableBody").innerHTML = `
+              <tr>
+                <td>${data.customer.name}</td>
+                <td>${data.customer.email}</td>
+                <td>${data.customer.location}</td>
+                <td>${data.customer.phone_number}</td>
+                <td>✅ Logged In</td>
+              </tr>
+            `;
+          }
+        })
+        .catch((err) => console.error("Error:", err));
+    </script>
+    
+        
+    <script>
+      document.addEventListener("DOMContentLoaded", async function () {
+        try {
+          const customerData = sessionStorage.getItem("customer");
+    
+          if (!customerData) {
+            alert("No customer data found. Please log in again.");
+            window.location.href = "login.html";
+            return;
+          }
+    
+          const customer = JSON.parse(customerData);
+    
+          // Display customer details
+          document.getElementById("customerName").textContent = customer.name;
+          document.getElementById("customerEmail").textContent = customer.email;
+          document.getElementById("customerLocation").textContent = customer.location;
+          document.getElementById("phone_number").textContent = customer.phone_number;
+          document.getElementById("customerId").textContent = customer.customer_id;
+    
+            console.log("✅ Customer Data Loaded:", customer);
+    
+          // ✅ Fetch login history from server
+          const encodedEmail = encodeURIComponent(customer.email);
+          const res = await fetch(`http://localhost:5000/api/customer/history/${encodedEmail}`);
+          const historyData = await res.json();
+    
+          if (res.status === 200) {
+            console.log("📜 Login History:", historyData);
+    
+            // ✅ Display login history on page
+            const historyContainer = document.getElementById("loginHistory");
+            historyContainer.innerHTML = historyData.map(
+              (entry, index) =>
+                `<tr>
+                  <td>${index + 1}</td>
+                  <td>${entry.email}</td>
+                  <td>${new Date(entry.login_time).toLocaleString()}</td>
+                </tr>`
+            ).join("");
+          } else {
+            console.error("Failed to fetch login history.");
+          }
+    
+        } catch (error) {
+          console.error("Error fetching data:", error);
+        }
+      });
+    </script>
+    
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"></script>

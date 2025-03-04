@@ -101,21 +101,27 @@
 
           try {
             const res = await fetch(
-              "https://backend-api-w0bg.onrender.com/api/customer/login",
+              "http://localhost:5000/api/customer/login",
               {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email, password }),
+                credentials: "include",
               }
             );
 
             const data = await res.json();
 
             if (res.status === 200) {
-              alert("Login successful!");
-              window.location.href = "Cdashboard.html"; // Redirect to dashboard
+              console.log("✅ Logged-in Customer Data:", data.customer);
+
+              // ✅ Store customer details in sessionStorage
+              sessionStorage.setItem("customer", JSON.stringify(data.customer));
+
+              alert(`Login successful!\nWelcome, ${data.customer.name}`);
+              window.location.href = "Cdashboard.html"; // Redirect after login
             } else {
-              alert(data.msg); // Show error message
+              alert(data.msg);
             }
           } catch (error) {
             alert("Server error. Please try again.");

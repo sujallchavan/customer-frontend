@@ -147,16 +147,15 @@
           
 
           <li class="nav-item">
-            <a class="nav-link" href="requirementsform.html">
+            <a class="nav-link" href="requirementsform.html" target="_self">
               <div
                 class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center"
               >
-                <i
-                  class="ni ni-credit-card text-success text-sm opacity-10"
-                ></i>
+                <i class="ni ni-credit-card text-success text-sm opacity-10"></i>
               </div>
               <span class="nav-link-text ms-1">Place Order</span>
             </a>
+            
           </li>
           <li class="nav-item mt-3">
             <h6
@@ -879,7 +878,7 @@
     </main>
 
     <script>
-      fetch("http://localhost:5000/api/customer/profile/table", {
+      fetch("https://backend-api-bez7.onrender.com/api/customer/profile/table", {
         method: "GET",
         credentials: "include", // ✅ Sends session cookies
       })
@@ -927,7 +926,7 @@
     
           // ✅ Fetch login history from server
           const encodedEmail = encodeURIComponent(customer.email);
-          const res = await fetch(`http://localhost:5000/api/customer/history/${encodedEmail}`);
+          const res = await fetch(`https://backend-api-bez7.onrender.com/api/customer/history/${encodedEmail}`);
           const historyData = await res.json();
     
           if (res.status === 200) {
@@ -952,6 +951,23 @@
         }
       });
     </script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const logoutBtn = document.getElementById("logoutBtn");
+
+    if (logoutBtn) {
+      logoutBtn.addEventListener("click", function () {
+        // ✅ Clear session storage
+        sessionStorage.removeItem("customer");
+
+        // ✅ Redirect to login page
+        window.location.href = "login.html";
+      });
+    }
+  });
+</script>
+
     
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
@@ -1132,6 +1148,260 @@
         },
       });
     </script>
+    <script>
+//       document.addEventListener("DOMContentLoaded", async function () {
+//     const orderTable = document.getElementById("orderTable");
+//     const searchInput = document.getElementById("searchInput");
+
+//     // ✅ Retrieve customer data correctly
+//     const customerData = sessionStorage.getItem("customer");
+//     const customer = customerData ? JSON.parse(customerData) : null;
+//     const customer_id = customer ? customer.customer_id : null;
+
+//     if (!customer_id) {
+//         console.error("❌ No customer ID found in sessionStorage.");
+//         orderTable.innerHTML = `<tr><td colspan="6" class="text-center text-danger">No customer ID found.</td></tr>`;
+//         return;
+//     }
+
+//     console.log("✅ Customer ID:", customer_id); // Debugging
+
+//     async function fetchOrders() {
+//         try {
+//             const response = await fetch(`http://localhost:5000/api/customer/orders/${customer_id}`);
+//             if (!response.ok) throw new Error("Failed to fetch orders");
+
+//             const orders = await response.json();
+//             displayOrders(orders);
+//         } catch (error) {
+//             console.error("❌ Error fetching orders:", error);
+//             orderTable.innerHTML = `<tr><td colspan="6" class="text-center text-danger">Failed to load orders.</td></tr>`;
+//         }
+//     }
+
+//     function displayOrders(orders) {
+//         if (orders.length === 0) {
+//             orderTable.innerHTML = `<tr><td colspan="6" class="text-center text-muted">No Order Placed Yet</td></tr>`;
+//             return;
+//         }
+
+//         orderTable.innerHTML = orders
+//             .map(order => `
+//             <tr>
+//                 <td>
+//                     <div class="text-center">
+//                         <p class="text-xs font-weight-bold mb-0">Project Id</p>
+//                         <h6 class="text-sm mb-0">${order.order_id}</h6>
+//                     </div>
+//                 </td>
+//                 <td>
+//                     <div class="text-center">
+//                         <p class="text-xs font-weight-bold mb-0">Project Name</p>
+//                         <h6 class="text-sm mb-0">${order.pname}</h6>
+//                     </div>
+//                 </td>
+//                 <td>
+//                     <div class="text-center">
+//                         <p class="text-xs font-weight-bold mb-0">Part Name</p>
+//                         <h6 class="text-sm mb-0">${order.Part_Name}</h6>
+//                     </div>
+//                 </td>
+//                 <td>
+//                     <div class="text-center">
+//                         <p class="text-xs font-weight-bold mb-0">SOP Date:</p>
+//                         <h6 class="text-sm mb-0">${new Date(order.sop).toLocaleDateString()}</h6>
+//                     </div>
+//                 </td>
+//                 <td class="align-middle text-sm">
+//                     <div class="col text-center">
+//                         <p class="text-xs font-weight-bold mb-0">Category</p>
+//                         <h6 class="text-sm mb-0">${order.category}</h6>
+//                     </div>
+//                 </td>
+//                 <td class="align-middle text-sm">
+//                     <div class="col text-center">
+//                         <a href="#"><button type="button" class="btn btn-primary">View</button></a>
+//                     </div>
+//                 </td>
+//             </tr>
+//         `)
+//             .join("");
+//     }
+
+//     // 🔍 Search Functionality
+//     searchInput.addEventListener("input", function () {
+//         const searchTerm = searchInput.value.toLowerCase();
+//         const rows = orderTable.querySelectorAll("tr");
+
+//         rows.forEach(row => {
+//             const projectName = row.children[1]?.innerText.toLowerCase() || "";
+//             row.style.display = projectName.includes(searchTerm) ? "" : "none";
+//         });
+//     });
+
+//     fetchOrders(); // Fetch orders on page load
+// });
+
+document.addEventListener("DOMContentLoaded", async function () {
+    const orderTable = document.getElementById("orderTable");
+    const searchInput = document.getElementById("searchInput");
+
+    // ✅ Retrieve customer data correctly
+    const customerData = sessionStorage.getItem("customer");
+    const customer = customerData ? JSON.parse(customerData) : null;
+    const customer_id = customer ? customer.customer_id : null;
+
+    if (!customer_id) {
+        console.error("❌ No customer ID found in sessionStorage.");
+        orderTable.innerHTML = `<tr><td colspan="6" class="text-center text-danger">No customer ID found.</td></tr>`;
+        return;
+    }
+
+    console.log("✅ Customer ID:", customer_id); // Debugging
+
+    async function fetchOrders() {
+        try {
+            const response = await fetch(`https://backend-api-bez7.onrender.com/api/customer/orders/${customer_id}`);
+            if (!response.ok) throw new Error("Failed to fetch orders");
+
+            const orders = await response.json();
+            displayOrders(orders);
+        } catch (error) {
+            console.error("❌ Error fetching orders:", error);
+            orderTable.innerHTML = `<tr><td colspan="6" class="text-center text-danger">Failed to load orders.</td></tr>`;
+        }
+    }
+
+    function displayOrders(orders) {
+        if (orders.length === 0) {
+            orderTable.innerHTML = `<tr><td colspan="6" class="text-center text-muted">No Order Placed Yet</td></tr>`;
+            return;
+        }
+
+        orderTable.innerHTML = orders
+            .map(order => `
+            <tr>
+                <td>
+                    <div class="text-center">
+                        <p class="text-xs font-weight-bold mb-0">Project Id</p>
+                        <h6 class="text-sm mb-0">${order.order_id}</h6>
+                    </div>
+                </td>
+                <td>
+                    <div class="text-center">
+                        <p class="text-xs font-weight-bold mb-0">Project Name</p>
+                        <h6 class="text-sm mb-0">${order.pname}</h6>
+                    </div>
+                </td>
+                <td>
+                    <div class="text-center">
+                        <p class="text-xs font-weight-bold mb-0">Part Name</p>
+                        <h6 class="text-sm mb-0">${order.Part_Name}</h6>
+                    </div>
+                </td>
+                <td>
+                    <div class="text-center">
+                        <p class="text-xs font-weight-bold mb-0">SOP Date:</p>
+                        <h6 class="text-sm mb-0">${new Date(order.sop).toLocaleDateString()}</h6>
+                    </div>
+                </td>
+                <td class="align-middle text-sm">
+                    <div class="col text-center">
+                        <p class="text-xs font-weight-bold mb-0">Category</p>
+                        <h6 class="text-sm mb-0">${order.category}</h6>
+                    </div>
+                </td>
+                <td class="align-middle text-sm">
+                    <div class="col text-center">
+                        <button type="button" class="btn btn-primary view-btn" data-order='${JSON.stringify(order)}'>View</button>
+                    </div>
+                </td>
+            </tr>
+        `)
+            .join("");
+
+        // Attach event listeners to View buttons
+        document.querySelectorAll(".view-btn").forEach(button => {
+            button.addEventListener("click", function () {
+                const orderData = JSON.parse(this.getAttribute("data-order"));
+                openModal(orderData);
+            });
+        });
+    }
+
+    // Function to open modal with Bootstrap styling
+    function openModal(order) {
+        // Remove existing modal if present
+        const existingModal = document.getElementById("orderModal");
+        if (existingModal) existingModal.remove();
+
+        // Bootstrap Modal HTML
+        const modalHtml = `
+        <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Order Details</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Order Information</h5>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p><strong>Project ID:</strong> ${order.order_id}</p>
+                                        <p><strong>Company Name:</strong> ${order.cname}</p>
+                                        <p><strong>Project Name:</strong> ${order.pname}</p>
+                                        <p><strong>Part Name:</strong> ${order.Part_Name}</p>
+                                        <p><strong>Category:</strong> ${order.category}</p>
+                                        <p><strong>Email:</strong> ${order.email}</p>
+                                        <p><strong>Phone Number:</strong> ${order.phone_number}</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p><strong>Part Number:</strong> ${order.cpno}</p>
+                                        <p><strong>Target Value:</strong> ${order.tv}</p>
+                                        <p><strong>Annual Volume:</strong> ${order.av}</p>
+                                        <p><strong>Quote Submission:</strong> ${new Date(order.qs).toLocaleDateString()}</p>
+                                        <p><strong>Start of Production:</strong> ${new Date(order.sop).toLocaleDateString()}</p>
+                                        <p><strong>Status:</strong> ${order.working_status}</p>
+                                        <p><strong>Supplier:</strong> ${order.supplier_name}</p>
+                                    </div>
+                                </div>
+                                <div class="text-end mt-3">
+                                    <button class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>`;
+
+        // Insert modal HTML into body
+        document.body.insertAdjacentHTML("beforeend", modalHtml);
+
+        // Show Bootstrap modal
+        const myModal = new bootstrap.Modal(document.getElementById("orderModal"));
+        myModal.show();
+    }
+
+    // 🔍 Search Functionality
+    searchInput.addEventListener("input", function () {
+        const searchTerm = searchInput.value.toLowerCase();
+        const rows = orderTable.querySelectorAll("tr");
+
+        rows.forEach(row => {
+            const projectName = row.children[1]?.innerText.toLowerCase() || "";
+            row.style.display = projectName.includes(searchTerm) ? "" : "none";
+        });
+    });
+
+    fetchOrders(); // Fetch orders on page load
+});
+
+    </script>
+    
     <script>
       var win = navigator.platform.indexOf("Win") > -1;
       if (win && document.querySelector("#sidenav-scrollbar")) {

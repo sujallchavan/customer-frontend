@@ -868,7 +868,7 @@ aria-hidden="true"
 
       // ✅ Fetch login history from server
       const encodedEmail = encodeURIComponent(customer.email);
-      const res = await fetch(`https://backend-api-bez7.onrender.com/api/customer/history/${encodedEmail}`);
+      const res = await fetch(`https://backend-api-dtwc.onrender.com/api/customer/history/${encodedEmail}`);
       const historyData = await res.json();
 
       if (res.status === 200) {

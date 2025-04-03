@@ -1310,6 +1310,9 @@
 //     fetchOrders(); // Fetch orders on page load
 // });
 
+
+
+
 document.addEventListener("DOMContentLoaded", async function () {
     const orderTable = document.getElementById("orderTable");
     const searchInput = document.getElementById("searchInput");
@@ -1335,13 +1338,16 @@ document.addEventListener("DOMContentLoaded", async function () {
             if (!response.ok) throw new Error("Failed to fetch orders");
 
             const orders = await response.json();
-            displayOrders(orders);
+            // Add this filter to only show approved orders
+            const approvedOrders = orders.filter(order => order.isApproved === "Disapproved");
+            displayOrders(approvedOrders);
         } catch (error) {
             console.error("❌ Error fetching orders:", error);
             orderTable.innerHTML = `<tr><td colspan="6" class="text-center text-danger">Failed to load orders.</td></tr>`;
         }
     }
 
+    // Rest of your code remains exactly the same...
     function displayOrders(orders) {
         if (orders.length === 0) {
             orderTable.innerHTML = `<tr><td colspan="6" class="text-center text-muted">No Order Placed Yet</td></tr>`;
@@ -1489,7 +1495,6 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     fetchOrders(); // Fetch orders on page load
 });
-
 
     </script>
     
@@ -1768,118 +1773,119 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 
     function showOrderDetails(orderData) {
-      try {
-        const order =
-          typeof orderData === "string" ? JSON.parse(orderData) : orderData;
-        const modalTitle = document.getElementById("orderModalTitle");
-        const modalBody = document.getElementById("orderModalBody");
+  try {
+    const order =
+      typeof orderData === "string" ? JSON.parse(orderData) : orderData;
+    const modalTitle = document.getElementById("orderModalTitle");
+    const modalBody = document.getElementById("orderModalBody");
 
-        modalTitle.textContent = `Order Details - #${order.order_id}`;
+    modalTitle.textContent = `Order Details - #${order.order_id}`;
 
-        // Get accepted suppliers
-        const acceptedSuppliers =
-          order.supplierResponses?.filter(
-            (r) => r?.status === "Accepted"
-          ) || [];
+    // Get accepted suppliers
+    const acceptedSuppliers =
+      order.supplierResponses?.filter((r) => r?.status === "Accepted") || [];
 
-        modalBody.innerHTML = `
-          <div class="row mb-3">
-            <div class="col-md-6">
-              <h6>Project Information</h6>
-              <p><strong>Customer ID:</strong> ${
-                order.customer_id || customer.customer_id || "N/A"
-              }</p>
-              <p><strong>Project Name:</strong> ${order.pname || "N/A"}</p>
-              <p><strong>Part Name:</strong> ${order.Part_Name || "N/A"}</p>
-              <p><strong>Description:</strong> ${
-                order.description || "No description"
-              }</p>
-            </div>
-            <div class="col-md-6">
-              <h6>Order Status</h6>
-              <p><strong>Status:</strong> 
-                <span class="badge ${getStatusBadgeClass(
-                  order.working_status
-                )}">
-                  ${order.working_status || "Unknown"}
-                </span>
-              </p>
-              <p><strong>Created:</strong> ${
-                order.createdAt || "Unknown date"
-              }</p>
-              <p><strong>Approval Status:</strong> 
-                <span class="badge ${
-                  order.isApproved === true ||
-                  order.isApproved === "Approved"
-                    ? "bg-success"
-                    : "bg-danger"
-                }">
-                  ${
-                    order.isApproved === true ||
-                    order.isApproved === "Approved"
-                      ? "Approved"
-                      : "Disapproved"
-                  }
-                </span>
-              </p>
-            </div>
-          </div>
-          
-          <div class="mb-3">
-            <h6>Supplier Responses</h6>
-            <div class="table-responsive">
-              <table class="table table-sm">
-                <thead>
-                  <tr>
-                    <th>Supplier ID</th>
-                    <th>Status</th>
-                    <th>Response Date</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  ${
-                    order.supplierResponses &&
-                    order.supplierResponses.length
-                      ? order.supplierResponses
-                          .map(
-                            (response) => `
-                          <tr class="${
-                            response.status === "Accepted"
-                              ? "table-success"
-                              : "table-light"
-                          }">
-                            <td>${response.supplier_Id || "N/A"}</td>
-                            <td>${response.status || "N/A"}</td>
-                            <td>${response.responseDate || "Unknown"}</td>
-                          </tr>
-                        `
-                          )
-                          .join("")
-                      : '<tr><td colspan="3" class="text-muted">No supplier responses yet</td></tr>'
-                  }
-                </tbody>
-              </table>
-            </div>
-          </div>
-          
-          ${
-            acceptedSuppliers.length > 0
-              ? `
-            <div class="alert alert-success">
-              <i class="fas fa-check-circle me-2"></i>
-              This order has been accepted by ${acceptedSuppliers.length} supplier(s)
-            </div>
-          `
-              : ""
-          }
-        `;
+    modalBody.innerHTML = `
+      <div class="row mb-3">
+        <div class="col-md-6">
+          <h6>Project Information</h6>
+          <p><strong>Customer ID:</strong> ${
+            order.customer_id || customer.customer_id || "N/A"
+          }</p>
+          <p><strong>Project Name:</strong> ${order.pname || "N/A"}</p>
+          <p><strong>Part Name:</strong> ${order.Part_Name || "N/A"}</p>
+          <p><strong>Description:</strong> ${order.description || "No description"}</p>
+        </div>
+        <div class="col-md-6">
+          <h6>Order Status</h6>
+          <p><strong>Status:</strong> 
+            <span class="badge ${getStatusBadgeClass(order.working_status)}">
+              ${order.working_status || "Unknown"}
+            </span>
+          </p>
+          <p><strong>Created:</strong> ${
+  order.createdAt && !isNaN(new Date(order.createdAt))
+    ? new Date(order.createdAt).toLocaleString()
+    : "Unknown date"
+}</p>
 
-        orderModal.show();
-      } catch (e) {
-        console.error("Error showing order details:", e);
-        alert("Failed to display order details");
+          <p><strong>Approval Status:</strong> 
+            <span class="badge ${
+              order.isApproved === true || order.isApproved === "Approved"
+                ? "bg-success"
+                : "bg-danger"
+            }">
+              ${
+                order.isApproved === true || order.isApproved === "Approved"
+                  ? "Approved"
+                  : "Disapproved"
+              }
+            </span>
+          </p>
+        </div>
+      </div>
+      
+      <div class="mb-3">
+        <h6>Supplier Responses</h6>
+        <div class="table-responsive">
+          <table class="table table-sm">
+            <thead>
+              <tr>
+                <th>Supplier ID</th>
+                <th>Status</th>
+                <th>Response Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${
+                order.supplierResponses && order.supplierResponses.length
+                  ? order.supplierResponses
+                      .map(
+                        (response) => `
+                      <tr class="${
+                        response.status === "Accepted"
+                          ? "table-success"
+                          : "table-light"
+                      }">
+                        <td>${response.supplier_Id || "N/A"}</td>
+                        <td>${response.status || "N/A"}</td>
+                        <td>${
+  response.date && !isNaN(new Date(response.date))
+    ? new Date(response.date).toLocaleString()
+    : "No date available"
+}</td>
+
+
+                      </tr>
+                    `
+                      )
+                      .join("")
+                  : '<tr><td colspan="3" class="text-muted">No supplier responses yet</td></tr>'
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+      
+      ${
+        acceptedSuppliers.length > 0
+          ? `
+        <div class="alert alert-success">
+          <i class="fas fa-check-circle me-2"></i>
+          This order has been accepted by ${acceptedSuppliers.length} supplier(s)
+        </div>
+      `
+          : ""
       }
-    }
+    `;
+
+    orderModal.show();
+  } catch (e) {
+    console.error("Error showing order details:", e);
+    alert("Failed to display order details");
+  }
+}
+
 
     // 6. Initialize
     loadOrders();
@@ -1912,6 +1918,191 @@ document.addEventListener("DOMContentLoaded", async function () {
       });
     });
   });
+</script>
+<script>
+  document.addEventListener("DOMContentLoaded", async function () {
+    const orderTable2 = document.getElementById("orderTable2");
+    const searchInput2 = document.getElementById("searchInput2");
+
+    // Retrieve customer data
+    const customerData = sessionStorage.getItem("customer");
+    const customer = customerData ? JSON.parse(customerData) : null;
+    const customer_id = customer ? customer.customer_id : null;
+
+    if (!customer_id) {
+        console.error("❌ No customer ID found in sessionStorage.");
+        orderTable2.innerHTML = `<tr><td colspan="7" class="text-center text-danger">No customer ID found.</td></tr>`;
+        return;
+    }
+
+    console.log("✅ Customer ID:", customer_id);
+
+    async function fetchApprovedOrders() {
+        try {
+            const response = await fetch(`http://localhost:5000/api/customer/approved-orders/${customer_id}`);
+            
+            if (!response.ok) throw new Error("Failed to fetch approved orders");
+
+            const orders = await response.json();
+            displayApprovedOrders(orders);
+        } catch (error) {
+            console.error("❌ Error fetching approved orders:", error);
+            orderTable2.innerHTML = `<tr><td colspan="7" class="text-center text-danger">Failed to load approved orders.</td></tr>`;
+        }
+    }
+
+    function displayApprovedOrders(orders) {
+        if (orders.length === 0) {
+            orderTable2.innerHTML = `
+                <tr>
+                    <td colspan="7">
+                        <div class="card-header pb-0 p-3">
+                            <div class="d-flex justify-content-between">
+                                <h6 class="mb-2">No Approved Orders Yet</h6>
+                            </div>
+                        </div>
+                    </td>
+                </tr>`;
+            return;
+        }
+
+        orderTable2.innerHTML = orders
+            .map(order => `
+                <tr>
+                    <td>
+                        <div class="text-center">
+                            <p class="text-xs font-weight-bold mb-0">Project Name</p>
+                            <h6 class="text-sm mb-0">${order.pname}</h6>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="text-center">
+                            <p class="text-xs font-weight-bold mb-0">Part Name</p>
+                            <h6 class="text-sm mb-0">${order.Part_Name}</h6>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="text-center">
+                            <p class="text-xs font-weight-bold mb-0">SOP Date:</p>
+                            <h6 class="text-sm mb-0">${new Date(order.sop).toLocaleDateString()}</h6>
+                        </div>
+                    </td>
+                    <td class="align-middle text-sm">
+                        <div class="col text-center">
+                            <p class="text-xs font-weight-bold mb-0">Category</p>
+                            <h6 class="text-sm mb-0">${order.category}</h6>
+                        </div>
+                    </td>
+                    <td class="align-middle text-sm">
+                        <div class="col text-center">
+                            <p class="text-xs font-weight-bold mb-0">Working Status</p>
+                            <h6 class="text-sm mb-0">${order.working_status || 'None'}</h6>
+                        </div>
+                    </td>
+                    <td class="align-middle text-sm">
+                        <div class="col text-center">
+                            <p class="text-xs font-weight-bold mb-0">Approval Status</p>
+                            <i class="fa fa-check-circle text-success"> Approved</i>
+                        </div>
+                    </td>
+                    <td class="align-middle text-sm">
+                        <div class="col text-center">
+                            <button type="button" class="btn btn-primary view-btn" data-order='${JSON.stringify(order)}'>View</button>
+                        </div>
+                    </td>
+                </tr>
+            `)
+            .join("");
+
+        // Attach event listeners to View buttons
+        document.querySelectorAll(".view-btn").forEach(button => {
+            button.addEventListener("click", function () {
+                const orderData = JSON.parse(this.getAttribute("data-order"));
+                openModal(orderData);
+            });
+        });
+    }
+
+    // Search functionality for approved orders
+    searchInput2.addEventListener("input", function () {
+        const searchTerm = searchInput2.value.toLowerCase();
+        const rows = orderTable2.querySelectorAll("tr");
+
+        rows.forEach(row => {
+            const projectName = row.children[0]?.innerText.toLowerCase() || "";
+            row.style.display = projectName.includes(searchTerm) ? "" : "none";
+        });
+    });
+
+    // Modal function
+    function openModal(order) {
+        // Remove existing modal if present
+        const existingModal = document.getElementById("orderModal");
+        if (existingModal) existingModal.remove();
+
+        // Bootstrap Modal HTML
+        const modalHtml = `
+        <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Order Details</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Order Information</h5>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <p><strong>Customer ID:</strong> ${order.customer_id}</p>
+                                        <p><strong>Project ID:</strong> ${order.order_id}</p>
+                                        <p><strong>Company Name:</strong> ${order.cname}</p>
+                                        <p><strong>Project Name:</strong> ${order.pname}</p>
+                                        <p><strong>Part Name:</strong> ${order.Part_Name}</p>
+                                        <p><strong>Category:</strong> ${order.category}</p>
+                                        <p><strong>Email:</strong> ${order.email}</p>
+                                        <p><strong>Phone Number:</strong> ${order.phone_number}</p>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p><strong>Part Number:</strong> ${order.cpno}</p>
+                                        <p><strong>Target Value:</strong> ${order.tv}</p>
+                                        <p><strong>Annual Volume:</strong> ${order.av}</p>
+                                        <p><strong>Quote Submission:</strong> ${new Date(order.qs).toLocaleDateString()}</p>
+                                        <p><strong>Start of Production:</strong> ${new Date(order.sop).toLocaleDateString()}</p>
+                                        <p><strong>Status:</strong> ${order.working_status}</p>
+                                        <p><strong>Approval Status:</strong> ${order.isApproved}</p>
+                                    </div>
+                                </div>
+
+                                ${order.pdf_file && order.pdf_file.trim() !== "" ? `
+                                    <div class="mt-3 text-center">
+                                        <a href="${order.pdf_file}" download class="btn btn-success">
+                                            <i class="fas fa-file-download"></i> Download File
+                                        </a>
+                                    </div>
+                                ` : `<p class="text-muted text-center mt-3">No file available</p>`}
+
+                                <div class="text-end mt-3">
+                                    <button class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>`;
+
+        // Insert modal HTML into body
+        document.body.insertAdjacentHTML("beforeend", modalHtml);
+
+        // Show Bootstrap modal
+        const myModal = new bootstrap.Modal(document.getElementById("orderModal"));
+        myModal.show();
+    }
+
+    fetchApprovedOrders(); // Fetch approved orders on page load
+});
 </script>
   
   </body>

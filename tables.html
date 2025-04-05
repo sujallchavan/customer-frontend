@@ -978,7 +978,7 @@
                   </div>
                   <div class="card-body px-0 pt-0 pb-2">
                       <div class="mb-3" style="margin: 0 15px;">
-                          <input type="text" id="searchInput3" class="form-control" placeholder="Search Projects">
+                          <input type="text" id="searchInput" class="form-control" placeholder="Search Projects">
                       </div>
                       <div class="table-responsive p-0">
                           <table class="table align-items-center justify-content-center mb-0">
@@ -1134,7 +1134,7 @@
                 </div>
                 <div class="card-body px-0 pt-0 pb-2">
                     <div class="mb-3" style="margin: 0 15px;">
-                        <input type="text" id="searchInput" class="form-control" placeholder="Search Projects">
+                        <input type="text" id="searchInputOrders" class="form-control" placeholder="Search Projects">
                     </div>
                     <div class="table-responsive p-0">
                         <table class="table align-items-center justify-content-center mb-0">
@@ -1230,8 +1230,6 @@
     </main>
     
     <script>
-
-      
       // Function to fetch and display customer orders
       async function fetchCustomerOrders() {
         try {
@@ -1241,26 +1239,25 @@
     
           if (!customer_id) {
             console.error("❌ No customer ID found in sessionStorage.");
-            document.getElementById("customerOrdersTable").innerHTML = 
+            document.getElementById("customerOrdersTable").innerHTML =
               `<tr><td colspan="9" class="text-center text-danger">No customer ID found.</td></tr>`;
             return;
           }
     
-          const response = await fetch(`http://localhost:5000/api/customer/orders/${customer_id}`);
+          const response = await fetch(`https://backend-api-k9ts.onrender.com/api/customer/orders/${customer_id}`);
           if (!response.ok) throw new Error("Failed to fetch orders");
     
           const orders = await response.json();
           displayCustomerOrders(orders);
         } catch (error) {
           console.error("❌ Error fetching customer orders:", error);
-          document.getElementById("customerOrdersTable").innerHTML = 
+          document.getElementById("customerOrdersTable").innerHTML =
             `<tr><td colspan="9" class="text-center text-danger">Failed to load orders.</td></tr>`;
         }
       }
     
       // Function to display customer orders in the table
       function displayCustomerOrders(orders) {
-        // Filter orders that are approved and have an accepted supplier
         const approvedOrders = orders.filter(order =>
           order.isApproved === "Approved" && order.acceptedSupplier
         );
@@ -1306,7 +1303,6 @@
           })
           .join("");
     
-        // View button event
         document.querySelectorAll(".view-btn").forEach(button => {
           button.addEventListener("click", function () {
             const orderData = JSON.parse(this.getAttribute("data-order"));
@@ -1328,11 +1324,10 @@
         }
       }
     
-      // Function to open order details modal (only show selected order)
+      // Function to open order details modal
       function openOrderDetailsModal(order) {
         let modal = document.getElementById("orderDetailsModal");
     
-        // Create modal if it doesn't exist
         if (!modal) {
           modal = document.createElement("div");
           modal.id = "orderDetailsModal";
@@ -1350,21 +1345,21 @@
                     <div class="col-md-6">
                       <div class="mb-3">
                         <label class="form-label">Project Name</label>
-                        <input type="text" class="form-control" id="orderProjectName" value="${order.pname || ''}" disabled>
+                        <input type="text" class="form-control" value="${order.pname || ''}" disabled>
                       </div>
                       <div class="mb-3">
                         <label class="form-label">Part Name</label>
-                        <input type="text" class="form-control" id="orderPartName" value="${order.Part_Name || ''}" disabled>
+                        <input type="text" class="form-control" value="${order.Part_Name || ''}" disabled>
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="mb-3">
                         <label class="form-label">Category</label>
-                        <input type="text" class="form-control" id="orderCategory" value="${order.category || ''}" disabled>
+                        <input type="text" class="form-control" value="${order.category || ''}" disabled>
                       </div>
                       <div class="mb-3">
                         <label class="form-label">Start of Production</label>
-                        <input type="text" class="form-control" id="orderSop" value="${new Date(order.sop).toLocaleDateString() || ''}" disabled>
+                        <input type="text" class="form-control" value="${new Date(order.sop).toLocaleDateString() || ''}" disabled>
                       </div>
                     </div>
                   </div>
@@ -1372,17 +1367,17 @@
                     <div class="col-md-6">
                       <div class="mb-3">
                         <label class="form-label">Working Status</label>
-                        <input type="text" class="form-control" id="orderWorkingStatus" value="${order.working_status || ''}" disabled>
+                        <input type="text" class="form-control" value="${order.working_status || ''}" disabled>
                       </div>
                     </div>
                     <div class="col-md-6">
                       <div class="mb-3">
                         <label class="form-label">Accepted Supplier</label>
-                        <input type="text" class="form-control" id="orderAcceptedSupplier" value="${order.acceptedSupplier?.supplier_Id || 'N/A'}" disabled>
+                        <input type="text" class="form-control" value="${order.acceptedSupplier?.supplier_Id || 'N/A'}" disabled>
                       </div>
                       <div class="mb-3">
                         <label class="form-label">Accepted Date</label>
-                        <input type="text" class="form-control" id="orderAcceptedDate" value="${order.acceptedSupplier?.acceptedAt ? new Date(order.acceptedSupplier.acceptedAt).toLocaleDateString() : 'N/A'}" disabled>
+                        <input type="text" class="form-control" value="${order.acceptedSupplier?.acceptedAt ? new Date(order.acceptedSupplier.acceptedAt).toLocaleDateString() : 'N/A'}" disabled>
                       </div>
                     </div>
                   </div>
@@ -1390,7 +1385,7 @@
                     <div class="col-md-12">
                       <div class="mb-3">
                         <label class="form-label">Approval Status</label>
-                        <input type="text" class="form-control" id="orderApprovalStatus" value="${order.isApproved === "Approved" ? 'Approved' : 'Not Approved'}" disabled>
+                        <input type="text" class="form-control" value="${order.isApproved === "Approved" ? 'Approved' : 'Not Approved'}" disabled>
                       </div>
                     </div>
                   </div>
@@ -1401,37 +1396,44 @@
               </div>
             </div>
           </div>`;
-    
           document.body.appendChild(modal);
         }
     
-        // Initialize and show the modal
         const modalInstance = new bootstrap.Modal(modal);
         modalInstance.show();
       }
     
-      // Search functionality for orders table
-      document.getElementById("searchInputOrders").addEventListener("input", function() {
-        const searchTerm = this.value.toLowerCase();
-        const rows = document.querySelectorAll("#customerOrdersTable tr");
-    
-        rows.forEach(row => {
-          const orderId = row.querySelector("td:nth-child(1)")?.textContent.toLowerCase() || "";
-          const projectName = row.querySelector("td:nth-child(2)")?.textContent.toLowerCase() || "";
-    
-          if (orderId.includes(searchTerm) || projectName.includes(searchTerm)) {
-            row.style.display = "";
-          } else {
-            row.style.display = "none";
-          }
-        });
-      });
-    
-      // Call the function when the page loads
-      document.addEventListener("DOMContentLoaded", function() {
+      // Call the function and add search listener on DOM ready
+      document.addEventListener("DOMContentLoaded", function () {
         fetchCustomerOrders();
+    
+        const searchInput = document.getElementById("searchInputOrders");
+        if (searchInput) {
+          searchInput.addEventListener("input", function () {
+            const searchTerm = this.value.toLowerCase();
+            const rows = document.querySelectorAll("#customerOrdersTable tr");
+    
+            rows.forEach(row => {
+              const tds = row.querySelectorAll("td");
+              if (tds.length === 1 && tds[0].colSpan) return;
+    
+              let matchFound = false;
+              tds.forEach(td => {
+                if (td.textContent.toLowerCase().includes(searchTerm)) {
+                  matchFound = true;
+                }
+              });
+    
+              row.style.display = matchFound ? "" : "none";
+            });
+          });
+        }
       });
     </script>
+    
+
+
+
     <!--   Core JS Files   -->
        <!-- Bootstrap JS (required for modals to work) -->
         
@@ -1776,7 +1778,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     async function fetchOrders() {
         try {
-            const response = await fetch(`http://localhost:5000/api/customer/orders/${customer_id}`);
+            const response = await fetch(`https://backend-api-k9ts.onrender.com/api/customer/orders/${customer_id}`);
 
             if (!response.ok) throw new Error("Failed to fetch orders");
 
@@ -1956,15 +1958,25 @@ function getWorkingStatusBadge(status) {
     }
 
      // 🔍 Search Functionality
-     searchInput.addEventListener("searchInput3", function () {
-        const searchTerm = searchInput.value.toLowerCase();
-        const rows = orderTable.querySelectorAll("tr");
+     document.getElementById('searchInput').addEventListener('keyup', function() {
+  const input = document.getElementById('searchInput');
+  const filter = input.value.toLowerCase();
+  const table = document.getElementById('orderTable');
+  const rows = table.getElementsByTagName('tr');
 
-        rows.forEach(row => {
-            const projectName = row.children[1]?.innerText.toLowerCase() || "";
-            row.style.display = projectName.includes(searchTerm) ? "" : "none";
-        });
-    });
+  for (let i = 0; i < rows.length; i++) {
+    let match = false;
+    const tds = rows[i].getElementsByTagName('td');
+    for (let j = 0; j < tds.length; j++) {
+      const txtValue = tds[j].textContent || tds[j].innerText;
+      if (txtValue.toLowerCase().includes(filter)) {
+        match = true;
+        break;
+      }
+    }
+    rows[i].style.display = match ? "" : "none";
+  }
+});
 
     fetchOrders();
 });
@@ -1972,6 +1984,68 @@ function getWorkingStatusBadge(status) {
       </script>
       
 
+      </script>
+      
+      <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+          const customerId = sessionStorage.getItem("customerId"); // Or pass from backend
+      
+          try {
+            const orderRes = await fetch(`/api/customer/${customerId}/orders`);
+            const orders = await orderRes.json();
+      
+            const supplierDetailsList = [];
+      
+            for (const order of orders) {
+              const supplierId = order.acceptedSupplier?.supplier_Id;
+              if (!supplierId) continue;
+      
+              const supplierRes = await fetch(`/api/supplier/by-number/${supplierId}`);
+              const supplierData = await supplierRes.json();
+              supplierData.assignedDate = order.acceptedSupplier.acceptedAt; // set assign date
+              supplierDetailsList.push(supplierData);
+            }
+      
+            const tbody = document.querySelector("tbody");
+            tbody.innerHTML = "";
+      
+            supplierDetailsList.forEach((supplier, index) => {
+              const row = `
+                <tr>
+                  <td>
+                    <div class="d-flex px-2 py-1">
+                      <div>
+                        <img src="${supplier.avatar || '/static/img/default.jpg'}" class="avatar avatar-sm me-3" alt="user${index}" />
+                      </div>
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="mb-0 text-sm">${supplier.name}</h6>
+                        <p class="text-xs text-secondary mb-0">${supplier.email}</p>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <p class="text-xs font-weight-bold mb-0">${supplier.location}</p>
+                    <p class="text-xs text-secondary mb-0">${supplier.role || ''}</p>
+                  </td>
+                  <td>
+                    <p class="text-xs font-weight-bold mb-0">${supplier.commodities?.join(", ")}</p>
+                    <p class="text-xs text-secondary mb-0">Products</p>
+                  </td>
+                  <td class="align-middle text-center text-sm">${supplier.contact}</td>
+                  <td class="align-middle text-center">
+                    <span class="text-secondary text-xs font-weight-bold">${new Date(supplier.assignedDate).toLocaleDateString()}</span>
+                  </td>
+                  <td class="align-middle">
+                    <a href="javascript:;" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">Edit</a>
+                  </td>
+                </tr>
+              `;
+              tbody.innerHTML += row;
+            });
+          } catch (error) {
+            console.error("Error fetching supplier data:", error);
+          }
+        });
       </script>
       
   </body>

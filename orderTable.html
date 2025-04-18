@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="../assets/img/apple-icon.png"
+    />
+    <link rel="icon" type="image/png" href="../assets/img/favicon.png" />
+    <title>Customer Orders</title>
+
+    <!-- Fonts and icons -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700"
+      rel="stylesheet"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Argon Dashboard CSS -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/argon-dashboard/2.0.4/css/argon-dashboard.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/argon-dashboard/2.0.4/css/nucleo-icons.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      /* Custom styles for the orders page */
+      .badge {
+        font-size: 0.85em;
+        padding: 0.35em 0.65em;
+      }
+      .supplier-highlight {
+        background-color: rgba(25, 135, 84, 0.1);
+      }
+      .response-accepted {
+        color: #2dce89;
+        font-weight: 500;
+      }
+      .response-rejected {
+        color: #f5365c;
+        font-weight: 500;
+      }
+      .customer-id {
+        font-family: monospace;
+        font-size: 0.9em;
+      }
+      .supplier-response-item {
+        margin-bottom: 5px;
+        padding: 5px;
+        border-radius: 4px;
+      }
+      .accepted-supplier {
+        background-color: #e8f5e9;
+        border-left: 3px solid #2dce89;
+      }
+      .supplier-actions {
+        margin-top: 5px;
+      }
+      .card-header {
+        padding: 1rem 1.5rem;
+        margin-bottom: 0;
+        background-color: rgba(33, 40, 50, 0.03);
+        border-bottom: 1px solid rgba(33, 40, 50, 0.125);
+      }
+      .table-responsive {
+        overflow-x: auto;
+      }
+      .modal-lg {
+        max-width: 800px;
+      }
+      .bg-gradient-primary {
+        background: linear-gradient(87deg, #5e72e4 0, #825ee4 100%) !important;
+      }
+
+      /* Sidebar styles */
+      .sidebar-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.3);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 1050;
+      }
+      .sidebar-content {
+        background: #ffffff;
+        width: 75%;
+        max-width: 280px;
+        height: auto;
+        padding: 20px;
+        box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2);
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        transition: transform 0.3s ease-in-out;
+        margin-left: 15px;
+        border-radius: 10px;
+        padding-top: 25px;
+        padding-bottom: 25px;
+      }
+      .close-x {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 22px;
+        font-weight: bold;
+        color: red;
+        cursor: pointer;
+      }
+      .nav-link {
+        padding: 12px;
+        font-size: 16px;
+        border-bottom: 1px solid #ddd;
+        color: black !important;
+      }
+      @media (max-width: 768px) {
+        .sidebar-content {
+          width: 85%;
+          max-width: 270px;
+          margin-left: 10px;
+          padding-top: 30px;
+          padding-bottom: 30px;
+        }
+      }
+    </style>
+  </head>
+  <body class="g-sidenav-show bg-gray-100">
+    <div class="min-height-300 bg-primary position-absolute w-100"></div>
+
+    <!-- Sidebar -->
+    <aside
+      class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4"
+      id="sidenav-main"
+    >
+      <div class="sidenav-header">
+        <i
+          class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
+          aria-hidden="true"
+          id="iconSidenav"
+        ></i>
+        <a class="navbar-brand m-0" href=" " target="">
+          <img
+            src="img/customer dashboard/logo-ct-dark.png"
+            class="navbar-brand-img h-100"
+            alt="main_logo"
+          />
+          <span class="ms-1 font-weight-bold">Customer Portal</span>
+        </a>
+      </div>
+      <hr class="horizontal dark mt-0" />
+      <div class="collapse navbar-collapse w-auto" id="sidenav-collapse-main">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="Cdashboard.html">
+              <div
+                class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center"
+              >
+                <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
+              </div>
+              <span class="nav-link-text ms-1">Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="tables.html">
+              <div
+                class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center"
+              >
+                <i
+                  class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"
+                ></i>
+              </div>
+              <span class="nav-link-text ms-1">Orders</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="requirementsform.html">
+              <div
+                class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center"
+              >
+                <i
+                  class="ni ni-credit-card text-success text-sm opacity-10"
+                ></i>
+              </div>
+              <span class="nav-link-text ms-1">Place Order</span>
+            </a>
+          </li>
+          <li class="nav-item mt-3">
+            <h6
+              class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6"
+            >
+              Account pages
+            </h6>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link"
+              href="javascript:;"
+              data-toggle="modal"
+              data-target="#newSignInModal"
+            >
+              <div
+                class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center"
+              >
+                <i class="ni ni-single-02 text-dark text-sm opacity-10"></i>
+              </div>
+              <span class="nav-link-text ms-1">Profile</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </aside>
+
+    <main class="main-content position-relative border-radius-lg">
+      <!-- Navbar -->
+      <nav
+        class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl"
+        id="navbarBlur"
+        data-scroll="false"
+      >
+        <div class="container-fluid py-1 px-3">
+          <nav aria-label="breadcrumb">
+            <ol
+              class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5"
+            >
+              <li class="breadcrumb-item text-sm">
+                <a class="opacity-5 text-white" href="javascript:;">Pages</a>
+              </li>
+              <li
+                class="breadcrumb-item text-sm text-white active"
+                aria-current="page"
+              >
+                Orders
+              </li>
+            </ol>
+            <h6 class="font-weight-bolder text-white mb-0">Your Orders</h6>
+          </nav>
+          <div
+            class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4"
+            id="navbar"
+          >
+            <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+              <div class="input-group">
+                <span class="input-group-text text-body"
+                  ><i class="fas fa-search" aria-hidden="true"></i
+                ></span>
+                <input
+                  type="text"
+                  id="searchOrders"
+                  class="form-control"
+                  placeholder="Search orders..."
+                />
+              </div>
+            </div>
+
+            <!-- Profile Modal -->
+            <div
+              class="modal fade"
+              id="newSignInModal"
+              tabindex="-1"
+              aria-labelledby="newSignInModalLabel"
+              aria-hidden="true"
+            >
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">User Profile</h5>
+                    <button
+                      type="button"
+                      class="btn-close"
+                      data-bs-dismiss="modal"
+                      aria-label="Close"
+                    ></button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title">User Details</h5>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="profile-item">
+                              <div class="item-label">User ID:</div>
+                              <div class="item-value" id="userId"></div>
+                            </div>
+                            <div class="profile-item">
+                              <div class="item-label">Full Name:</div>
+                              <div class="item-value" id="userName"></div>
+                            </div>
+                            <div class="profile-item">
+                              <div class="item-label">Address:</div>
+                              <div class="item-value" id="userLocation"></div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="profile-item">
+                              <div class="item-label">Contact:</div>
+                              <div class="item-value" id="userPhone"></div>
+                            </div>
+                            <div class="profile-item">
+                              <div class="item-label">Email:</div>
+                              <div class="item-value" id="userEmail"></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="text-end mt-3">
+                          <button class="btn btn-danger" id="newLogoutBtn">
+                            Logout
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <ul class="navbar-nav justify-content-end">
+              <li class="nav-item d-flex align-items-center">
+                <a
+                  href="javascript:;"
+                  class="nav-link text-white font-weight-bold px-0"
+                  data-toggle="modal"
+                  data-target="#newSignInModal"
+                >
+                  <i class="fa fa-user me-sm-1"></i>
+                  <span class="d-sm-inline d-none">Profile</span>
+                </a>
+              </li>
+
+              <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+                <a
+                  href="javascript:;"
+                  class="nav-link text-white p-0"
+                  id="toggleSidebarMenu"
+                >
+                  <div class="sidenav-toggler-inner">
+                    <i class="sidenav-toggler-line bg-white"></i>
+                    <i class="sidenav-toggler-line bg-white"></i>
+                    <i class="sidenav-toggler-line bg-white"></i>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Mobile Sidebar -->
+      <div id="uniqueSidebarMenu" class="sidebar-overlay">
+        <div class="sidebar-content">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title">Menu</h5>
+            <span id="closeSidebarButton" class="close-x">X</span>
+          </div>
+          <div class="offcanvas-body">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a
+                  class="nav-link text-black"
+                  id="dashboardLink"
+                  href="Cdashboard.html"
+                  >Dashboard</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-black" id="tableLink" href="tables.html"
+                  >Orders</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link text-black"
+                  id="placeOrderLink"
+                  href="requirementsform.html"
+                  >Place Order</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="container-fluid py-4">
+        <div class="row">
+          <div class="col-12">
+            <div class="card mb-4">
+              <div class="card-header pb-0">
+                <div class="d-flex justify-content-between align-items-center">
+                  <h6>Your Orders</h6>
+                </div>
+                <!-- Add this search bar -->
+                <!-- Full-width search bar -->
+                <div class="input-group input-group-outline">
+                  <span class="input-group-text bg-white">
+                    <i class="fas fa-search text-primary"></i>
+                  </span>
+                  <input
+                    type="text"
+                    id="ordersSearch"
+                    class="form-control"
+                    placeholder="Search by Order ID, Project, Part Name, or Status..."
+                    onkeyup="searchOrdersTable()"
+                  />
+                </div>
+              </div>
+              <div class="card-body px-0 pt-0 pb-2">
+                <div class="table-responsive p-0">
+                  <table class="table align-items-center mb-0">
+                    <thead>
+                      <tr>
+                        <th
+                          class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
+                        >
+                          Order ID
+                        </th>
+                        <th
+                          class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2"
+                        >
+                          Customer ID
+                        </th>
+                        <th
+                          class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2"
+                        >
+                          Project
+                        </th>
+                        <th
+                          class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2"
+                        >
+                          Part Name
+                        </th>
+                        <th
+                          class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2"
+                        >
+                          Approval
+                        </th>
+                        <th
+                          class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2"
+                        >
+                          Supplier Responses
+                        </th>
+                        <th
+                          class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2"
+                        >
+                          Actions
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody id="ordersTableBody">
+                      <tr id="loadingRow">
+                        <td colspan="7" class="text-center py-4">
+                          <div
+                            class="spinner-border text-primary"
+                            role="status"
+                          >
+                            <span class="visually-hidden">Loading...</span>
+                          </div>
+                          <p class="text-sm text-secondary mb-0 mt-2">
+                            Loading your orders...
+                          </p>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Order Details Modal -->
+    <div
+      class="modal fade"
+      id="orderDetailsModal"
+      tabindex="-1"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="orderModalTitle">Order Details</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body" id="orderModalBody">
+            <!-- Dynamic content will be inserted here -->
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Accept Supplier Confirmation Modal -->
+    <div
+      class="modal fade"
+      id="acceptSupplierModal"
+      tabindex="-1"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Confirm Supplier Acceptance</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body" id="acceptSupplierModalBody">
+            <!-- Dynamic content will be inserted here -->
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cancel
+            </button>
+            <button
+              type="button"
+              class="btn btn-success"
+              id="confirmAcceptSupplier"
+            >
+              Accept Supplier
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Argon JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/argon-dashboard-django/1.0.2/js/argon.js"></script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", async function () {
+        // 1. Get customer data from session storage
+        const customerData = sessionStorage.getItem("customer");
+        if (!customerData) {
+          showError("Please login to view orders", true);
+          return;
+        }
+
+        let customer;
+        try {
+          customer = JSON.parse(customerData);
+          if (!customer.customer_id) throw new Error("Invalid customer data");
+        } catch (e) {
+          showError("Invalid session data", true);
+          return;
+        }
+
+        // 2. Initialize elements
+        const ordersTable = document.getElementById("ordersTableBody");
+        const searchInput = document.getElementById("searchOrders");
+        const orderModal = new bootstrap.Modal("#orderDetailsModal");
+        const acceptSupplierModal = new bootstrap.Modal("#acceptSupplierModal");
+
+        // Load profile data
+        document.getElementById("userName").textContent = customer.name;
+        document.getElementById("userEmail").textContent = customer.email;
+        document.getElementById("userLocation").textContent = customer.location;
+        document.getElementById("userPhone").textContent =
+          customer.phone_number;
+        document.getElementById("userId").textContent = customer.customer_id;
+
+        // Logout functionality
+        document
+          .getElementById("newLogoutBtn")
+          .addEventListener("click", function () {
+            sessionStorage.removeItem("customer");
+            window.location.href = "login.html";
+          });
+
+        // Mobile sidebar toggle
+        document
+          .getElementById("toggleSidebarMenu")
+          .addEventListener("click", function () {
+            document.getElementById("uniqueSidebarMenu").style.display = "flex";
+          });
+
+        document
+          .getElementById("closeSidebarButton")
+          .addEventListener("click", function () {
+            document.getElementById("uniqueSidebarMenu").style.display = "none";
+          });
+
+        document
+          .getElementById("uniqueSidebarMenu")
+          .addEventListener("click", function (event) {
+            if (event.target === this) {
+              this.style.display = "none";
+            }
+          });
+
+        // 3. Load orders function
+        async function loadOrders() {
+          showLoading();
+
+          try {
+            const response = await fetch(
+              `http://localhost:5000/api/customer/orders/${customer.customer_id}`,
+              {
+                headers: {
+                  "Content-Type": "application/json",
+                  Authorization: `Bearer ${
+                    sessionStorage.getItem("token") || ""
+                  }`,
+                },
+              }
+            );
+
+            if (!response.ok) {
+              const errorData = await response.json().catch(() => ({}));
+              throw new Error(
+                errorData.message || `HTTP error! status: ${response.status}`
+              );
+            }
+
+            const orders = await response.json();
+            displayOrders(orders);
+          } catch (error) {
+            console.error("Order loading error:", error);
+            showError(`Failed to load orders: ${error.message}`);
+
+            if (error.message.includes("401")) {
+              setTimeout(() => (window.location.href = "login.html"), 2000);
+            }
+          }
+        }
+
+        // 4. Display orders with supplier responses
+        function displayOrders(orders) {
+          if (!orders || !orders.length) {
+            ordersTable.innerHTML = `
+              <tr>
+                <td colspan="7" class="text-center py-4 text-muted">
+                  <i class="fas fa-box-open me-2"></i>No orders found
+                </td>
+              </tr>`;
+            return;
+          }
+
+          const orderRows = orders
+            .map((order) => createOrderRow(order))
+            .join("");
+          ordersTable.innerHTML = orderRows;
+
+          // Add event listeners
+          addOrderEventListeners();
+        }
+
+        // 5. Create order row HTML with Argon styling
+        function createOrderRow(order) {
+          const supplierResponses = order.supplierResponses || [];
+          const hasAcceptedSupplier = order.isSupplierAccepted;
+
+          // Approval status badge
+          const approvalBadge = `
+            <span class="badge rounded-pill ${
+              order.isApproved === "Approved"
+                ? "bg-gradient-success"
+                : "bg-gradient-warning"
+            }">
+              ${order.isApproved || "Pending"}
+            </span>
+          `;
+
+          // Supplier responses display
+          let supplierResponsesHtml = '<div class="supplier-responses">';
+
+          if (supplierResponses.length === 0) {
+            supplierResponsesHtml +=
+              '<span class="text-muted text-xs">No responses yet</span>';
+          } else {
+            supplierResponses.forEach((response) => {
+              const isAcceptedResponse = response.status === "Accepted";
+              const canAccept = isAcceptedResponse && !hasAcceptedSupplier;
+
+              supplierResponsesHtml += `
+                <div class="supplier-response-item ${
+                  isAcceptedResponse ? "accepted-supplier" : ""
+                }">
+                  <div>
+                    <strong class="text-sm">Supplier ${
+                      response.supplier_Id
+                    }</strong>: 
+                    <span class="${
+                      response.status === "Accepted"
+                        ? "response-accepted"
+                        : "response-rejected"
+                    } text-sm">
+                      ${response.status}
+                    </span>
+                    ${
+                      response.date
+                        ? `<small class="text-muted text-xs"> - ${new Date(
+                            response.date
+                          ).toLocaleString()}</small>`
+                        : ""
+                    }
+                  </div>
+                  ${
+                    canAccept
+                      ? `
+                  <div class="supplier-actions">
+                    <button class="btn btn-sm btn-success accept-supplier-btn" 
+                            data-order-id="${order.order_id}"
+                            data-supplier-id="${response.supplier_Id}">
+                      <i class="fas fa-check me-1"></i> Accept Supplier
+                    </button>
+                  </div>
+                  `
+                      : ""
+                  }
+                </div>
+              `;
+            });
+          }
+
+          supplierResponsesHtml += "</div>";
+
+          return `
+            <tr ${
+              supplierResponses.some((r) => r.status === "Accepted")
+                ? 'class="supplier-highlight"'
+                : ""
+            }>
+              <td class="ps-4">
+                <p class="text-xs font-weight-bold mb-0">${
+                  order.order_id || "N/A"
+                }</p>
+              </td>
+              <td class="customer-id">
+                <p class="text-xs text-secondary mb-0">${
+                  order.customer_id || "N/A"
+                }</p>
+              </td>
+              <td>
+                <p class="text-xs font-weight-bold mb-0">${
+                  order.pname || "Unnamed Project"
+                }</p>
+              </td>
+              <td>
+                <p class="text-xs font-weight-bold mb-0">${
+                  order.Part_Name || "No part specified"
+                }</p>
+              </td>
+              <td>
+                ${approvalBadge}
+              </td>
+              <td>
+                ${supplierResponsesHtml}
+              </td>
+              <td class="align-middle">
+                <button class="btn btn-sm btn-outline-primary view-order-btn" 
+                        data-order='${JSON.stringify(order)}'>
+                  <i class="fas fa-eye me-1"></i> View
+                </button>
+              </td>
+            </tr>
+          `;
+        }
+
+        // 6. Add event listeners to order buttons
+        function addOrderEventListeners() {
+          // View order buttons
+          document.querySelectorAll(".view-order-btn").forEach((btn) => {
+            btn.addEventListener("click", () => {
+              try {
+                showOrderDetails(btn.dataset.order);
+              } catch (e) {
+                console.error("Error showing order:", e);
+                alert("Couldn't show order details");
+              }
+            });
+          });
+
+          // Accept supplier buttons
+          document.querySelectorAll(".accept-supplier-btn").forEach((btn) => {
+            btn.addEventListener("click", () => {
+              const orderId = btn.dataset.orderId;
+              const supplierId = btn.dataset.supplierId;
+              const orderRow = btn.closest("tr");
+              const viewBtn = orderRow.querySelector(".view-order-btn");
+              const order = JSON.parse(viewBtn.dataset.order);
+              showAcceptSupplierModal(order, supplierId);
+            });
+          });
+        }
+
+        // 7. Show order details modal with Argon styling
+        function showOrderDetails(orderData) {
+          try {
+            const order =
+              typeof orderData === "string" ? JSON.parse(orderData) : orderData;
+            const modalTitle = document.getElementById("orderModalTitle");
+            const modalBody = document.getElementById("orderModalBody");
+
+            modalTitle.textContent = `Order Details - #${order.order_id}`;
+
+            // Get accepted suppliers
+            const acceptedSuppliers =
+              order.supplierResponses?.filter(
+                (r) => r?.status === "Accepted"
+              ) || [];
+            const hasAcceptedSupplier = order.isSupplierAccepted;
+
+            modalBody.innerHTML = `
+              <div class="row mb-3">
+                <div class="col-md-6">
+                  <h6 class="text-uppercase text-secondary text-sm font-weight-bolder">Project Information</h6>
+                  <div class="d-flex flex-column">
+                    <p class="mb-1"><strong class="text-sm">Customer ID:</strong> <span class="text-sm">${
+                      order.customer_id || "N/A"
+                    }</span></p>
+                    <p class="mb-1"><strong class="text-sm">Project Name:</strong> <span class="text-sm">${
+                      order.pname || "N/A"
+                    }</span></p>
+                    <p class="mb-1"><strong class="text-sm">Part Name:</strong> <span class="text-sm">${
+                      order.Part_Name || "N/A"
+                    }</span></p>
+                    <p class="mb-1"><strong class="text-sm">Description:</strong> <span class="text-sm">${
+                      order.desc || "No description"
+                    }</span></p>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <h6 class="text-uppercase text-secondary text-sm font-weight-bolder">Order Status</h6>
+                  <div class="d-flex flex-column">
+                    <p class="mb-1"><strong class="text-sm">Approval Status:</strong> 
+                      <span class="badge rounded-pill ${
+                        order.isApproved === "Approved"
+                          ? "bg-gradient-success"
+                          : "bg-gradient-warning"
+                      }">
+                        ${order.isApproved || "Pending"}
+                      </span>
+                    </p>
+                    <p class="mb-1"><strong class="text-sm">Created:</strong> <span class="text-sm">
+                      ${
+                        order.createdAt && !isNaN(new Date(order.createdAt))
+                          ? new Date(order.createdAt).toLocaleString()
+                          : "Unknown date"
+                      }
+                    </span></p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="mb-3">
+                <h6 class="text-uppercase text-secondary text-sm font-weight-bolder">Supplier Responses</h6>
+                <div class="table-responsive">
+                  <table class="table table-sm align-items-center">
+                    <thead>
+                      <tr>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Supplier ID</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Status</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Response Date</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      ${
+                        order.supplierResponses &&
+                        order.supplierResponses.length
+                          ? order.supplierResponses
+                              .map(
+                                (response) => `
+                          <tr class="${
+                            response.status === "Accepted" ? "bg-gray-100" : ""
+                          }">
+                            <td>
+                              <p class="text-xs font-weight-bold mb-0">${
+                                response.supplier_Id || "N/A"
+                              }</p>
+                            </td>
+                            <td>
+                              <p class="text-xs font-weight-bold mb-0 ${
+                                response.status === "Accepted"
+                                  ? "text-success"
+                                  : "text-danger"
+                              }">
+                                ${response.status || "N/A"}
+                              </p>
+                            </td>
+                            <td>
+                              <p class="text-xs text-secondary mb-0">
+                                ${
+                                  response.date &&
+                                  !isNaN(new Date(response.date))
+                                    ? new Date(response.date).toLocaleString()
+                                    : "No date available"
+                                }
+                              </p>
+                            </td>
+                            <td>
+                              ${
+                                response.status === "Accepted" &&
+                                !hasAcceptedSupplier
+                                  ? `<button class="btn btn-sm btn-success accept-supplier-btn" 
+                                        data-order-id="${order.order_id}"
+                                        data-supplier-id="${response.supplier_Id}">
+                                    <i class="fas fa-check me-1"></i> Accept
+                                  </button>`
+                                  : ""
+                              }
+                              ${
+                                hasAcceptedSupplier &&
+                                order.acceptedSupplier?.supplier_Id ===
+                                  response.supplier_Id
+                                  ? '<span class="badge bg-gradient-success"><i class="fas fa-check-circle me-1"></i>Accepted</span>'
+                                  : ""
+                              }
+                            </td>
+                          </tr>
+                        `
+                              )
+                              .join("")
+                          : '<tr><td colspan="4" class="text-muted text-center py-3">No supplier responses yet</td></tr>'
+                      }
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              
+              ${
+                acceptedSuppliers.length > 0 && !hasAcceptedSupplier
+                  ? `<div class="alert alert-warning text-white">
+                    <i class="fas fa-exclamation-circle me-2"></i>
+                    This order has ${acceptedSuppliers.length} supplier(s) waiting for your acceptance
+                  </div>`
+                  : ""
+              }
+              
+              ${
+                hasAcceptedSupplier
+                  ? `<div class="alert alert-success text-white">
+                    <i class="fas fa-check-circle me-2"></i>
+                    You have accepted Supplier ${
+                      order.acceptedSupplier?.supplier_Id
+                    } for this order
+                    <small class="text-white">(${new Date(
+                      order.acceptedSupplier?.acceptedAt
+                    ).toLocaleString()})</small>
+                  </div>`
+                  : ""
+              }
+            `;
+
+            // Add event listeners to accept buttons in the modal
+            document
+              .querySelectorAll("#orderModalBody .accept-supplier-btn")
+              .forEach((btn) => {
+                btn.addEventListener("click", () => {
+                  const orderId = btn.dataset.orderId;
+                  const supplierId = btn.dataset.supplierId;
+                  showAcceptSupplierModal(order, supplierId);
+                });
+              });
+
+            orderModal.show();
+          } catch (e) {
+            console.error("Error showing order details:", e);
+            alert("Failed to display order details");
+          }
+        }
+
+        // 8. Show accept supplier confirmation modal with Argon styling
+        function showAcceptSupplierModal(order, supplierId) {
+          const modalBody = document.getElementById("acceptSupplierModalBody");
+          const confirmBtn = document.getElementById("confirmAcceptSupplier");
+
+          modalBody.innerHTML = `
+            <div class="alert alert-info text-white">
+              <i class="fas fa-info-circle me-2"></i>
+              You are about to officially accept this supplier for your order.
+            </div>
+            <div class="mb-3">
+              <p class="mb-1"><strong class="text-sm">Order ID:</strong> <span class="text-sm">${order.order_id}</span></p>
+              <p class="mb-1"><strong class="text-sm">Project:</strong> <span class="text-sm">${order.pname}</span></p>
+              <p class="mb-1"><strong class="text-sm">Part Name:</strong> <span class="text-sm">${order.Part_Name}</span></p>
+            </div>
+            <div class="mb-3">
+              <h6 class="text-uppercase text-secondary text-sm font-weight-bolder">Supplier Details</h6>
+              <p class="mb-1"><strong class="text-sm">Supplier ID:</strong> <span class="text-sm">${supplierId}</span></p>
+            </div>
+            <div class="alert alert-warning text-white">
+              <i class="fas fa-exclamation-triangle me-2"></i>
+              This action cannot be undone.
+            </div>
+          `;
+
+          confirmBtn.onclick = async function () {
+            try {
+              // Show loading state
+              this.disabled = true;
+              this.innerHTML =
+                '<span class="spinner-border spinner-border-sm"></span> Processing...';
+
+              const response = await fetch(
+                "http://localhost:5000/api/customer/accept-supplier-response",
+                {
+                  method: "POST",
+                  headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${
+                      sessionStorage.getItem("token") || ""
+                    }`,
+                  },
+                  body: JSON.stringify({
+                    order_id: order.order_id,
+                    customer_id: order.customer_id,
+                    supplier_Id: supplierId,
+                  }),
+                }
+              );
+
+              // Check for HTML response
+              const contentType = response.headers.get("content-type");
+              if (!contentType || !contentType.includes("application/json")) {
+                const text = await response.text();
+                throw new Error(`Server error: ${text.substring(0, 100)}...`);
+              }
+
+              const result = await response.json();
+
+              if (!response.ok) {
+                throw new Error(result.error || "Failed to accept supplier");
+              }
+
+              acceptSupplierModal.hide();
+              if (orderModal._isShown) orderModal.hide();
+
+              // Show success message
+              alert(result.message);
+              loadOrders();
+            } catch (error) {
+              console.error("Error:", error);
+              alert(`Error: ${error.message}`);
+            } finally {
+              // Reset button state
+              this.disabled = false;
+              this.innerHTML = "Accept Supplier";
+            }
+          };
+
+          acceptSupplierModal.show();
+        }
+
+        // 9. Helper functions
+        function showLoading() {
+          ordersTable.innerHTML = `
+            <tr id="loadingRow">
+              <td colspan="7" class="text-center py-4">
+                <div class="spinner-border text-primary" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+                <p class="text-sm text-secondary mb-0 mt-2">Loading your orders...</p>
+              </td>
+            </tr>`;
+        }
+
+        function showError(message, redirect = false) {
+          ordersTable.innerHTML = `
+            <tr>
+              <td colspan="7" class="text-center py-4 text-danger">
+                <i class="fas fa-exclamation-triangle me-2"></i>
+                ${message}
+                ${redirect ? "<p>Redirecting to login...</p>" : ""}
+              </td>
+            </tr>`;
+
+          if (redirect) {
+            setTimeout(() => (window.location.href = "login.html"), 2000);
+          }
+        }
+
+        // 10. Search functionality
+        searchInput.addEventListener("input", function () {
+          const searchTerm = this.value.toLowerCase();
+          const rows = ordersTable.querySelectorAll("tr");
+
+          rows.forEach((row) => {
+            if (row.id === "loadingRow") return;
+
+            const orderId = row.cells[0].textContent.toLowerCase();
+            const customerId = row.cells[1].textContent.toLowerCase();
+            const projectName = row.cells[2].textContent.toLowerCase();
+            const supplierInfo = row.cells[5].textContent.toLowerCase();
+
+            if (
+              orderId.includes(searchTerm) ||
+              customerId.includes(searchTerm) ||
+              projectName.includes(searchTerm) ||
+              supplierInfo.includes(searchTerm)
+            ) {
+              row.style.display = "";
+            } else {
+              row.style.display = "none";
+            }
+          });
+        });
+
+        // 11. Initialize
+        loadOrders();
+      });
+    </script>
+    <script>
+      // Enhanced search function for orders table
+      function searchOrdersTable() {
+        const input = document.getElementById("ordersSearch");
+        const filter = input.value.toUpperCase();
+        const tableBody = document.getElementById("ordersTableBody");
+        const rows = tableBody.getElementsByTagName("tr");
+
+        for (let i = 0; i < rows.length; i++) {
+          const row = rows[i];
+          if (row.id === "loadingRow") continue;
+
+          let found = false;
+          const cells = row.getElementsByTagName("td");
+
+          // Search through all columns except Actions (last column)
+          for (let j = 0; j < cells.length - 1; j++) {
+            const cell = cells[j];
+            if (cell) {
+              // Handle special cases for different columns
+              let textValue;
+              if (j === 4) {
+                // Approval column (badges)
+                textValue = cell.querySelector(".badge")?.textContent || "";
+              } else if (j === 5) {
+                // Supplier Responses column
+                textValue = Array.from(
+                  cell.querySelectorAll(".supplier-response-item")
+                )
+                  .map((item) => item.textContent)
+                  .join(" ");
+              } else {
+                textValue = cell.textContent || cell.innerText;
+              }
+
+              if (textValue.toUpperCase().includes(filter)) {
+                found = true;
+                break;
+              }
+            }
+          }
+
+          row.style.display = found ? "" : "none";
+        }
+      }
+    </script>
+  </body>
+</html>

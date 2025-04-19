@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Orders</title>
+    <link rel="icon" href="data:," />
+    <!-- Prevents favicon 404 -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .order-card {
+        border: 1px solid #eee;
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 15px;
+        background: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container py-4">
+      <h2 class="mb-4">My Orders</h2>
+
+      <!-- Loading State -->
+      <div id="loading" class="text-center py-5">
+        <div
+          class="spinner-border text-primary"
+          style="width: 3rem; height: 3rem"
+        ></div>
+        <p class="mt-3">Loading orders...</p>
+      </div>
+
+      <!-- Error State (Hidden by Default) -->
+      <div id="error" class="alert alert-danger d-none">
+        <span id="error-text"></span>
+      </div>
+
+      <!-- Orders Container -->
+      <div id="orders-container"></div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", async () => {
+        try {
+          // 1. Check if user is logged in
+          const customer = JSON.parse(sessionStorage.getItem("customer"));
+          if (!customer?.customer_id) {
+            window.location.href = "login.html";
+            return;
+          }
+
+          // 2. Fetch orders from BACKEND
+          const response = await fetch(
+            `http://localhost:5000/api/customer/get-my-orders-only/${customer.customer_id}`
+          );
+
+          // 3. Handle HTTP errors
+          if (!response.ok) {
+            throw new Error(`HTTP ${response.status}`);
+          }
+
+          // 4. Parse JSON
+          const data = await response.json();
+
+          // 5. Validate response
+          if (!data.success || !data.my_orders) {
+            throw new Error("Invalid server response");
+          }
+
+          // 6. Display orders
+          if (data.my_orders.length === 0) {
+            document.getElementById("orders-container").innerHTML = `
+                        <div class="alert alert-info">No orders found</div>
+                    `;
+          } else {
+            renderOrders(data.my_orders);
+          }
+        } catch (error) {
+          document.getElementById(
+            "error-text"
+          ).textContent = `Error: ${error.message}`;
+          document.getElementById("error").classList.remove("d-none");
+        } finally {
+          document.getElementById("loading").style.display = "none";
+        }
+      });
+
+      function renderOrders(orders) {
+        const container = document.getElementById("orders-container");
+
+        orders.forEach((order) => {
+          const card = document.createElement("div");
+          card.className = "order-card mb-3";
+          card.innerHTML = `
+                    <h5>Order #${order.order_id}</h5>
+                    <p>Part: ${order.Part_Name}</p>
+                    <p>Status: <span class="badge bg-primary">${
+                      order.working_status
+                    }</span></p>
+                    <p>Created: ${new Date(
+                      order.createdAt
+                    ).toLocaleDateString()}</p>
+                `;
+          container.appendChild(card);
+        });
+      }
+    </script>
+  </body>
+</html>

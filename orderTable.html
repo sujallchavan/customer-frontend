@@ -640,7 +640,7 @@
 
           try {
             const response = await fetch(
-              `http://localhost:5000/api/customer/orders/${customer.customer_id}`,
+              `https://backend-api-k9ts.onrender.com/api/customer/orders/${customer.customer_id}`,
               {
                 headers: {
                   "Content-Type": "application/json",
@@ -1040,7 +1040,7 @@
                 '<span class="spinner-border spinner-border-sm"></span> Processing...';
 
               const response = await fetch(
-                "http://localhost:5000/api/customer/accept-supplier-response",
+                "https://backend-api-k9ts.onrender.com/api/customer/accept-supplier-response",
                 {
                   method: "POST",
                   headers: {

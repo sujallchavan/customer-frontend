@@ -1,4 +1,3 @@
- 
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -14,91 +13,144 @@
     />
     <link rel="icon" type="image/png" href="assets/img/favicon.png" />
     <title>Argon Dashboard 2 by Creative Tim</title>
-    <!--     Fonts and icons     -->
+
+    <!-- Fonts and Icons -->
     <link
       href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700"
       rel="stylesheet"
     />
-    
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/argon-dashboard/2.0.4/css/argon-dashboard.min.css" rel="stylesheet">
-
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/argon-dashboard/2.0.4/css/nucleo-icons.min.css" rel="stylesheet">
-    
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/argon-dashboard-django/1.0.2/js/argon.js" rel="stylesheet">
-
-
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/argon-dashboard/2.0.4/css/argon-dashboard.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/argon-dashboard/2.0.4/css/nucleo-icons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/argon-dashboard-django/1.0.2/js/argon.js"
+      rel="stylesheet"
+    />
     <script
       src="https://kit.fontawesome.com/42d5adcbca.js"
       crossorigin="anonymous"
     ></script>
-    
-  <style>
 
-    /* Sidebar Overlay */
-  .sidebar-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.3); /* Light overlay */
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 1050;
-  }
-
-  /* Floating Sidebar */
-  .sidebar-content {
-    background: #ffffff; /* White background */
-    width: 75%; /* Adjust width for mobile */
-    max-width: 280px;
-    height: auto;
-    padding: 20px;
-    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2); /* Floating effect */
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    transition: transform 0.3s ease-in-out;
-    margin-left: 15px; /* Space from left side */
-    border-radius: 10px; /* Rounded corners */
-    padding-top: 25px; /* Extra top padding */
-    padding-bottom: 25px; /* Extra bottom padding */
-  }
-
-  /* Close "X" Button */
-  .close-x {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    font-size: 22px;
-    font-weight: bold;
-    color: red; /* X in red */
+    <style>
+      .hover-effect:hover {
+    background-color: #f8f9fa;
     cursor: pointer;
+    transform: translateY(-1px);
+    transition: all 0.2s ease;
   }
+  
+  .icon-shape {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .table thead th {
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+  }
+  
+  .table tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+  }
+      /* Sidebar Overlay */
+      .sidebar-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.3);
+        display: none;
+        justify-content: center;
+        align-items: center;
+        z-index: 1050;
+      }
 
-  /* Sidebar Menu Text */
-  .nav-link {
-    padding: 12px;
-    font-size: 16px;
-    border-bottom: 1px solid #ddd;
-    color: black !important; /* Ensuring black text */
-  }
+      /* Floating Sidebar */
+      .sidebar-content {
+        background: #ffffff;
+        width: 75%;
+        max-width: 280px;
+        height: auto;
+        padding: 20px;
+        box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2);
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        transition: transform 0.3s ease-in-out;
+        margin-left: 15px;
+        border-radius: 10px;
+        padding-top: 25px;
+        padding-bottom: 25px;
+      }
 
-  /* Mobile Responsive Adjustments */
-  @media (max-width: 768px) {
-    .sidebar-content {
-      width: 85%;
-      max-width: 270px;
-      margin-left: 10px; /* Space from left */
-      padding-top: 30px; /* More top padding */
-      padding-bottom: 30px; /* More bottom padding */
-    }
-  }
-  </style>
+      /* Close "X" Button */
+      .close-x {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        font-size: 22px;
+        font-weight: bold;
+        color: red;
+        cursor: pointer;
+      }
+
+      /* Sidebar Menu Text */
+      .nav-link {
+        padding: 12px;
+        font-size: 16px;
+        border-bottom: 1px solid #ddd;
+        color: black !important;
+      }
+
+      /* Mobile Responsive Adjustments */
+      @media (max-width: 768px) {
+        .sidebar-content {
+          width: 85%;
+          max-width: 270px;
+          margin-left: 10px;
+          padding-top: 30px;
+          padding-bottom: 30px;
+        }
+      }
+
+      /* Additional styles for better UI */
+      .supplier-highlight {
+        background-color: rgba(40, 167, 69, 0.1) !important;
+      }
+      .response-accepted {
+        color: #28a745;
+        font-weight: bold;
+      }
+      .response-rejected {
+        color: #dc3545;
+        font-weight: bold;
+      }
+      .profile-item {
+        margin-bottom: 10px;
+      }
+      .profile-item .item-label {
+        font-weight: bold;
+        color: #6c757d;
+      }
+      .category-item:hover {
+        background-color: #f8f9fa;
+      }
+    </style>
+  </head>
 
   <body class="g-sidenav-show bg-gray-100">
+    <!-- Blue Top Bar -->
     <div class="min-height-300 bg-primary position-absolute w-100"></div>
+
+    <!-- Main Sidebar -->
     <aside
       class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4"
       id="sidenav-main"
@@ -111,11 +163,10 @@
         ></i>
         <a class="navbar-brand m-0" href="" target="">
           <img
-  src="img/customer-dashboard/logo-ct-dark.png"
-  class="navbar-brand-img h-100"
-  alt="main_logo"
-/>
-
+            src="img/customer-dashboard/logo-ct-dark.png"
+            class="navbar-brand-img h-100"
+            alt="main_logo"
+          />
           <span class="ms-1 font-weight-bold">Argon Dashboard 2</span>
         </a>
       </div>
@@ -133,6 +184,18 @@
             </a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="orderTable.html">
+              <div
+                class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center"
+              >
+                <i
+                  class="ni ni-bullet-list-67 text-danger text-sm opacity-10"
+                ></i>
+              </div>
+              <span class="nav-link-text ms-1">Orders</span>
+            </a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="tables.html">
               <div
                 class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center"
@@ -144,19 +207,20 @@
               <span class="nav-link-text ms-1">Tables</span>
             </a>
           </li>
-          
-
           <li class="nav-item">
             <a class="nav-link" href="requirementsform.html" target="_self">
               <div
                 class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center"
               >
-                <i class="ni ni-credit-card text-success text-sm opacity-10"></i>
+                <i
+                  class="ni ni-credit-card text-success text-sm opacity-10"
+                ></i>
               </div>
               <span class="nav-link-text ms-1">Place Order</span>
             </a>
-            
           </li>
+
+          <!-- Account Pages Section -->
           <li class="nav-item mt-3">
             <h6
               class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6"
@@ -164,16 +228,18 @@
               Account pages
             </h6>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="">
-              <div
-                class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center"
-              >
-                <i class="ni ni-single-02 text-dark text-sm opacity-10"></i>
-              </div>
-              <span class="nav-link-text ms-1">Profile</span>
+          <li class="nav-item ms-3">
+            <a 
+              href="javascript:;" 
+              data-toggle="modal" 
+              data-target="#signInModal" 
+              class="nav-link d-flex align-items-center"
+            >
+              <i class="ni ni-single-02 text-dark text-sm me-2"></i>
+              <span class="nav-link-text">Profile</span>
             </a>
           </li>
+          
           <li class="nav-item">
             <a class="nav-link" href="">
               <div
@@ -183,7 +249,9 @@
                   class="ni ni-single-copy-04 text-warning text-sm opacity-10"
                 ></i>
               </div>
-              <span class="nav-link-text ms-1">Sign In</span>
+              
+                <span class="nav-link-text ms-1">Sign In</span></a
+              >
             </a>
           </li>
           <li class="nav-item">
@@ -199,332 +267,328 @@
         </ul>
       </div>
     </aside>
+
     <main class="main-content position-relative border-radius-lg">
       <!-- Navbar -->
-      <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl"
+      <nav
+        class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl"
         id="navbarBlur"
         data-scroll="false"
       >
-      <div class="container-fluid py-1 px-3">
-        <nav aria-label="breadcrumb">
-          <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
-            <li class="breadcrumb-item text-sm">
-              <a class="opacity-5 text-white" href="javascript:;">Pages</a>
-            </li>
-            <li class="breadcrumb-item text-sm text-white active" aria-current="page">Dashboard</li>
-          </ol>
-          <h6 class="font-weight-bolder text-white mb-0">Dashboard</h6>
-        </nav>
-        <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
-          <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-            <div class="input-group">
-              <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
-              <input type="text" class="form-control" placeholder="Type here..." />
+        <div class="container-fluid py-1 px-3">
+          <nav aria-label="breadcrumb">
+            <ol
+              class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5"
+            >
+              <li class="breadcrumb-item text-sm">
+                <a class="opacity-5 text-white" href="javascript:;">Pages</a>
+              </li>
+              <li
+                class="breadcrumb-item text-sm text-white active"
+                aria-current="page"
+              >
+                Dashboard
+              </li>
+            </ol>
+            <h6 class="font-weight-bolder text-white mb-0">Dashboard</h6>
+          </nav>
+
+          <div
+            class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4"
+            id="navbar"
+          >
+            <div class="ms-md-auto pe-md-3 d-flex align-items-center">
+              <div class="input-group">
+                <span class="input-group-text text-body"
+                  ><i class="fas fa-search" aria-hidden="true"></i
+                ></span>
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Type here..."
+                />
+              </div>
             </div>
-          </div>
-          <ul class="navbar-nav justify-content-end">
-            <li class="nav-item d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-white font-weight-bold px-0" data-toggle="modal" data-target="#signInModal">
-                <i class="fa fa-user me-sm-1"></i>
-                <span class="d-sm-inline d-none">Sign In</span>
-              </a>
-            </li>            
-            <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-white p-0" id="toggleSidebarMenu" data-bs-toggle="offcanvas" data-bs-target="#uniqueSidebarMenu">
-                <div class="sidenav-toggler-inner">
-                  <i class="sidenav-toggler-line bg-white"></i>
-                  <i class="sidenav-toggler-line bg-white"></i>
-                  <i class="sidenav-toggler-line bg-white"></i>
-                </div>
-              </a>
-            </li>
-            <li class="nav-item px-3 d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-white p-0">
-                <i class=""></i>
-              </a>
-            </li>
-            <li class="nav-item dropdown pe-2 d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-white p-0" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
-                <i class="fa fa-bell cursor-pointer"></i>
-              </a>
-              <ul class="dropdown-menu dropdown-menu-end px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
-                <li class="mb-2">
-                  <a class="dropdown-item border-radius-md" href="javascript:;">
-                    <div class="d-flex py-1">
-                      <div class="my-auto">
-                        <img src="../assets/img/team-2.jpg" class="avatar avatar-sm me-3" />
+
+            <ul class="navbar-nav justify-content-end">
+              <li class="nav-item d-flex align-items-center">
+                <a
+                  href="javascript:;"
+                  class="nav-link text-white font-weight-bold px-0"
+                  data-toggle="modal"
+                  data-target="#signInModal"
+                >
+                  <i class="fa fa-user me-sm-1"></i>
+                  <span class="d-sm-inline d-none">Sign In</span>
+                </a>
+              </li>
+              <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+                <a
+                  href="javascript:;"
+                  class="nav-link text-white p-0"
+                  id="toggleSidebarMenu"
+                  data-bs-toggle="offcanvas"
+                  data-bs-target="#uniqueSidebarMenu"
+                >
+                  <div class="sidenav-toggler-inner">
+                    <i class="sidenav-toggler-line bg-white"></i>
+                    <i class="sidenav-toggler-line bg-white"></i>
+                    <i class="sidenav-toggler-line bg-white"></i>
+                  </div>
+                </a>
+              </li>
+              <li class="nav-item px-3 d-flex align-items-center">
+                <a href="javascript:;" class="nav-link text-white p-0">
+                  <i class=""></i>
+                </a>
+              </li>
+              <li class="nav-item dropdown pe-2 d-flex align-items-center">
+                <a
+                  href="javascript:;"
+                  class="nav-link text-white p-0"
+                  id="dropdownMenuButton"
+                  data-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <i class="fa fa-bell cursor-pointer"></i>
+                </a>
+                <ul
+                  class="dropdown-menu dropdown-menu-end px-2 py-3 me-sm-n4"
+                  aria-labelledby="dropdownMenuButton"
+                >
+                  <li class="mb-2">
+                    <a
+                      class="dropdown-item border-radius-md"
+                      href="javascript:;"
+                    >
+                      <div class="d-flex py-1">
+                        <div class="my-auto">
+                          <img
+                            src="../assets/img/team-2.jpg"
+                            class="avatar avatar-sm me-3"
+                          />
+                        </div>
+                        <div class="d-flex flex-column justify-content-center">
+                          <h6 class="text-sm font-weight-normal mb-1">
+                            <span class="font-weight-bold">New message</span>
+                            from Laur
+                          </h6>
+                          <p class="text-xs text-secondary mb-0">
+                            <i class="fa fa-clock me-1"></i>
+                            13 minutes ago
+                          </p>
+                        </div>
                       </div>
-                      <div class="d-flex flex-column justify-content-center">
-                        <h6 class="text-sm font-weight-normal mb-1">
-                          <span class="font-weight-bold">New message</span> from Laur
-                        </h6>
-                        <p class="text-xs text-secondary mb-0">
-                          <i class="fa fa-clock me-1"></i>
-                          13 minutes ago
-                        </p>
+                    </a>
+                  </li>
+                  <li class="mb-2">
+                    <a
+                      class="dropdown-item border-radius-md"
+                      href="javascript:;"
+                    >
+                      <div class="d-flex py-1">
+                        <div class="my-auto">
+                          <img
+                            src="{% static 'img/customer dashboard/logo-spotify.svg' %}"
+                            class="avatar avatar-sm bg-gradient-dark me-3"
+                          />
+                        </div>
+                        <div class="d-flex flex-column justify-content-center">
+                          <h6 class="text-sm font-weight-normal mb-1">
+                            <span class="font-weight-bold">New album</span> by
+                            Travis Scott
+                          </h6>
+                          <p class="text-xs text-secondary mb-0">
+                            <i class="fa fa-clock me-1"></i>
+                            1 day
+                          </p>
+                        </div>
                       </div>
-                    </div>
-                  </a>
-                </li>
-                <li class="mb-2">
-                  <a class="dropdown-item border-radius-md" href="javascript:;">
-                    <div class="d-flex py-1">
-                      <div class="my-auto">
-                        <img src="{% static 'img/customer dashboard/logo-spotify.svg' %}" class="avatar avatar-sm bg-gradient-dark me-3" />
-                      </div>
-                      <div class="d-flex flex-column justify-content-center">
-                        <h6 class="text-sm font-weight-normal mb-1">
-                          <span class="font-weight-bold">New album</span> by Travis Scott
-                        </h6>
-                        <p class="text-xs text-secondary mb-0">
-                          <i class="fa fa-clock me-1"></i>
-                          1 day
-                        </p>
-                      </div>
-                    </div>
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item border-radius-md" href="javascript:;">
-                    <div class="d-flex py-1">
-                      <div class="avatar avatar-sm bg-gradient-secondary me-3 my-auto">
-                        <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                          <title>credit-card</title>
-                          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                            <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
-                              <g transform="translate(1716.000000, 291.000000)">
-                                <g transform="translate(453.000000, 454.000000)">
-                                  <path class="color-background" d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z" opacity="0.593633743"></path>
-                                  <path class="color-background" d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z"></path>
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item border-radius-md"
+                      href="javascript:;"
+                    >
+                      <div class="d-flex py-1">
+                        <div
+                          class="avatar avatar-sm bg-gradient-secondary me-3 my-auto"
+                        >
+                          <svg
+                            width="12px"
+                            height="12px"
+                            viewBox="0 0 43 36"
+                            version="1.1"
+                            xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink"
+                          >
+                            <title>credit-card</title>
+                            <g
+                              stroke="none"
+                              stroke-width="1"
+                              fill="none"
+                              fill-rule="evenodd"
+                            >
+                              <g
+                                transform="translate(-2169.000000, -745.000000)"
+                                fill="#FFFFFF"
+                                fill-rule="nonzero"
+                              >
+                                <g
+                                  transform="translate(1716.000000, 291.000000)"
+                                >
+                                  <g
+                                    transform="translate(453.000000, 454.000000)"
+                                  >
+                                    <path
+                                      class="color-background"
+                                      d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z"
+                                      opacity="0.593633743"
+                                    ></path>
+                                    <path
+                                      class="color-background"
+                                      d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z"
+                                    ></path>
+                                  </g>
                                 </g>
                               </g>
                             </g>
-                          </g>
-                        </svg>
+                          </svg>
+                        </div>
+                        <div class="d-flex flex-column justify-content-center">
+                          <h6 class="text-sm font-weight-normal mb-1">
+                            Payment successfully completed
+                          </h6>
+                          <p class="text-xs text-secondary mb-0">
+                            <i class="fa fa-clock me-1"></i>
+                            2 days
+                          </p>
+                        </div>
                       </div>
-                      <div class="d-flex flex-column justify-content-center">
-                        <h6 class="text-sm font-weight-normal mb-1">
-                          Payment successfully completed
-                        </h6>
-                        <p class="text-xs text-secondary mb-0">
-                          <i class="fa fa-clock me-1"></i>
-                          2 days
-                        </p>
-                      </div>
-                    </div>
-                  </a>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Mobile Sidebar Menu -->
+        <div id="uniqueSidebarMenu" class="sidebar-overlay">
+          <div class="sidebar-content">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title">Menu</h5>
+              <span id="closeSidebarButton" class="close-x">X</span>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="nav flex-column">
+                <li class="nav-item">
+                  <a
+                    class="nav-link text-black"
+                    id="dashboardLink"
+                    href="Cdashboard.html"
+                    >Dashboard</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link text-black"
+                    id="tableLink"
+                    href="orderTable.html"
+                    >Order</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link text-black"
+                    id="tableLink"
+                    href="tables.html"
+                    >Table</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a
+                    class="nav-link text-black"
+                    id="placeOrderLink"
+                    href="requirementsform.html"
+                    >Place Order List</a
+                  >
                 </li>
               </ul>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- Sidebar Menu -->
-<!-- Sidebar Menu -->
-<!-- <div class="offcanvas offcanvas-start text-bg-dark" id="uniqueSidebarMenu" tabindex="-1">
-  <div class="offcanvas-header d-flex justify-content-between align-items-center w-100">
-    <h5 class="offcanvas-title" id="sidebarMenuTitle">Menu</h5>
-    <button type="button" class="btn-close btn-close-white" id="closeSidebarButton" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-  <div class="offcanvas-body">
-    <ul class="nav flex-column">
-      <li class="nav-item">
-        <a class="nav-link text-white" id="dashboardLink" href="#">Dashboard</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link text-white" id="tableLink" href="#">Table</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link text-white" id="placeOrderLink" href="#">Place Order List</a>
-      </li>
-    </ul>
-  </div>
-</div> -->
-
-  <!-- Sidebar (Mobile Optimized) -->
-<div id="uniqueSidebarMenu" class="sidebar-overlay">
-  <div class="sidebar-content">
-    <div class="offcanvas-header">
-      <h5 class="offcanvas-title">Menu</h5>
-      <span id="closeSidebarButton" class="close-x">X</span>
-    </div>
-    <div class="offcanvas-body">
-      <ul class="nav flex-column">
-        <li class="nav-item">
-          <a class="nav-link text-black" id="dashboardLink" href="Cdashboard.html">Dashboard</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-black" id="tableLink" href="tables.html">Table</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-black" id="placeOrderLink" href="requirementsform.html">Place Order List</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</div>
-    
-      <!-- Sign In Modal -->
-      <!-- Modal Structure for Sign In -->
-      <div
-      class="modal fade"
-      id="signInModal"
-      tabindex="-1"
-      aria-labelledby="signInModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Customer Profile</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Profile Details</h5>
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="profile-item">
-                      <div class="item-label">Customer ID:</div>
-                      <div class="item-value" id="customerId"></div>
-                    </div>
-                    <div class="profile-item">
-                      <div class="item-label">Name:</div>
-                      <div class="item-value" id="customerName"></div>
-                    </div>
-                    <div class="profile-item">
-                      <div class="item-label">Location:</div>
-                      <div class="item-value" id="customerLocation"></div>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <div class="profile-item">
-                      <div class="item-label">Phone:</div>
-                      <div class="item-value" id="phone_number"></div>
-                    </div>
-                    <div class="profile-item">
-                      <div class="item-label">Email:</div>
-                      <div class="item-value" id="customerEmail"></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="text-end mt-3">
-                  <button class="btn btn-danger" id="logoutBtn">Logout</button>
-                </div>
-              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-
-    
       </nav>
       <!-- End Navbar -->
+
+      <!-- Sign In Modal -->
+      <div
+        class="modal fade"
+        id="signInModal"
+        tabindex="-1"
+        aria-labelledby="signInModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Customer Profile</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Profile Details</h5>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="profile-item">
+                        <div class="item-label">Customer ID:</div>
+                        <div class="item-value" id="customerId"></div>
+                      </div>
+                      <div class="profile-item">
+                        <div class="item-label">Name:</div>
+                        <div class="item-value" id="customerName"></div>
+                      </div>
+                      <div class="profile-item">
+                        <div class="item-label">Location:</div>
+                        <div class="item-value" id="customerLocation"></div>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="profile-item">
+                        <div class="item-label">Phone:</div>
+                        <div class="item-value" id="phone_number"></div>
+                      </div>
+                      <div class="profile-item">
+                        <div class="item-label">Email:</div>
+                        <div class="item-value" id="customerEmail"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="text-end mt-3">
+                    <button class="btn btn-danger" id="logoutBtn">
+                      Logout
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      
+      <!-- Main Content -->
       <div class="container-fluid py-4">
         <div class="row">
+          <!-- Total Orders Card -->
           <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-            <div class="card">
-              <div class="card-body p-3">
-                <div class="row">
-                  <div class="col-8">
-                    <div class="numbers">
-                      <p class="text-sm mb-0 text-uppercase font-weight-bold">
-                          Total Orders
-                      </p>
-                      <h5 class="font-weight-bolder"></h5>
-                      <p class="mb-0">
-                          <span class="text-success text-sm font-weight-bolder">.</span>
-                          since yesterday
-                      </p>
-                  </div>  
-                  </div>
-                  <div class="col-4 text-end">
-                    <div
-                      class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle"
-                    >
-                      <i
-                        class="ni ni-money-coins text-lg opacity-10"
-                        aria-hidden="true"
-                      ></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-            <div class="card">
-              <div class="card-body p-3">
-                <div class="row">
-                  <div class="col-8">
-                    <div class="numbers">
-                      <p class="text-sm mb-0 text-uppercase font-weight-bold">
-                        Order in Working
-                      </p>
-                      <h5 class="font-weight-bolder"></h5>
-                      <p class="mb-0">
-                        <span class="text-success text-sm font-weight-bolder"
-                          >+3%</span
-                        >
-                        since last week
-                      </p>
-                    </div>
-                  </div>
-                  <div class="col-4 text-end">
-                    <div
-                      class="icon icon-shape bg-gradient-danger shadow-danger text-center rounded-circle"
-                    >
-                      <i
-                        class="ni ni-world text-lg opacity-10"
-                        aria-hidden="true"
-                      ></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-            <div class="card">
-              <div class="card-body p-3">
-                <div class="row">
-                  <div class="col-8">
-                    <div class="numbers">
-                      <p class="text-sm mb-0 text-uppercase font-weight-bold">
-                        Order completed
-                      </p>
-                      <h5 class="font-weight-bolder"></h5>
-                      <p class="mb-0">
-                        <span class="text-danger text-sm font-weight-bolder"
-                          >.</span
-                        >
-                        since yesterday
-                      </p>
-                    </div>
-                  </div>
-                  <div class="col-4 text-end">
-                    <div
-                      class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle"
-                    >
-                      <i
-                        class="ni ni-paper-diploma text-lg opacity-10"
-                        aria-hidden="true"
-                      ></i>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-xl-3 col-sm-6">
             <div class="card">
               <div class="card-body p-3">
                 <div class="row">
@@ -533,595 +597,983 @@
                       <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Orders</p>
                       <h5 class="font-weight-bolder" id="totalOrders">0</h5>
                       <p class="mb-0">
-                        <span class="text-success text-sm font-weight-bolder">.</span> since yesterday
+                        <span class="text-success text-sm font-weight-bolder" id="totalOrdersChange">+0%</span>
+                        since last week
                       </p>
                     </div>
                   </div>
                   <div class="col-4 text-end">
-                    <div
-                      class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle"
-                    >
-                      <i
-                        class="ni ni-cart text-lg opacity-10"
-                        aria-hidden="true"
-                      ></i>
+                    <div class="icon icon-shape bg-gradient-primary shadow-primary text-center rounded-circle">
+                      <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          
-        </div>
         
-        <div class="row mt-4">
-  <!-- Column 1: Your Order and Something is coming! -->
-  <div class="col-lg-7 mb-lg-0 mb-4">
-    
-<div class="card">
-  <div class="card-header d-flex justify-content-between">
-      <h6 class="card-title mb-0">Your Order</h6>
-  </div>
-  <div class="card-body">
-    <div class="mb-3">
-        <input type="text" id="searchInput" class="form-control" placeholder="Search Orders">
-    </div>
-    <div class="table-responsive">
-        <table class="table align-items-center">
-            <tbody id="orderTable">
-                
-                <tr>
-                    <td colspan="6">
-                        <div class="card-header pb-0 p-3">
-                            <div class="d-flex justify-content-between">
-                                <h6 class="mb-2">No Order Placed Yet</h6>
-                            </div>
-                        </div>
-                    </td>
-                </tr>
-                
-                <tr>
-                    <td>
-                        <div class="text-center">
-                            <p class="text-xs font-weight-bold mb-0">Project Id</p>
-                            <h6 class="text-sm mb-0">2121</h6>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="text-center">
-                            <p class="text-xs font-weight-bold mb-0">Project Name</p>
-                            <h6 class="text-sm mb-0">hardmoter</h6>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="text-center">
-                            <p class="text-xs font-weight-bold mb-0">Part Name</p>
-                            <h6 class="text-sm mb-0">moter</h6>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="text-center">
-                            <p class="text-xs font-weight-bold mb-0">SOP Date:</p>
-                            <h6 class="text-sm mb-0">21-2-2024</h6>
-                        </div>
-                    </td>
-                    <td class="align-middle text-sm">
-                        <div class="col text-center">
-                            <p class="text-xs font-weight-bold mb-0">Category</p>
-                            <h6 class="text-sm mb-0">Hardware</h6>
-                        </div>
-                    </td>
-                    <td class="align-middle text-sm">
-                        <div class="col text-center">
-                            <a href=""><button type="button" class="btn btn-primary">View</button></a>
-                        </div>
-                    </td>
-                </tr>
-                
-            </tbody>
-        </table>
-    </div>
-</div>
-
-</div>
-
-    <!-- Something is coming! -->
-    <!-- customer_app/Cdashboard.html -->
-    <div class="card mt-4">
-      <div class="card-header">
-          <h6 class="card-title mb-0">Approved Tables</h6>
-      </div>
-      <div class="card-body">
-        <div class="mb-3">
-            <input type="text" id="searchInput2" class="form-control" placeholder="Search Orders">
-        </div>
-        <div class="table-responsive">
-            <table class="table align-items-center">
-                <tbody id="orderTable2">
-                    
-                    <tr>
-                        <td colspan="7">
-                            <div class="card-header pb-0 p-3">
-                                <div class="d-flex justify-content-between">
-                                    <h6 class="mb-2">No Order Placed Yet</h6>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    
-                    
-                    <tr>
-                        <td>
-                            <div class="text-center">
-                                <p class="text-xs font-weight-bold mb-0">Project Name</p>
-                                <h6 class="text-sm mb-0">Hardware</h6>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="text-center">
-                                <p class="text-xs font-weight-bold mb-0">Part Name</p>
-                                <h6 class="text-sm mb-0">Moter</h6>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="text-center">
-                                <p class="text-xs font-weight-bold mb-0">SOP Date:</p>
-                                <h6 class="text-sm mb-0">21-2-2022</h6>
-                            </div>
-                        </td>
-                        <td class="align-middle text-sm">
-                            <div class="col text-center">
-                                <p class="text-xs font-weight-bold mb-0">Category</p>
-                                <h6 class="text-sm mb-0">Electerical</h6>
-                            </div>
-                        </td>
-                        <td class="align-middle text-sm">
-                            <div class="col text-center">
-                                <p class="text-xs font-weight-bold mb-0">Working Status</p>
-                                <h6 class="text-sm mb-0">None</h6>
-                            </div>
-                        </td>
-                        <td class="align-middle text-sm">
-                            <div class="col text-center">
-                                <p class="text-xs font-weight-bold mb-0">Approval Status</p>
-                                
-                                <i class="fa fa-check-circle text-success"> Approved</i>
-                                
-                            </div>
-                        </td>
-                        <td class="align-middle text-sm">
-                            <div class="col text-center">
-                                <a href="" class="btn btn-primary">View</a>
-                            </div>
-                        </td>
-                    </tr>
-                    
-                </tbody>
-            </table>
-        </div>
-    </div>
-  </div>
-
-  </div>
-
-  <!-- Column 2: Notifications, Categories, and Additional Content -->
-  <div class="col-lg-5">
-    <!-- Notifications Card -->
-    <div class="card mb-4">
-      <div class="card-header">
-        <h6 class="card-title mb-0">Notifications</h6>
-      </div>
-      
-    
-      <div class="alert alert-info alert-dismissible text-white mx-4" role="alert">
-        <span class="text-sm">
-          <i class="fa fa-check-circle text-success"></i>   Project Name: ,  Project ID: .
-            <a href="" class="alert-link text-white">See more</a> 
-        </span>
-        <button type="button" class="btn-close text-lg py-3 opacity-10" data-bs-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-    </div>
-
-    
-    <div class="alert alert-warning alert-dismissible text-white mx-4" role="alert">
-      <span class="text-sm">
-          Project Name: , Project ID: .
-          <a href="" class="alert-link text-white">See more</a> 
-      </span>
-      <button type="button" class="btn-close text-lg py-3 opacity-10" data-bs-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-      </button>
-  </div>
-
-    </div>
-
-    <!-- Categories Card -->
-    <div class="card mb-4">
-      <div class="card-header">
-          <h6 class="card-title mb-0">Categories</h6>
-      </div>
-      <div class="card-body">
-          <ul class="list-group mb-4">
-              <!-- Electrical Category -->
-              <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg category-item">
-                  <div class="d-flex align-items-center ps-2">
-                      <div class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center ">
-                          <i class="ni ni-mobile-button text-white opacity-10"></i>
-                      </div>
-                      <div class="d-flex flex-column">
-                          <a href="">Electrical</a> 
-                          <span class="text-xs">250 in stock, <span class="font-weight-bold">346+ sold</span></span>
-                      </div>
-                  </div>
-                  <div class="d-flex">
-                      <button class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto">
-                          <i class="ni ni-bold-right" aria-hidden="true"></i>
-                      </button>
-                  </div>
-              </li>
-  
-              <!-- Mechanical Category -->
-              <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg category-item">
-                  <div class="d-flex align-items-center ps-2">
-                      <div class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
-                          <i class="ni ni-tag text-white opacity-10"></i>
-                      </div>
-                      <div class="d-flex flex-column">
-                           <a href="">Mechanical</a>
-                          <span class="text-xs">123 closed, <span class="font-weight-bold">15 open</span></span>
-                      </div>
-                  </div>
-                  <div class="d-flex">
-                      <button class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto">
-                          <i class="ni ni-bold-right" aria-hidden="true"></i>
-                      </button>
-                  </div>
-              </li>
-  
-              <!-- Hardware Category -->
-              <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg category-item">
-                  <div class="d-flex align-items-center ps-2">
-                      <div class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
-                          <i class="ni ni-box-2 text-white opacity-10"></i>
-                      </div>
-                      <div class="d-flex flex-column">
-                          <a href="">Hardware</a> 
-                          <span class="text-xs">1 is active, <span class="font-weight-bold">40 closed</span></span>
-                      </div>
-                  </div>
-                  <div class="d-flex">
-                      <button class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto">
-                          <i class="ni ni-bold-right" aria-hidden="true"></i>
-                      </button>
-                  </div>
-              </li>
-          </ul>
-      </div>
-  </div>
-  
-  <style>
- 
-  </style>
-  
-    <!-- Additional Content with Icon Logos -->
-    <div class="card">
-      <div class="card-header">
-          <h6 class="card-title mb-0">Working Status</h6>
-      </div>
-      <div class="card-body">
-          <ul class="list-group">
-              <li class="list-group-item border-0 py-3">
-                  <a href="" class="text-success d-flex justify-content-between align-items-center card-link">
-                      <div class="d-flex align-items-center">
-                          <i class="ni ni-check-bold text-success ni-lg me-3"></i>
-                          <span class="ms-2 fs-6">Completed</span>
-                      </div>
-                      <span class="badge bg-success">View</span>
-                  </a>
-              </li>
-              <li class="list-group-item border-0 py-3">
-                  <a href="" class="text-warning d-flex justify-content-between align-items-center card-link">
-                      <div class="d-flex align-items-center">
-                          <i class="ni ni-settings-gear-65 text-warning ni-lg me-3"></i>
-                          <span class="ms-2 fs-6">Working</span>
-                      </div>
-                      <span class="badge bg-warning">View</span>
-                  </a>
-              </li>
-              <li class="list-group-item border-0 py-3">
-                  <a href="" class="text-danger d-flex justify-content-between align-items-center card-link">
-                      <div class="d-flex align-items-center">
-                          <i class="ni ni-time-alarm text-danger ni-lg me-3"></i>
-                          <span class="ms-2 fs-6">Pending</span>
-                      </div>
-                      <span class="badge bg-danger">View</span>
-                  </a>
-              </li>
-          </ul>
-      </div>
-    </div>
-    
-
-  </div>
-</div>
-
-        
-        </div>
-      </div>
-
-      <!-- Add this code in your dashboard where you want the new table to appear (after the existing "Your Order" card) -->
-      <div class="card mt-4 mx-3">
-        <div class="card-header d-flex justify-content-between">
-          <h6 class="card-title mb-0">Order Management</h6>
-          <div class="search-box">
-            <input
-              type="text"
-              id="searchOrders"
-              class="form-control form-control-sm"
-              placeholder="Search orders..."
-            />
-          </div>
-        </div>
-        <div class="card-body">
-          <div class="table-responsive">
-            <table class="table align-items-center">
-              <thead>
-                <tr>
-                  <th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Order ID</th>
-                  <th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Customer ID</th>
-                  <th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Project</th>
-                  <th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Part Name</th>
-                  <th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Status</th>
-                  <th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Suppliers</th>
-                  <th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Actions</th>
-                  <th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">View</th>
-                </tr>
-              </thead>
-              <tbody id="ordersTableBody">
-                <tr id="loadingRow">
-                  <td colspan="6" class="text-center py-4">
-                    <div class="spinner-border text-primary" role="status">
-                      <span class="visually-hidden">Loading...</span>
+          <!-- Orders in Working Card -->
+          <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+            <div class="card">
+              <div class="card-body p-3">
+                <div class="row">
+                  <div class="col-8">
+                    <div class="numbers">
+                      <p class="text-sm mb-0 text-uppercase font-weight-bold">Orders in Working</p>
+                      <h5 class="font-weight-bolder" id="workingOrders">0</h5>
+                      <p class="mb-0">
+                        <span class="text-success text-sm font-weight-bolder" id="workingOrdersChange">+0%</span>
+                        since last week
+                      </p>
                     </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+                  </div>
+                  <div class="col-4 text-end">
+                    <div class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
+                      <i class="ni ni-settings-gear-65 text-lg opacity-10" aria-hidden="true"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+          <!-- Completed Orders Card -->
+          <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+            <div class="card">
+              <div class="card-body p-3">
+                <div class="row">
+                  <div class="col-8">
+                    <div class="numbers">
+                      <p class="text-sm mb-0 text-uppercase font-weight-bold">Completed Orders</p>
+                      <h5 class="font-weight-bolder" id="completedOrders">0</h5>
+                      <p class="mb-0">
+                        <span class="text-success text-sm font-weight-bolder" id="completedOrdersChange">+0%</span>
+                        since last week
+                      </p>
+                    </div>
+                  </div>
+                  <div class="col-4 text-end">
+                    <div class="icon icon-shape bg-gradient-success shadow-success text-center rounded-circle">
+                      <i class="ni ni-check-bold text-lg opacity-10" aria-hidden="true"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+          <!-- Pending Orders Card -->
+          <div class="col-xl-3 col-sm-6">
+            <div class="card">
+              <div class="card-body p-3">
+                <div class="row">
+                  <div class="col-8">
+                    <div class="numbers">
+                      <p class="text-sm mb-0 text-uppercase font-weight-bold">Pending Orders</p>
+                      <h5 class="font-weight-bolder" id="pendingOrders">0</h5>
+                      <p class="mb-0">
+                        <span class="text-danger text-sm font-weight-bolder" id="pendingOrdersChange">+0%</span>
+                        since last week
+                      </p>
+                    </div>
+                  </div>
+                  <div class="col-4 text-end">
+                    <div class="icon icon-shape bg-gradient-danger shadow-danger text-center rounded-circle">
+                      <i class="ni ni-time-alarm text-lg opacity-10" aria-hidden="true"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      
-      <!-- Order Details Modal -->
-      <div class="modal fade" id="orderDetailsModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="orderModalTitle">Order Details</h5>
-              <button
-                type="button"
-                class="btn-close"
-                data-bs-dismiss="modal"
-                aria-label="Close"
-              ></button>
+        
+        <script>
+        document.addEventListener("DOMContentLoaded", async function () {
+          // First fetch all orders to get counts
+          await fetchOrderCounts();
+          
+          // Then fetch approved orders for the table
+          await fetchApprovedOrders();
+        });
+        
+        async function fetchOrderCounts() {
+          try {
+            const customerData = sessionStorage.getItem("customer");
+            if (!customerData) {
+              console.error("❌ No customer data found in sessionStorage.");
+              return;
+            }
+        
+            const customer = JSON.parse(customerData);
+            const customer_id = customer.customer_id;
+            
+            const response = await fetch(
+              `https://backend-api-k9ts.onrender.com/api/customer/orders/${customer_id}`
+            );
+        
+            if (!response.ok) throw new Error("Failed to fetch orders");
+        
+            const orders = await response.json();
+            
+            // Calculate counts
+            const total = orders.length;
+            const working = orders.filter(o => o.working_status === "Working").length;
+            const completed = orders.filter(o => o.working_status === "Completed").length;
+            const pending = orders.filter(o => o.working_status === "Pending").length;
+            
+            // Update the cards
+            document.getElementById("totalOrders").textContent = total;
+            document.getElementById("workingOrders").textContent = working;
+            document.getElementById("completedOrders").textContent = completed;
+            document.getElementById("pendingOrders").textContent = pending;
+            
+            // Calculate percentage changes (placeholder - replace with real calculations)
+            document.getElementById("totalOrdersChange").textContent = "+5%";
+            document.getElementById("workingOrdersChange").textContent = "+3%";
+            document.getElementById("completedOrdersChange").textContent = "+2%";
+            document.getElementById("pendingOrdersChange").textContent = "-1%";
+            
+          } catch (error) {
+            console.error("❌ Error fetching order counts:", error);
+          }
+        }
+        
+        async function fetchApprovedOrders() {
+          const orderTable2 = document.getElementById("orderTable2");
+          const searchInput2 = document.getElementById("searchInput2");
+        
+          // Retrieve customer data
+          const customerData = sessionStorage.getItem("customer");
+          const customer = customerData ? JSON.parse(customerData) : null;
+          const customer_id = customer ? customer.customer_id : null;
+        
+          if (!customer_id) {
+            console.error("❌ No customer ID found in sessionStorage.");
+            orderTable2.innerHTML = `<tr><td colspan="7" class="text-center text-danger">No customer ID found.</td></tr>`;
+            return;
+          }
+        
+          try {
+            const response = await fetch(
+              `https://backend-api-k9ts.onrender.com/api/customer/approved-orders/${customer_id}`
+            );
+        
+            if (!response.ok) throw new Error("Failed to fetch approved orders");
+        
+            const orders = await response.json();
+            displayApprovedOrders(orders);
+          } catch (error) {
+            console.error("❌ Error fetching approved orders:", error);
+            orderTable2.innerHTML = `<tr><td colspan="7" class="text-center text-danger">Failed to load approved orders.</td></tr>`;
+          }
+        }
+        
+        function displayApprovedOrders(orders) {
+          const orderTable2 = document.getElementById("orderTable2");
+          
+          if (orders.length === 0) {
+            orderTable2.innerHTML = `
+              <tr>
+                <td colspan="7">
+                  <div class="card-header pb-0 p-3">
+                    <div class="d-flex justify-content-between">
+                      <h6 class="mb-2">No Approved Orders Yet</h6>
+                    </div>
+                  </div>
+                </td>
+              </tr>`;
+            return;
+          }
+        
+          orderTable2.innerHTML = orders
+            .map(
+              (order) => `
+              <tr>
+                <td>
+                  <div class="text-center">
+                    <p class="text-xs font-weight-bold mb-0">Project Name</p>
+                    <h6 class="text-sm mb-0">${order.pname}</h6>
+                  </div>
+                </td>
+                <td>
+                  <div class="text-center">
+                    <p class="text-xs font-weight-bold mb-0">Part Name</p>
+                    <h6 class="text-sm mb-0">${order.Part_Name}</h6>
+                  </div>
+                </td>
+                <td>
+                  <div class="text-center">
+                    <p class="text-xs font-weight-bold mb-0">SOP Date:</p>
+                    <h6 class="text-sm mb-0">${new Date(order.sop).toLocaleDateString()}</h6>
+                  </div>
+                </td>
+                <td class="align-middle text-sm">
+                  <div class="col text-center">
+                    <p class="text-xs font-weight-bold mb-0">Category</p>
+                    <h6 class="text-sm mb-0">${order.category}</h6>
+                  </div>
+                </td>
+                <td class="align-middle text-sm">
+                  <div class="col text-center">
+                    <p class="text-xs font-weight-bold mb-0">Working Status</p>
+                    <h6 class="text-sm mb-0">${order.working_status || "None"}</h6>
+                  </div>
+                </td>
+                <td class="align-middle text-sm">
+                  <div class="col text-center">
+                    <p class="text-xs font-weight-bold mb-0">Approval Status</p>
+                    <i class="fa fa-check-circle text-success"> Approved</i>
+                  </div>
+                </td>
+                <td class="align-middle text-sm">
+                  <div class="col text-center">
+                    <button type="button" class="btn btn-primary view-btn" data-order='${JSON.stringify(order)}'>View</button>
+                  </div>
+                </td>
+              </tr>
+            `)
+            .join("");
+        
+          // Attach event listeners to View buttons
+          document.querySelectorAll(".view-btn").forEach((button) => {
+            button.addEventListener("click", function () {
+              const orderData = JSON.parse(this.getAttribute("data-order"));
+              openModal(orderData);
+            });
+          });
+        }
+        
+        // Search functionality for approved orders
+        document.getElementById("searchInput2")?.addEventListener("input", function () {
+          const searchTerm = this.value.toLowerCase();
+          const rows = document.querySelectorAll("#orderTable2 tr");
+        
+          rows.forEach((row) => {
+            const projectName = row.children[0]?.innerText.toLowerCase() || "";
+            row.style.display = projectName.includes(searchTerm) ? "" : "none";
+          });
+        });
+        
+        // Modal function
+        function openModal(order) {
+          // Remove existing modal if present
+          const existingModal = document.getElementById("orderModal");
+          if (existingModal) existingModal.remove();
+        
+          // Bootstrap Modal HTML
+          const modalHtml = `
+            <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Order Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <div class="card">
+                      <div class="card-body">
+                        <h5 class="card-title">Order Information</h5>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <p><strong>Customer ID:</strong> ${order.customer_id}</p>
+                            <p><strong>Project ID:</strong> ${order.order_id}</p>
+                            <p><strong>Company Name:</strong> ${order.cname}</p>
+                            <p><strong>Project Name:</strong> ${order.pname}</p>
+                            <p><strong>Part Name:</strong> ${order.Part_Name}</p>
+                            <p><strong>Category:</strong> ${order.category}</p>
+                            <p><strong>Email:</strong> ${order.email}</p>
+                            <p><strong>Phone Number:</strong> ${order.phone_number}</p>
+                          </div>
+                          <div class="col-md-6">
+                            <p><strong>Part Number:</strong> ${order.cpno}</p>
+                            <p><strong>Target Value:</strong> ${order.tv}</p>
+                            <p><strong>Annual Volume:</strong> ${order.av}</p>
+                            <p><strong>Quote Submission:</strong> ${new Date(order.qs).toLocaleDateString()}</p>
+                            <p><strong>Start of Production:</strong> ${new Date(order.sop).toLocaleDateString()}</p>
+                            <p><strong>Status:</strong> ${order.working_status}</p>
+                            <p><strong>Approval Status:</strong> ${order.isApproved}</p>
+                          </div>
+                        </div>
+        
+                        ${order.pdf_file && order.pdf_file.trim() !== ""
+                          ? `
+                          <div class="mt-3 text-center">
+                            <a href="${order.pdf_file}" download class="btn btn-success">
+                              <i class="fas fa-file-download"></i> Download File
+                            </a>
+                          </div>
+                        `
+                          : `<p class="text-muted text-center mt-3">No file available</p>`
+                        }
+        
+                        <div class="text-end mt-3">
+                          <button class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>`;
+        
+          // Insert modal HTML into body
+          document.body.insertAdjacentHTML("beforeend", modalHtml);
+        
+          // Show Bootstrap modal
+          const myModal = new bootstrap.Modal(document.getElementById("orderModal"));
+          myModal.show();
+        }
+        </script>
+
+        <!-- Main Content Row -->
+        <div class="row mt-4">
+          <!-- Left Column -->
+          <div class="col-lg-7 mb-lg-0 mb-4">
+            <!-- Your Order Card -->
+            <div class="card">
+              <div class="card-header d-flex justify-content-between">
+                <h6 class="card-title mb-0">Your Order</h6>
+              </div>
+              <div class="card-body">
+                <div class="mb-3">
+                  <input
+                    type="text"
+                    id="searchInput"
+                    class="form-control"
+                    placeholder="Search Orders"
+                  />
+                </div>
+                <div class="table-responsive">
+                  <table class="table align-items-center">
+                    <tbody id="orderTable">
+                      <tr>
+                        <td colspan="6">
+                          <div class="card-header pb-0 p-3">
+                            <div class="d-flex justify-content-between">
+                              <h6 class="mb-2">No Order Placed Yet</h6>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </div>
-            <div class="modal-body" id="orderModalBody">
-              <!-- Dynamic content will be inserted here -->
+
+            <!-- Approved Tables Card -->
+            <div class="card mt-4">
+              <div class="card-header">
+                <h6 class="card-title mb-0">Approved Tables</h6>
+              </div>
+              <div class="card-body">
+                <div class="mb-3">
+                  <input
+                    type="text"
+                    id="searchInput2"
+                    class="form-control"
+                    placeholder="Search Orders"
+                  />
+                </div>
+                <div class="table-responsive">
+                  <table class="table align-items-center">
+                    <tbody id="orderTable2">
+                      <tr>
+                        <td colspan="7">
+                          <div class="card-header pb-0 p-3">
+                            <div class="d-flex justify-content-between">
+                              <h6 class="mb-2">No Order Placed Yet</h6>
+                            </div>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </div>
-            <div class="modal-footer">
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-bs-dismiss="modal"
+          </div>
+
+          <!-- Right Column -->
+          <div class="col-lg-5">
+            <!-- Notifications Card -->
+            <div class="card mb-4">
+              <div class="card-header">
+                <h6 class="card-title mb-0">Notifications</h6>
+              </div>
+
+              <div
+                class="alert alert-info alert-dismissible text-white mx-4"
+                role="alert"
               >
-                Close
-              </button>
+                <span class="text-sm">
+                  <i class="fa fa-check-circle text-success"></i> Project Name:
+                  , Project ID: .
+                  <a href="" class="alert-link text-white">See more</a>
+                </span>
+                <button
+                  type="button"
+                  class="btn-close text-lg py-3 opacity-10"
+                  data-bs-dismiss="alert"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+
+              <div
+                class="alert alert-warning alert-dismissible text-white mx-4"
+                role="alert"
+              >
+                <span class="text-sm">
+                  Project Name: , Project ID: .
+                  <a href="" class="alert-link text-white">See more</a>
+                </span>
+                <button
+                  type="button"
+                  class="btn-close text-lg py-3 opacity-10"
+                  data-bs-dismiss="alert"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="card mb-4">
+              <div class="card-header">
+                <h6 class="card-title mb-0">Categories</h6>
+              </div>
+              <div class="card-body">
+                <ul class="list-group mb-4">
+                  <!-- Electrical Category -->
+                  <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg category-item" 
+                      onclick="fetchOrdersByCategory('Electrical')">
+                    <div class="d-flex align-items-center ps-2">
+                      <div class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
+                        <i class="ni ni-mobile-button text-white opacity-10"></i>
+                      </div>
+                      <div class="d-flex flex-column">
+                        <a href="javascript:void(0)">Electrical</a>
+                        <span class="text-xs">250 in stock, <span class="font-weight-bold">346+ sold</span></span>
+                      </div>
+                    </div>
+                    <div class="d-flex">
+                      <button class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto">
+                        <i class="ni ni-bold-right" aria-hidden="true"></i>
+                      </button>
+                    </div>
+                  </li>
+            
+                  <!-- Mechanical Category -->
+                  <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg category-item"
+                      onclick="fetchOrdersByCategory('Mechanical')">
+                    <div class="d-flex align-items-center ps-2">
+                      <div class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
+                        <i class="ni ni-tag text-white opacity-10"></i>
+                      </div>
+                      <div class="d-flex flex-column">
+                        <a href="javascript:void(0)">Mechanical</a>
+                        <span class="text-xs">123 closed, <span class="font-weight-bold">15 open</span></span>
+                      </div>
+                    </div>
+                    <div class="d-flex">
+                      <button class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto">
+                        <i class="ni ni-bold-right" aria-hidden="true"></i>
+                      </button>
+                    </div>
+                  </li>
+            
+                  <!-- Hardware Category -->
+                  <li class="list-group-item border-0 d-flex justify-content-between ps-0 mb-2 border-radius-lg category-item"
+                      onclick="fetchOrdersByCategory('Hardware')">
+                    <div class="d-flex align-items-center ps-2">
+                      <div class="icon icon-shape icon-sm me-3 bg-gradient-dark shadow text-center">
+                        <i class="ni ni-box-2 text-white opacity-10"></i>
+                      </div>
+                      <div class="d-flex flex-column">
+                        <a href="javascript:void(0)">Hardware</a>
+                        <span class="text-xs">1 is active, <span class="font-weight-bold">40 closed</span></span>
+                      </div>
+                    </div>
+                    <div class="d-flex">
+                      <button class="btn btn-link btn-icon-only btn-rounded btn-sm text-dark icon-move-right my-auto">
+                        <i class="ni ni-bold-right" aria-hidden="true"></i>
+                      </button>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            
+            <!-- Modal to display Orders -->
+            <div class="modal fade" id="ordersModal" tabindex="-1" aria-labelledby="ordersModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="ordersModalLabel">Orders</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <!-- This will be dynamically populated -->
+                    <table class="table">
+                      <thead>
+                        <tr>
+                          <th>Order ID</th>
+                          <th>Customer</th>
+                          <th>Status</th>
+                        </tr>
+                      </thead>
+                      <tbody id="orderList">
+                        <!-- Orders will be inserted here -->
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+
+<!-- Working Status Card -->
+<div class="card mt-4">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <h6 class="card-title mb-0">Working Status</h6>
+    <div class="search-box">
+      <input
+        type="text"
+        id="searchStatus"
+        class="form-control form-control-sm"
+        placeholder="Search status..."
+      />
+    </div>
+  </div>
+  <div class="card-body pt-0">
+    <ul class="list-group list-group-flush">
+      <!-- Completed Status -->
+      <li class="list-group-item border-0 px-0 py-2" onclick="fetchOrdersByStatus('Completed')">
+        <div class="d-flex justify-content-between align-items-center cursor-pointer">
+          <div class="d-flex align-items-center">
+            <div class="icon-shape icon-sm bg-gradient-success shadow text-center rounded-circle me-3">
+              <i class="ni ni-check-bold text-white opacity-10"></i>
+            </div>
+            <div>
+              <h6 class="mb-0 text-sm">Completed</h6>
+              <p class="text-xs text-secondary mb-0">Finished orders</p>
+            </div>
+          </div>
+          <span class="badge badge-sm bg-gradient-success">View</span>
+        </div>
+      </li>
+      
+      <!-- Working Status -->
+      <li class="list-group-item border-0 px-0 py-2" onclick="fetchOrdersByStatus('Working')">
+        <div class="d-flex justify-content-between align-items-center cursor-pointer">
+          <div class="d-flex align-items-center">
+            <div class="icon-shape icon-sm bg-gradient-warning shadow text-center rounded-circle me-3">
+              <i class="ni ni-settings-gear-65 text-white opacity-10"></i>
+            </div>
+            <div>
+              <h6 class="mb-0 text-sm">Working</h6>
+              <p class="text-xs text-secondary mb-0">In-progress orders</p>
+            </div>
+          </div>
+          <span class="badge badge-sm bg-gradient-warning">View</span>
+        </div>
+      </li>
+      
+      <!-- Pending Status -->
+      <li class="list-group-item border-0 px-0 py-2" onclick="fetchOrdersByStatus('Pending')">
+        <div class="d-flex justify-content-between align-items-center cursor-pointer">
+          <div class="d-flex align-items-center">
+            <div class="icon-shape icon-sm bg-gradient-danger shadow text-center rounded-circle me-3">
+              <i class="ni ni-time-alarm text-white opacity-10"></i>
+            </div>
+            <div>
+              <h6 class="mb-0 text-sm">Pending</h6>
+              <p class="text-xs text-secondary mb-0">Awaiting action</p>
+            </div>
+          </div>
+          <span class="badge badge-sm bg-gradient-danger">View</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- Status Orders Modal -->
+<div class="modal fade" id="statusModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Orders by Status</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body p-0">
+        <div class="table-responsive">
+          <table class="table align-items-center mb-0">
+            <thead>
+              <tr>
+                <th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Order ID</th>
+                <th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Customer</th>
+                <th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Part Name</th>
+                <th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Category</th>
+                <th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Description</th>
+                <th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Status</th>
+                <th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Supplier</th>
+                <th class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7">Accepted Date</th>
+              </tr>
+            </thead>
+            <tbody id="statusOrderList">
+              <tr id="statusLoadingRow">
+                <td colspan="8" class="text-center py-4">
+                  <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+          </div>
+        </div>
+
+        <!-- Order Management Table -->
+        <div class="card mt-4 mx-18">
+          <div class="card-header d-flex justify-content-between">
+            <h6 class="card-title mb-0">Order Management</h6>
+            <div class="search-box">
+              <input
+                type="text"
+                id="searchOrders"
+                class="form-control form-control-sm"
+                placeholder="Search orders..."
+              />
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table align-items-center">
+                <thead>
+                  <tr>
+                    <th
+                      class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7"
+                    >
+                      Order ID
+                    </th>
+                    <th
+                      class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7"
+                    >
+                      Customer ID
+                    </th>
+                    <th
+                      class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7"
+                    >
+                      Project
+                    </th>
+                    <th
+                      class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7"
+                    >
+                      Part Name
+                    </th>
+                    <th
+                      class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7"
+                    >
+                      Status
+                    </th>
+                    <th
+                      class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7"
+                    >
+                      Suppliers
+                    </th>
+                    <th
+                      class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7"
+                    >
+                      Actions
+                    </th>
+                    <th
+                      class="text-center text-uppercase text-secondary text-xs font-weight-bolder opacity-7"
+                    >
+                      View
+                    </th>
+                  </tr>
+                </thead>
+                <tbody id="ordersTableBody">
+                  <tr id="loadingRow">
+                    <td colspan="6" class="text-center py-4">
+                      <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- Order Details Modal -->
+        <div
+          class="modal fade"
+          id="orderDetailsModal"
+          tabindex="-1"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="orderModalTitle">Order Details</h5>
+                <button
+                  type="button"
+                  class="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body" id="orderModalBody">
+                <!-- Dynamic content will be inserted here -->
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      
-
-   <a href="orderTable.html">linked</a>
-      <h2>Welcome, <span id="customerName"></span>!</h2>
-<p>Email: <span id="customerEmail"></span></p>
-<p>Location: <span id="customerLocation"></span></p>
-<p>Customer ID: <span id="customerId"></span></p>
-
-<h3>Login History</h3>
-<table border="1">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Email</th>
-      <th>Login Time</th>
-    </tr>
-  </thead>
-  <tbody id="loginHistory">
-    <!-- Login history will be inserted here -->
-  </tbody>
-</table>
-
-      
     </main>
 
-    <script>
-      fetch("https://backend-api-k9ts.onrender.com/api/customer/profile/table", {
-        method: "GET",
-        credentials: "include", // ✅ Sends session cookies
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          if (data.msg) {
-            alert(data.msg); // Show error if not logged in
-          } else {
-            document.getElementById("customerTableBody").innerHTML = `
-              <tr>
-                <td>${data.customer.name}</td>
-                <td>${data.customer.email}</td>
-                <td>${data.customer.location}</td>
-                <td>${data.customer.phone_number}</td>
-                <td>✅ Logged In</td>
-              </tr>
-            `;
-          }
-        })
-        .catch((err) => console.error("Error:", err));
-    </script>
     
+    
+    <script>
+    // Function to fetch orders by category
+    async function fetchOrdersByCategory(category) {
+      try {
+        // Get customer ID from session or wherever you store it
+        const customerId = sessionStorage.getItem('customerId') || '123'; // Default fallback
         
+        // Show loading state
+        document.getElementById('categoryTitle').textContent = category;
+        document.getElementById('ordersTableBody').innerHTML = '<tr><td colspan="6" class="text-center">Loading...</td></tr>';
+        
+        // Show modal
+        $('#ordersModal').modal('show');
+        
+        // Fetch orders from localhost backend
+        const response = await fetch(`http://localhost:3000/api/customer/orders-by-category/${customerId}/${category}`);
+        
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        
+        const data = await response.json();
+        
+        if (data.success && data.data && data.data.length > 0) {
+          // Populate table
+          const tableBody = document.getElementById('ordersTableBody');
+          tableBody.innerHTML = '';
+          
+          data.data.forEach(order => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+              <td>${order.order_id}</td>
+              <td>${order.Part_Name}</td>
+              <td>${order.desc}</td>
+              <td>${order.av}</td>
+              <td>
+                <span class="badge badge-${order.working_status === 'Completed' ? 'success' : 
+                                            order.working_status === 'Working' ? 'primary' : 'warning'}">
+                  ${order.working_status}
+                </span>
+              </td>
+              <td>${new Date(order.createdAt).toLocaleDateString()}</td>
+            `;
+            tableBody.appendChild(row);
+          });
+        } else {
+          document.getElementById('ordersTableBody').innerHTML = 
+            '<tr><td colspan="6" class="text-center">No orders found for this category</td></tr>';
+        }
+      } catch (error) {
+        console.error('Error fetching orders:', error);
+        document.getElementById('ordersTableBody').innerHTML = 
+          '<tr><td colspan="6" class="text-center text-danger">Error loading orders: ' + error.message + '</td></tr>';
+      }
+    }
+    </script>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
     <script>
       document.addEventListener("DOMContentLoaded", async function () {
         try {
           const customerData = sessionStorage.getItem("customer");
-    
+
           if (!customerData) {
             alert("No customer data found. Please log in again.");
             window.location.href = "login.html";
             return;
           }
-    
+
           const customer = JSON.parse(customerData);
-    
+
           // Display customer details
           document.getElementById("customerName").textContent = customer.name;
           document.getElementById("customerEmail").textContent = customer.email;
-          document.getElementById("customerLocation").textContent = customer.location;
-          document.getElementById("phone_number").textContent = customer.phone_number;
-          document.getElementById("customerId").textContent = customer.customer_id;
-    
-            console.log("✅ Customer Data Loaded:", customer);
-    
+          document.getElementById("customerLocation").textContent =
+            customer.location;
+          document.getElementById("phone_number").textContent =
+            customer.phone_number;
+          document.getElementById("customerId").textContent =
+            customer.customer_id;
+
+          console.log("✅ Customer Data Loaded:", customer);
+
           // ✅ Fetch login history from server
           const encodedEmail = encodeURIComponent(customer.email);
-          const res = await fetch(`https://backend-api-k9ts.onrender.com/api/customer/history/${encodedEmail}`);
+          const res = await fetch(
+            `https://backend-api-k9ts.onrender.com/api/customer/history/${encodedEmail}`
+          );
           const historyData = await res.json();
-    
+
           if (res.status === 200) {
             console.log("📜 Login History:", historyData);
-    
+
             // ✅ Display login history on page
             const historyContainer = document.getElementById("loginHistory");
-            historyContainer.innerHTML = historyData.map(
-              (entry, index) =>
-                `<tr>
+            historyContainer.innerHTML = historyData
+              .map(
+                (entry, index) =>
+                  `<tr>
                   <td>${index + 1}</td>
                   <td>${entry.email}</td>
                   <td>${new Date(entry.login_time).toLocaleString()}</td>
                 </tr>`
-            ).join("");
+              )
+              .join("");
           } else {
             console.error("Failed to fetch login history.");
           }
-    
         } catch (error) {
           console.error("Error fetching data:", error);
         }
       });
     </script>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const logoutBtn = document.getElementById("logoutBtn");
-
-    if (logoutBtn) {
-      logoutBtn.addEventListener("click", function () {
-        // ✅ Clear session storage
-        sessionStorage.removeItem("customer");
-
-        // ✅ Redirect to login page
-        window.location.href = "login.html";
-      });
-    }
-  });
-</script>
-
-    
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
-    <!-- Bootstrap CSS -->
-<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
-
-<!-- jQuery and Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
-
-
-
     <script>
-      document.getElementById('searchInput').addEventListener('keyup', function() {
-        var input, filter, table, rows, td, txtValue;
-        input = document.getElementById('searchInput');
-        filter = input.value.toLowerCase();
-        table = document.getElementById('orderTable');
-        rows = table.getElementsByTagName('tr');
+      document.addEventListener("DOMContentLoaded", function () {
+        const logoutBtn = document.getElementById("logoutBtn");
 
-        for (var i = 0; i < rows.length; i++) {
+        if (logoutBtn) {
+          logoutBtn.addEventListener("click", function () {
+            // ✅ Clear session storage
+            sessionStorage.removeItem("customer");
+
+            // ✅ Redirect to login page
+            window.location.href = "login.html";
+          });
+        }
+      });
+    </script>
+    <script>
+      document
+        .getElementById("searchInput")
+        .addEventListener("keyup", function () {
+          var input, filter, table, rows, td, txtValue;
+          input = document.getElementById("searchInput");
+          filter = input.value.toLowerCase();
+          table = document.getElementById("orderTable");
+          rows = table.getElementsByTagName("tr");
+
+          for (var i = 0; i < rows.length; i++) {
             var match = false;
-            var tds = rows[i].getElementsByTagName('td');
+            var tds = rows[i].getElementsByTagName("td");
             for (var j = 0; j < tds.length; j++) {
-                if (tds[j]) {
-                    txtValue = tds[j].textContent || tds[j].innerText;
-                    if (txtValue.toLowerCase().indexOf(filter) > -1) {
-                        match = true;
-                        break;
-                    }
+              if (tds[j]) {
+                txtValue = tds[j].textContent || tds[j].innerText;
+                if (txtValue.toLowerCase().indexOf(filter) > -1) {
+                  match = true;
+                  break;
                 }
+              }
             }
             if (match) {
-                rows[i].style.display = "";
-            } else {
-                rows[i].style.display = "none";
-            }
-        }
-    });
-
-
-    document.getElementById('searchInput2').addEventListener('keyup', function() {
-      var input, filter, table, rows, td, txtValue;
-      input = document.getElementById('searchInput2');
-      filter = input.value.toLowerCase();
-      table = document.getElementById('orderTable2');
-      rows = table.getElementsByTagName('tr');
-
-      for (var i = 0; i < rows.length; i++) {
-          var match = false;
-          var tds = rows[i].getElementsByTagName('td');
-          for (var j = 0; j < tds.length; j++) {
-              if (tds[j]) {
-                  txtValue = tds[j].textContent || tds[j].innerText;
-                  if (txtValue.toLowerCase().indexOf(filter) > -1) {
-                      match = true;
-                      break;
-                  }
-              }
-          }
-          if (match) {
               rows[i].style.display = "";
-          } else {
+            } else {
               rows[i].style.display = "none";
+            }
           }
-      }
-  });
+        });
 
-  document.getElementById("toggleSidebarMenu").addEventListener("click", function () {
-    document.getElementById("uniqueSidebarMenu").style.display = "flex";
-  });
+      document
+        .getElementById("searchInput2")
+        .addEventListener("keyup", function () {
+          var input, filter, table, rows, td, txtValue;
+          input = document.getElementById("searchInput2");
+          filter = input.value.toLowerCase();
+          table = document.getElementById("orderTable2");
+          rows = table.getElementsByTagName("tr");
 
-  document.getElementById("closeSidebarButton").addEventListener("click", function () {
-    document.getElementById("uniqueSidebarMenu").style.display = "none";
-  });
+          for (var i = 0; i < rows.length; i++) {
+            var match = false;
+            var tds = rows[i].getElementsByTagName("td");
+            for (var j = 0; j < tds.length; j++) {
+              if (tds[j]) {
+                txtValue = tds[j].textContent || tds[j].innerText;
+                if (txtValue.toLowerCase().indexOf(filter) > -1) {
+                  match = true;
+                  break;
+                }
+              }
+            }
+            if (match) {
+              rows[i].style.display = "";
+            } else {
+              rows[i].style.display = "none";
+            }
+          }
+        });
 
-  // Close sidebar when clicking outside
-  document.getElementById("uniqueSidebarMenu").addEventListener("click", function (event) {
-    if (event.target === this) {
-      this.style.display = "none";
-    }
-  });
+      document
+        .getElementById("toggleSidebarMenu")
+        .addEventListener("click", function () {
+          document.getElementById("uniqueSidebarMenu").style.display = "flex";
+        });
 
-  
+      document
+        .getElementById("closeSidebarButton")
+        .addEventListener("click", function () {
+          document.getElementById("uniqueSidebarMenu").style.display = "none";
+        });
+
+      // Close sidebar when clicking outside
+      document
+        .getElementById("uniqueSidebarMenu")
+        .addEventListener("click", function (event) {
+          if (event.target === this) {
+            this.style.display = "none";
+          }
+        });
 
       var ctx1 = document.getElementById("chart-line").getContext("2d");
 
@@ -1217,145 +1669,54 @@
       });
     </script>
     <script>
-//       document.addEventListener("DOMContentLoaded", async function () {
-//     const orderTable = document.getElementById("orderTable");
-//     const searchInput = document.getElementById("searchInput");
+      document.addEventListener("DOMContentLoaded", async function () {
+        const orderTable = document.getElementById("orderTable");
+        const searchInput = document.getElementById("searchInput");
 
-//     // ✅ Retrieve customer data correctly
-//     const customerData = sessionStorage.getItem("customer");
-//     const customer = customerData ? JSON.parse(customerData) : null;
-//     const customer_id = customer ? customer.customer_id : null;
+        // ✅ Retrieve customer data correctly
+        const customerData = sessionStorage.getItem("customer");
+        const customer = customerData ? JSON.parse(customerData) : null;
+        const customer_id = customer ? customer.customer_id : null;
 
-//     if (!customer_id) {
-//         console.error("❌ No customer ID found in sessionStorage.");
-//         orderTable.innerHTML = `<tr><td colspan="6" class="text-center text-danger">No customer ID found.</td></tr>`;
-//         return;
-//     }
+        if (!customer_id) {
+          console.error("❌ No customer ID found in sessionStorage.");
+          orderTable.innerHTML = `<tr><td colspan="6" class="text-center text-danger">No customer ID found.</td></tr>`;
+          return;
+        }
 
-//     console.log("✅ Customer ID:", customer_id); // Debugging
+        console.log("✅ Customer ID:", customer_id); // Debugging
 
-//     async function fetchOrders() {
-//         try {
-//             const response = await fetch(`http://localhost:5000/api/customer/orders/${customer_id}`);
-//             if (!response.ok) throw new Error("Failed to fetch orders");
-
-//             const orders = await response.json();
-//             displayOrders(orders);
-//         } catch (error) {
-//             console.error("❌ Error fetching orders:", error);
-//             orderTable.innerHTML = `<tr><td colspan="6" class="text-center text-danger">Failed to load orders.</td></tr>`;
-//         }
-//     }
-
-//     function displayOrders(orders) {
-//         if (orders.length === 0) {
-//             orderTable.innerHTML = `<tr><td colspan="6" class="text-center text-muted">No Order Placed Yet</td></tr>`;
-//             return;
-//         }
-
-//         orderTable.innerHTML = orders
-//             .map(order => `
-//             <tr>
-//                 <td>
-//                     <div class="text-center">
-//                         <p class="text-xs font-weight-bold mb-0">Project Id</p>
-//                         <h6 class="text-sm mb-0">${order.order_id}</h6>
-//                     </div>
-//                 </td>
-//                 <td>
-//                     <div class="text-center">
-//                         <p class="text-xs font-weight-bold mb-0">Project Name</p>
-//                         <h6 class="text-sm mb-0">${order.pname}</h6>
-//                     </div>
-//                 </td>
-//                 <td>
-//                     <div class="text-center">
-//                         <p class="text-xs font-weight-bold mb-0">Part Name</p>
-//                         <h6 class="text-sm mb-0">${order.Part_Name}</h6>
-//                     </div>
-//                 </td>
-//                 <td>
-//                     <div class="text-center">
-//                         <p class="text-xs font-weight-bold mb-0">SOP Date:</p>
-//                         <h6 class="text-sm mb-0">${new Date(order.sop).toLocaleDateString()}</h6>
-//                     </div>
-//                 </td>
-//                 <td class="align-middle text-sm">
-//                     <div class="col text-center">
-//                         <p class="text-xs font-weight-bold mb-0">Category</p>
-//                         <h6 class="text-sm mb-0">${order.category}</h6>
-//                     </div>
-//                 </td>
-//                 <td class="align-middle text-sm">
-//                     <div class="col text-center">
-//                         <a href="#"><button type="button" class="btn btn-primary">View</button></a>
-//                     </div>
-//                 </td>
-//             </tr>
-//         `)
-//             .join("");
-//     }
-
-//     // 🔍 Search Functionality
-//     searchInput.addEventListener("input", function () {
-//         const searchTerm = searchInput.value.toLowerCase();
-//         const rows = orderTable.querySelectorAll("tr");
-
-//         rows.forEach(row => {
-//             const projectName = row.children[1]?.innerText.toLowerCase() || "";
-//             row.style.display = projectName.includes(searchTerm) ? "" : "none";
-//         });
-//     });
-
-//     fetchOrders(); // Fetch orders on page load
-// });
-
-
-
-
-document.addEventListener("DOMContentLoaded", async function () {
-    const orderTable = document.getElementById("orderTable");
-    const searchInput = document.getElementById("searchInput");
-
-    // ✅ Retrieve customer data correctly
-    const customerData = sessionStorage.getItem("customer");
-    const customer = customerData ? JSON.parse(customerData) : null;
-    const customer_id = customer ? customer.customer_id : null;
-
-    if (!customer_id) {
-        console.error("❌ No customer ID found in sessionStorage.");
-        orderTable.innerHTML = `<tr><td colspan="6" class="text-center text-danger">No customer ID found.</td></tr>`;
-        return;
-    }
-
-    console.log("✅ Customer ID:", customer_id); // Debugging
-
-    async function fetchOrders() {
-        try {
+        async function fetchOrders() {
+          try {
             // const response = await fetch(`https://backend-api-bez7.onrender.com/api/customer/orders/${customer_id}`);
-            const response = await fetch(`https://backend-api-k9ts.onrender.com/api/customer/orders/${customer_id}`);
+            const response = await fetch(
+              `https://backend-api-k9ts.onrender.com/api/customer/orders/${customer_id}`
+            );
 
             if (!response.ok) throw new Error("Failed to fetch orders");
 
             const orders = await response.json();
             // Add this filter to only show approved orders
-            const approvedOrders = orders.filter(order => order.isApproved === "Disapproved");
+            const approvedOrders = orders.filter(
+              (order) => order.isApproved === "Disapproved"
+            );
             displayOrders(approvedOrders);
-        } catch (error) {
+          } catch (error) {
             console.error("❌ Error fetching orders:", error);
             orderTable.innerHTML = `<tr><td colspan="6" class="text-center text-danger">Failed to load orders.</td></tr>`;
+          }
         }
-    }
 
-    // Rest of your code remains exactly the same...
-    function displayOrders(orders) {
-        if (orders.length === 0) {
+        // Rest of your code remains exactly the same...
+        function displayOrders(orders) {
+          if (orders.length === 0) {
             orderTable.innerHTML = `<tr><td colspan="6" class="text-center text-muted">No Order Placed Yet</td></tr>`;
             return;
-        }
+          }
 
-        orderTable.innerHTML = orders
-            .map(order => `
+          orderTable.innerHTML = orders
+            .map(
+              (order) => `
             <tr>
                <td>
                     <div class="text-center">
@@ -1384,7 +1745,9 @@ document.addEventListener("DOMContentLoaded", async function () {
                 <td>
                     <div class="text-center">
                         <p class="text-xs font-weight-bold mb-0">SOP Date:</p>
-                        <h6 class="text-sm mb-0">${new Date(order.sop).toLocaleDateString()}</h6>
+                        <h6 class="text-sm mb-0">${new Date(
+                          order.sop
+                        ).toLocaleDateString()}</h6>
                     </div>
                 </td>
                 <td class="align-middle text-sm">
@@ -1395,30 +1758,33 @@ document.addEventListener("DOMContentLoaded", async function () {
                 </td>
                 <td class="align-middle text-sm">
                     <div class="col text-center">
-                        <button type="button" class="btn btn-primary view-btn" data-order='${JSON.stringify(order)}'>View</button>
+                        <button type="button" class="btn btn-primary view-btn" data-order='${JSON.stringify(
+                          order
+                        )}'>View</button>
                     </div>
                 </td>
             </tr>
-        `)
+        `
+            )
             .join("");
 
-        // Attach event listeners to View buttons
-        document.querySelectorAll(".view-btn").forEach(button => {
+          // Attach event listeners to View buttons
+          document.querySelectorAll(".view-btn").forEach((button) => {
             button.addEventListener("click", function () {
-                const orderData = JSON.parse(this.getAttribute("data-order"));
-                openModal(orderData);
+              const orderData = JSON.parse(this.getAttribute("data-order"));
+              openModal(orderData);
             });
-        });
-    }
+          });
+        }
 
-    // Function to open modal with Bootstrap styling
-    function openModal(order) {
-        // Remove existing modal if present
-        const existingModal = document.getElementById("orderModal");
-        if (existingModal) existingModal.remove();
+        // Function to open modal with Bootstrap styling
+        function openModal(order) {
+          // Remove existing modal if present
+          const existingModal = document.getElementById("orderModal");
+          if (existingModal) existingModal.remove();
 
-        // Bootstrap Modal HTML
-        const modalHtml = `
+          // Bootstrap Modal HTML
+          const modalHtml = `
         <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -1432,36 +1798,72 @@ document.addEventListener("DOMContentLoaded", async function () {
                                 <h5 class="card-title">Order Information</h5>
                                 <div class="row">
                                     <div class="col-md-6">
-                                      <p><strong>ustomer ID:</strong> ${order.customer_id}</p>
-                                        <p><strong>Project ID:</strong> ${order.order_id}</p>
-                                        <p><strong>Company Name:</strong> ${order.cname}</p>
-                                        <p><strong>Project Name:</strong> ${order.pname}</p>
-                                        <p><strong>Part Name:</strong> ${order.Part_Name}</p>
-                                        <p><strong>Category:</strong> ${order.category}</p>
-                                        <p><strong>Email:</strong> ${order.email}</p>
-                                        <p><strong>Phone Number:</strong> ${order.phone_number}</p>
+                                      <p><strong>ustomer ID:</strong> ${
+                                        order.customer_id
+                                      }</p>
+                                        <p><strong>Project ID:</strong> ${
+                                          order.order_id
+                                        }</p>
+                                        <p><strong>Company Name:</strong> ${
+                                          order.cname
+                                        }</p>
+                                        <p><strong>Project Name:</strong> ${
+                                          order.pname
+                                        }</p>
+                                        <p><strong>Part Name:</strong> ${
+                                          order.Part_Name
+                                        }</p>
+                                        <p><strong>Category:</strong> ${
+                                          order.category
+                                        }</p>
+                                        <p><strong>Email:</strong> ${
+                                          order.email
+                                        }</p>
+                                        <p><strong>Phone Number:</strong> ${
+                                          order.phone_number
+                                        }</p>
                                     </div>
                                     <div class="col-md-6">
-                                        <p><strong>Part Number:</strong> ${order.cpno}</p>
-                                        <p><strong>Target Value:</strong> ${order.tv}</p>
-                                        <p><strong>Annual Volume:</strong> ${order.av}</p>
-                                        <p><strong>Quote Submission:</strong> ${new Date(order.qs).toLocaleDateString()}</p>
-                                        <p><strong>Start of Production:</strong> ${new Date(order.sop).toLocaleDateString()}</p>
-                                        <p><strong>Status:</strong> ${order.working_status}</p>
-                                        <p><strong>Supplier:</strong> ${order.supplier_name}</p>
-                                        <p><strong>Supplier:</strong> ${order.isApproved}</p>
+                                        <p><strong>Part Number:</strong> ${
+                                          order.cpno
+                                        }</p>
+                                        <p><strong>Target Value:</strong> ${
+                                          order.tv
+                                        }</p>
+                                        <p><strong>Annual Volume:</strong> ${
+                                          order.av
+                                        }</p>
+                                        <p><strong>Quote Submission:</strong> ${new Date(
+                                          order.qs
+                                        ).toLocaleDateString()}</p>
+                                        <p><strong>Start of Production:</strong> ${new Date(
+                                          order.sop
+                                        ).toLocaleDateString()}</p>
+                                        <p><strong>Status:</strong> ${
+                                          order.working_status
+                                        }</p>
+                                        <p><strong>Supplier:</strong> ${
+                                          order.supplier_name
+                                        }</p>
+                                        <p><strong>Supplier:</strong> ${
+                                          order.isApproved
+                                        }</p>
                                     </div>
                                 </div>
 
                                 <!-- Download File Button (if file is uploaded) -->
                                <!-- ✅ Fixed Download File Button -->
-                        ${order.pdf_file && order.pdf_file.trim() !== "" ? `
+                        ${
+                          order.pdf_file && order.pdf_file.trim() !== ""
+                            ? `
                             <div class="mt-3 text-center">
                                 <a href="${order.pdf_file}" download class="btn btn-success">
                                     <i class="fas fa-file-download"></i> Download File
                                 </a>
                             </div>
-                        ` : `<p class="text-muted text-center mt-3">No file available</p>`}
+                        `
+                            : `<p class="text-muted text-center mt-3">No file available</p>`
+                        }
 
 
                                 <div class="text-end mt-3">
@@ -1474,30 +1876,30 @@ document.addEventListener("DOMContentLoaded", async function () {
             </div>
         </div>`;
 
-        // Insert modal HTML into body
-        document.body.insertAdjacentHTML("beforeend", modalHtml);
+          // Insert modal HTML into body
+          document.body.insertAdjacentHTML("beforeend", modalHtml);
 
-        // Show Bootstrap modal
-        const myModal = new bootstrap.Modal(document.getElementById("orderModal"));
-        myModal.show();
-    }
+          // Show Bootstrap modal
+          const myModal = new bootstrap.Modal(
+            document.getElementById("orderModal")
+          );
+          myModal.show();
+        }
 
-    // 🔍 Search Functionality
-    searchInput.addEventListener("input", function () {
-        const searchTerm = searchInput.value.toLowerCase();
-        const rows = orderTable.querySelectorAll("tr");
+        // 🔍 Search Functionality
+        searchInput.addEventListener("input", function () {
+          const searchTerm = searchInput.value.toLowerCase();
+          const rows = orderTable.querySelectorAll("tr");
 
-        rows.forEach(row => {
+          rows.forEach((row) => {
             const projectName = row.children[1]?.innerText.toLowerCase() || "";
             row.style.display = projectName.includes(searchTerm) ? "" : "none";
+          });
         });
-    });
 
-    fetchOrders(); // Fetch orders on page load
-});
-
+        fetchOrders(); // Fetch orders on page load
+      });
     </script>
-    
     <script>
       var win = navigator.platform.indexOf("Win") > -1;
       if (win && document.querySelector("#sidenav-scrollbar")) {
@@ -1506,605 +1908,867 @@ document.addEventListener("DOMContentLoaded", async function () {
         };
         Scrollbar.init(document.querySelector("#sidenav-scrollbar"), options);
       }
-    
-    // <!-- Github buttons -->
-    // <script async defer src="https://buttons.github.io/buttons.js"></scrip>
-    // <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-    // {% comment %} <script src="../assets/js/argon-dashboard.min.js?v=2.0.4"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <!-- Bootstrap JS (required for offcanvas) -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-  document.addEventListener("DOMContentLoaded", async function () {
-    const totalOrdersElement = document.getElementById("totalOrders");
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", async function () {
+        const totalOrdersElement = document.getElementById("totalOrders");
 
-    const customerData = sessionStorage.getItem("customer");
-    const customer = customerData ? JSON.parse(customerData) : null;
-    const customer_id = customer ? customer.customer_id : null;
+        const customerData = sessionStorage.getItem("customer");
+        const customer = customerData ? JSON.parse(customerData) : null;
+        const customer_id = customer ? customer.customer_id : null;
 
-    if (!customer_id) {
-        console.error("❌ No customer ID found in sessionStorage.");
-        totalOrdersElement.textContent = "Total Orders: 0";
-        return;
-    }
+        if (!customer_id) {
+          console.error("❌ No customer ID found in sessionStorage.");
+          totalOrdersElement.textContent = "Total Orders: 0";
+          return;
+        }
 
-    async function fetchTotalOrders() {
-        try {
-            const response = await fetch(`https://backend-api-k9ts.onrender.com/api/customer/orders/${customer_id}`);
-            
+        async function fetchTotalOrders() {
+          try {
+            const response = await fetch(
+              `https://backend-api-k9ts.onrender.com/api/customer/orders/${customer_id}`
+            );
+
             if (!response.ok) throw new Error("Failed to fetch orders");
 
             const orders = await response.json();
             const totalOrders = orders.length; // Count orders
             totalOrdersElement.textContent = `${totalOrders}`;
-        } catch (error) {
+          } catch (error) {
             console.error("❌ Error fetching orders:", error);
             totalOrdersElement.textContent = "Total Orders: Error";
-        }
-    }
-
-    fetchTotalOrders();
-});
-
-</script>
-
-<script>
-  document.addEventListener("DOMContentLoaded", async function () {
-    // 1. Get customer data from session storage
-    const customerData = sessionStorage.getItem("customer");
-    if (!customerData) {
-      showError("Please login to view orders", true); // redirect to login
-      return;
-    }
-
-    let customer;
-    try {
-      customer = JSON.parse(customerData);
-      if (!customer.customer_id) throw new Error("Invalid customer data");
-    } catch (e) {
-      showError("Invalid session data", true);
-      return;
-    }
-
-    // 2. Initialize elements
-    const ordersTable = document.getElementById("ordersTableBody");
-    const searchInput = document.getElementById("searchOrders");
-    const orderModal = new bootstrap.Modal("#orderDetailsModal");
-
-    // 3. Enhanced loadOrders function with better error handling
-    async function loadOrders() {
-      showLoading();
-
-      try {
-        const response = await fetch(
-          `https://backend-api-k9ts.onrender.com/api/customer/orders/${customer.customer_id}`,
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${
-                sessionStorage.getItem("token") || ""
-              }`,
-            },
           }
-        );
-
-        if (!response.ok) {
-          const errorData = await response.json().catch(() => ({}));
-          throw new Error(
-            errorData.message || `HTTP error! status: ${response.status}`
-          );
         }
 
-        const orders = await response.json();
-
-        if (!Array.isArray(orders)) {
-          throw new Error("Invalid data format received");
+        fetchTotalOrders();
+      });
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", async function () {
+        // 1. Get customer data from session storage
+        const customerData = sessionStorage.getItem("customer");
+        if (!customerData) {
+          showError("Please login to view orders", true); // redirect to login
+          return;
         }
 
-        // Filter out disapproved orders
-        const approvedOrders = orders.filter(
-          (order) =>
-            order.isApproved !== "Disapproved" && order.isApproved !== false
-        );
-
-        displayOrders(approvedOrders);
-      } catch (error) {
-        console.error("Order loading error:", error);
-        showError(`Failed to load orders: ${error.message}`);
-
-        // Specific handling for 401 unauthorized
-        if (error.message.includes("401")) {
-          setTimeout(() => (window.location.href = "login.html"), 2000);
+        let customer;
+        try {
+          customer = JSON.parse(customerData);
+          if (!customer.customer_id) throw new Error("Invalid customer data");
+        } catch (e) {
+          showError("Invalid session data", true);
+          return;
         }
-      }
-    }
 
-    // 4. Modified displayOrders function to show orders multiple times for multiple accepted suppliers
-    function displayOrders(orders) {
-      if (!orders || !orders.length) {
-        ordersTable.innerHTML = `
-          <tr>
-            <td colspan="8" class="text-center py-4 text-muted">
-              <i class="fas fa-box-open me-2"></i>No approved orders found
-            </td>
-          </tr>`;
-        return;
-      }
+        // 2. Initialize elements
+        const ordersTable = document.getElementById("ordersTableBody");
+        const searchInput = document.getElementById("searchOrders");
+        const orderModal = new bootstrap.Modal("#orderDetailsModal");
 
-      // Create an array to hold all order rows (including duplicates for multiple suppliers)
-      const allOrderRows = [];
+        // 3. Enhanced loadOrders function with better error handling
+        async function loadOrders() {
+          showLoading();
 
-      orders.forEach((order) => {
-        const supplierResponses = order.supplierResponses || [];
-        const totalResponses = supplierResponses.length;
-
-        // If no responses, show the order once
-        if (supplierResponses.length === 0) {
-          allOrderRows.push(createOrderRow(order, null, totalResponses));
-        }
-        // If responses exist, create a row for each response
-        else {
-          supplierResponses.forEach((response) => {
-            allOrderRows.push(
-              createOrderRow(order, response, totalResponses)
+          try {
+            const response = await fetch(
+              `https://backend-api-k9ts.onrender.com/api/customer/orders/${customer.customer_id}`,
+              {
+                headers: {
+                  "Content-Type": "application/json",
+                  Authorization: `Bearer ${
+                    sessionStorage.getItem("token") || ""
+                  }`,
+                },
+              }
             );
+
+            if (!response.ok) {
+              const errorData = await response.json().catch(() => ({}));
+              throw new Error(
+                errorData.message || `HTTP error! status: ${response.status}`
+              );
+            }
+
+            const orders = await response.json();
+
+            if (!Array.isArray(orders)) {
+              throw new Error("Invalid data format received");
+            }
+
+            // Filter out disapproved orders
+            const approvedOrders = orders.filter(
+              (order) =>
+                order.isApproved !== "Disapproved" && order.isApproved !== false
+            );
+
+            displayOrders(approvedOrders);
+          } catch (error) {
+            console.error("Order loading error:", error);
+            showError(`Failed to load orders: ${error.message}`);
+
+            // Specific handling for 401 unauthorized
+            if (error.message.includes("401")) {
+              setTimeout(() => (window.location.href = "login.html"), 2000);
+            }
+          }
+        }
+
+        // 4. Modified displayOrders function to show orders multiple times for multiple accepted suppliers
+        function displayOrders(orders) {
+          if (!orders || !orders.length) {
+            ordersTable.innerHTML = `
+              <tr>
+                <td colspan="8" class="text-center py-4 text-muted">
+                  <i class="fas fa-box-open me-2"></i>No approved orders found
+                </td>
+              </tr>`;
+            return;
+          }
+
+          // Create an array to hold all order rows (including duplicates for multiple suppliers)
+          const allOrderRows = [];
+
+          orders.forEach((order) => {
+            const supplierResponses = order.supplierResponses || [];
+            const totalResponses = supplierResponses.length;
+
+            // If no responses, show the order once
+            if (supplierResponses.length === 0) {
+              allOrderRows.push(createOrderRow(order, null, totalResponses));
+            }
+            // If responses exist, create a row for each response
+            else {
+              supplierResponses.forEach((response) => {
+                allOrderRows.push(
+                  createOrderRow(order, response, totalResponses)
+                );
+              });
+            }
+          });
+
+          ordersTable.innerHTML = allOrderRows.join("");
+
+          // Add event listeners to view buttons
+          document.querySelectorAll(".view-order").forEach((btn) => {
+            btn.addEventListener("click", () => {
+              try {
+                showOrderDetails(btn.dataset.order);
+              } catch (e) {
+                console.error("Error showing order:", e);
+                alert("Couldn't show order details");
+              }
+            });
           });
         }
-      });
 
-      ordersTable.innerHTML = allOrderRows.join("");
+        // Helper function to create a single order row
+        function createOrderRow(order, response, totalResponses) {
+          const hasResponse = response !== null;
+          const isAccepted = hasResponse && response.status === "Accepted";
 
-      // Add event listeners to view buttons
-      document.querySelectorAll(".view-order").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          try {
-            showOrderDetails(btn.dataset.order);
-          } catch (e) {
-            console.error("Error showing order:", e);
-            alert("Couldn't show order details");
+          return `
+            <tr ${isAccepted ? 'class="supplier-highlight"' : ""}>
+              <td>${order.order_id || "N/A"}</td>
+              <td class="customer-id">${
+                order.customer_id || customer.customer_id || "N/A"
+              }</td>
+              <td>${order.pname || "Unnamed Project"}</td>
+              <td>${order.Part_Name || "No part specified"}</td>
+              <td>
+                <span class="badge ${getStatusBadgeClass(
+                  order.working_status
+                )}">
+                  ${order.working_status || "Unknown"}
+                </span>
+              </td>
+              <td>
+                ${
+                  hasResponse
+                    ? `Supplier ID: ${response.supplier_Id || "N/A"}`
+                    : "No responses"
+                }
+                <small class="text-muted"> (${totalResponses} total responses)</small>
+              </td>
+              <td>
+                ${
+                  hasResponse
+                    ? `<span class="${
+                        response.status === "Accepted"
+                          ? "response-accepted"
+                          : "response-rejected"
+                      }">
+                        <i class="fas ${
+                          response.status === "Accepted"
+                            ? "fa-check-circle"
+                            : "fa-times-circle"
+                        } me-1"></i>
+                        ${response.status || "Unknown"}
+                      </span>`
+                    : '<span class="text-muted">No response</span>'
+                }
+              </td>
+              <td>
+                <button class="btn btn-sm btn-primary view-order" 
+                        data-order='${JSON.stringify(order)}'>
+                  <i class="fas fa-eye me-1"></i> View
+                </button>
+              </td>
+            </tr>`;
+        }
+
+        // 5. Helper functions
+        function showLoading() {
+          ordersTable.innerHTML = `
+              <tr id="loadingRow">
+                <td colspan="8" class="text-center py-4">
+                  <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                  </div>
+                  <p class="mt-2 mb-0">Loading your orders...</p>
+                </td>
+              </tr>`;
+        }
+
+        function showError(message, redirect = false) {
+          ordersTable.innerHTML = `
+              <tr>
+                <td colspan="8" class="text-center py-4 text-danger">
+                  <i class="fas fa-exclamation-triangle me-2"></i>
+                  ${message}
+                  ${redirect ? "<p>Redirecting to login...</p>" : ""}
+                </td>
+              </tr>`;
+
+          if (redirect) {
+            setTimeout(() => (window.location.href = "login.html"), 2000);
           }
+        }
+
+        function getStatusBadgeClass(status) {
+          if (!status) return "bg-secondary";
+          switch (status.toLowerCase()) {
+            case "completed":
+              return "bg-success";
+            case "accepted":
+              return "bg-success";
+            case "working":
+            case "in progress":
+              return "bg-warning";
+            case "pending":
+              return "bg-danger";
+            case "rejected":
+            case "failed":
+              return "bg-danger";
+            default:
+              return "bg-secondary";
+          }
+        }
+
+        function showOrderDetails(orderData) {
+          try {
+            const order =
+              typeof orderData === "string" ? JSON.parse(orderData) : orderData;
+            const modalTitle = document.getElementById("orderModalTitle");
+            const modalBody = document.getElementById("orderModalBody");
+
+            modalTitle.textContent = `Order Details - #${order.order_id}`;
+
+            // Get accepted suppliers
+            const acceptedSuppliers =
+              order.supplierResponses?.filter(
+                (r) => r?.status === "Accepted"
+              ) || [];
+
+            modalBody.innerHTML = `
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <h6>Project Information</h6>
+              <p><strong>Customer ID:</strong> ${
+                order.customer_id || customer.customer_id || "N/A"
+              }</p>
+              <p><strong>Project Name:</strong> ${order.pname || "N/A"}</p>
+              <p><strong>Part Name:</strong> ${order.Part_Name || "N/A"}</p>
+              <p><strong>Description:</strong> ${
+                order.description || "No description"
+              }</p>
+            </div>
+            <div class="col-md-6">
+              <h6>Order Status</h6>
+              <p><strong>Status:</strong> 
+  <span class="badge 
+    ${order.working_status === 'Pending' ? 'bg-danger text-white' : 
+      order.working_status === 'Working' ? 'bg-warning text-dark' : 
+      order.working_status === 'Completed' ? 'bg-success text-white' : 
+      'bg-secondary text-white'}">
+    ${order.working_status || "Unknown"}
+  </span>
+</p>
+
+              <p><strong>Created:</strong> ${
+                order.createdAt && !isNaN(new Date(order.createdAt))
+                  ? new Date(order.createdAt).toLocaleString()
+                  : "Unknown date"
+              }</p>
+    
+              <p><strong>Approval Status:</strong> 
+                <span class="badge ${
+                  order.isApproved === true || order.isApproved === "Approved"
+                    ? "bg-success"
+                    : "bg-danger"
+                }">
+                  ${
+                    order.isApproved === true || order.isApproved === "Approved"
+                      ? "Approved"
+                      : "Disapproved"
+                  }
+                </span>
+              </p>
+            </div>
+          </div>
+          
+          <div class="mb-3">
+            <h6>Supplier Responses</h6>
+            <div class="table-responsive">
+              <table class="table table-sm">
+                <thead>
+                  <tr>
+                    <th>Supplier ID</th>
+                    <th>Status</th>
+                    <th>Response Date</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${
+                    order.supplierResponses && order.supplierResponses.length
+                      ? order.supplierResponses
+                          .map(
+                            (response) => `
+                          <tr class="${
+                            response.status === "Accepted"
+                              ? "table-success"
+                              : "table-light"
+                          }">
+                            <td>${response.supplier_Id || "N/A"}</td>
+                            <td>${response.status || "N/A"}</td>
+                            <td>${
+                              response.date && !isNaN(new Date(response.date))
+                                ? new Date(response.date).toLocaleString()
+                                : "No date available"
+                            }</td>
+    
+    
+                          </tr>
+                        `
+                          )
+                          .join("")
+                      : '<tr><td colspan="3" class="text-muted">No supplier responses yet</td></tr>'
+                  }
+                </tbody>
+              </table>
+            </div>
+          </div>
+          
+          ${
+            acceptedSuppliers.length > 0
+              ? `
+            <div class="alert alert-success">
+              <i class="fas fa-check-circle me-2"></i>
+              This order has been accepted by ${acceptedSuppliers.length} supplier(s)
+            </div>
+          `
+              : ""
+          }
+        `;
+
+            orderModal.show();
+          } catch (e) {
+            console.error("Error showing order details:", e);
+            alert("Failed to display order details");
+          }
+        }
+
+        // 6. Initialize
+        loadOrders();
+
+        // Search functionality
+        searchInput.addEventListener("input", function () {
+          const searchTerm = this.value.toLowerCase();
+          const rows = ordersTable.querySelectorAll("tr");
+
+          rows.forEach((row) => {
+            if (row.id === "loadingRow") return;
+
+            const orderId = row.cells[0].textContent.toLowerCase();
+            const customerId = row.cells[1].textContent.toLowerCase();
+            const projectName = row.cells[2].textContent.toLowerCase();
+            const supplierInfo = row.cells[5].textContent.toLowerCase();
+            const responseStatus = row.cells[6].textContent.toLowerCase();
+
+            if (
+              orderId.includes(searchTerm) ||
+              customerId.includes(searchTerm) ||
+              projectName.includes(searchTerm) ||
+              supplierInfo.includes(searchTerm) ||
+              responseStatus.includes(searchTerm)
+            ) {
+              row.style.display = "";
+            } else {
+              row.style.display = "none";
+            }
+          });
         });
       });
-    }
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", async function () {
+        const orderTable2 = document.getElementById("orderTable2");
+        const searchInput2 = document.getElementById("searchInput2");
 
-    // Helper function to create a single order row
-    function createOrderRow(order, response, totalResponses) {
-      const hasResponse = response !== null;
-      const isAccepted = hasResponse && response.status === "Accepted";
+        // Retrieve customer data
+        const customerData = sessionStorage.getItem("customer");
+        const customer = customerData ? JSON.parse(customerData) : null;
+        const customer_id = customer ? customer.customer_id : null;
 
-      return `
-        <tr ${isAccepted ? 'class="supplier-highlight"' : ""}>
-          <td>${order.order_id || "N/A"}</td>
-          <td class="customer-id">${
-            order.customer_id || customer.customer_id || "N/A"
-          }</td>
-          <td>${order.pname || "Unnamed Project"}</td>
-          <td>${order.Part_Name || "No part specified"}</td>
-          <td>
-            <span class="badge ${getStatusBadgeClass(
-              order.working_status
-            )}">
-              ${order.working_status || "Unknown"}
-            </span>
-          </td>
-          <td>
-            ${
-              hasResponse
-                ? `Supplier ID: ${response.supplier_Id || "N/A"}`
-                : "No responses"
-            }
-            <small class="text-muted"> (${totalResponses} total responses)</small>
-          </td>
-          <td>
-            ${
-              hasResponse
-                ? `<span class="${
-                    response.status === "Accepted"
-                      ? "response-accepted"
-                      : "response-rejected"
-                  }">
-                    <i class="fas ${
-                      response.status === "Accepted"
-                        ? "fa-check-circle"
-                        : "fa-times-circle"
-                    } me-1"></i>
-                    ${response.status || "Unknown"}
-                  </span>`
-                : '<span class="text-muted">No response</span>'
-            }
-          </td>
-          <td>
-            <button class="btn btn-sm btn-primary view-order" 
-                    data-order='${JSON.stringify(order)}'>
-              <i class="fas fa-eye me-1"></i> View
-            </button>
-          </td>
-        </tr>`;
-    }
-
-    // 5. Helper functions
-    function showLoading() {
-      ordersTable.innerHTML = `
-          <tr id="loadingRow">
-            <td colspan="8" class="text-center py-4">
-              <div class="spinner-border text-primary" role="status">
-                <span class="visually-hidden">Loading...</span>
-              </div>
-              <p class="mt-2 mb-0">Loading your orders...</p>
-            </td>
-          </tr>`;
-    }
-
-    function showError(message, redirect = false) {
-      ordersTable.innerHTML = `
-          <tr>
-            <td colspan="8" class="text-center py-4 text-danger">
-              <i class="fas fa-exclamation-triangle me-2"></i>
-              ${message}
-              ${redirect ? "<p>Redirecting to login...</p>" : ""}
-            </td>
-          </tr>`;
-
-      if (redirect) {
-        setTimeout(() => (window.location.href = "login.html"), 2000);
-      }
-    }
-
-    function getStatusBadgeClass(status) {
-      if (!status) return "bg-secondary";
-      switch (status.toLowerCase()) {
-        case "completed":
-          return "bg-success";
-        case "accepted":
-          return "bg-success";
-        case "working":
-        case "in progress":
-          return "bg-warning";
-        case "pending":
-          return "bg-warning";
-        case "rejected":
-        case "failed":
-          return "bg-danger";
-        default:
-          return "bg-secondary";
-      }
-    }
-
-    function showOrderDetails(orderData) {
-  try {
-    const order =
-      typeof orderData === "string" ? JSON.parse(orderData) : orderData;
-    const modalTitle = document.getElementById("orderModalTitle");
-    const modalBody = document.getElementById("orderModalBody");
-
-    modalTitle.textContent = `Order Details - #${order.order_id}`;
-
-    // Get accepted suppliers
-    const acceptedSuppliers =
-      order.supplierResponses?.filter((r) => r?.status === "Accepted") || [];
-
-    modalBody.innerHTML = `
-      <div class="row mb-3">
-        <div class="col-md-6">
-          <h6>Project Information</h6>
-          <p><strong>Customer ID:</strong> ${
-            order.customer_id || customer.customer_id || "N/A"
-          }</p>
-          <p><strong>Project Name:</strong> ${order.pname || "N/A"}</p>
-          <p><strong>Part Name:</strong> ${order.Part_Name || "N/A"}</p>
-          <p><strong>Description:</strong> ${order.description || "No description"}</p>
-        </div>
-        <div class="col-md-6">
-          <h6>Order Status</h6>
-          <p><strong>Status:</strong> 
-            <span class="badge ${getStatusBadgeClass(order.working_status)}">
-              ${order.working_status || "Unknown"}
-            </span>
-          </p>
-          <p><strong>Created:</strong> ${
-  order.createdAt && !isNaN(new Date(order.createdAt))
-    ? new Date(order.createdAt).toLocaleString()
-    : "Unknown date"
-}</p>
-
-          <p><strong>Approval Status:</strong> 
-            <span class="badge ${
-              order.isApproved === true || order.isApproved === "Approved"
-                ? "bg-success"
-                : "bg-danger"
-            }">
-              ${
-                order.isApproved === true || order.isApproved === "Approved"
-                  ? "Approved"
-                  : "Disapproved"
-              }
-            </span>
-          </p>
-        </div>
-      </div>
-      
-      <div class="mb-3">
-        <h6>Supplier Responses</h6>
-        <div class="table-responsive">
-          <table class="table table-sm">
-            <thead>
-              <tr>
-                <th>Supplier ID</th>
-                <th>Status</th>
-                <th>Response Date</th>
-              </tr>
-            </thead>
-            <tbody>
-              ${
-                order.supplierResponses && order.supplierResponses.length
-                  ? order.supplierResponses
-                      .map(
-                        (response) => `
-                      <tr class="${
-                        response.status === "Accepted"
-                          ? "table-success"
-                          : "table-light"
-                      }">
-                        <td>${response.supplier_Id || "N/A"}</td>
-                        <td>${response.status || "N/A"}</td>
-                        <td>${
-  response.date && !isNaN(new Date(response.date))
-    ? new Date(response.date).toLocaleString()
-    : "No date available"
-}</td>
-
-
-                      </tr>
-                    `
-                      )
-                      .join("")
-                  : '<tr><td colspan="3" class="text-muted">No supplier responses yet</td></tr>'
-              }
-            </tbody>
-          </table>
-        </div>
-      </div>
-      
-      ${
-        acceptedSuppliers.length > 0
-          ? `
-        <div class="alert alert-success">
-          <i class="fas fa-check-circle me-2"></i>
-          This order has been accepted by ${acceptedSuppliers.length} supplier(s)
-        </div>
-      `
-          : ""
-      }
-    `;
-
-    orderModal.show();
-  } catch (e) {
-    console.error("Error showing order details:", e);
-    alert("Failed to display order details");
-  }
-}
-
-
-    // 6. Initialize
-    loadOrders();
-
-    // Search functionality
-    searchInput.addEventListener("input", function () {
-      const searchTerm = this.value.toLowerCase();
-      const rows = ordersTable.querySelectorAll("tr");
-
-      rows.forEach((row) => {
-        if (row.id === "loadingRow") return;
-
-        const orderId = row.cells[0].textContent.toLowerCase();
-        const customerId = row.cells[1].textContent.toLowerCase();
-        const projectName = row.cells[2].textContent.toLowerCase();
-        const supplierInfo = row.cells[5].textContent.toLowerCase();
-        const responseStatus = row.cells[6].textContent.toLowerCase();
-
-        if (
-          orderId.includes(searchTerm) ||
-          customerId.includes(searchTerm) ||
-          projectName.includes(searchTerm) ||
-          supplierInfo.includes(searchTerm) ||
-          responseStatus.includes(searchTerm)
-        ) {
-          row.style.display = "";
-        } else {
-          row.style.display = "none";
+        if (!customer_id) {
+          console.error("❌ No customer ID found in sessionStorage.");
+          orderTable2.innerHTML = `<tr><td colspan="7" class="text-center text-danger">No customer ID found.</td></tr>`;
+          return;
         }
-      });
-    });
-  });
-</script>
-<script>
-  document.addEventListener("DOMContentLoaded", async function () {
-    const orderTable2 = document.getElementById("orderTable2");
-    const searchInput2 = document.getElementById("searchInput2");
 
-    // Retrieve customer data
-    const customerData = sessionStorage.getItem("customer");
-    const customer = customerData ? JSON.parse(customerData) : null;
-    const customer_id = customer ? customer.customer_id : null;
+        console.log("✅ Customer ID:", customer_id);
 
-    if (!customer_id) {
-        console.error("❌ No customer ID found in sessionStorage.");
-        orderTable2.innerHTML = `<tr><td colspan="7" class="text-center text-danger">No customer ID found.</td></tr>`;
-        return;
-    }
+        async function fetchApprovedOrders() {
+          try {
+            const response = await fetch(
+              `https://backend-api-k9ts.onrender.com/api/customer/approved-orders/${customer_id}`
+            );
 
-    console.log("✅ Customer ID:", customer_id);
-
-    async function fetchApprovedOrders() {
-        try {
-            const response = await fetch(`https://backend-api-k9ts.onrender.com/api/customer/approved-orders/${customer_id}`);
-            
-            if (!response.ok) throw new Error("Failed to fetch approved orders");
+            if (!response.ok)
+              throw new Error("Failed to fetch approved orders");
 
             const orders = await response.json();
             displayApprovedOrders(orders);
-        } catch (error) {
+          } catch (error) {
             console.error("❌ Error fetching approved orders:", error);
             orderTable2.innerHTML = `<tr><td colspan="7" class="text-center text-danger">Failed to load approved orders.</td></tr>`;
+          }
         }
-    }
 
-    function displayApprovedOrders(orders) {
-        if (orders.length === 0) {
+        function displayApprovedOrders(orders) {
+          if (orders.length === 0) {
             orderTable2.innerHTML = `
-                <tr>
-                    <td colspan="7">
-                        <div class="card-header pb-0 p-3">
-                            <div class="d-flex justify-content-between">
-                                <h6 class="mb-2">No Approved Orders Yet</h6>
+                    <tr>
+                        <td colspan="7">
+                            <div class="card-header pb-0 p-3">
+                                <div class="d-flex justify-content-between">
+                                    <h6 class="mb-2">No Approved Orders Yet</h6>
+                                </div>
                             </div>
-                        </div>
-                    </td>
-                </tr>`;
+                        </td>
+                    </tr>`;
             return;
-        }
+          }
 
-        orderTable2.innerHTML = orders
-            .map(order => `
-                <tr>
-                    <td>
-                        <div class="text-center">
-                            <p class="text-xs font-weight-bold mb-0">Project Name</p>
-                            <h6 class="text-sm mb-0">${order.pname}</h6>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="text-center">
-                            <p class="text-xs font-weight-bold mb-0">Part Name</p>
-                            <h6 class="text-sm mb-0">${order.Part_Name}</h6>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="text-center">
-                            <p class="text-xs font-weight-bold mb-0">SOP Date:</p>
-                            <h6 class="text-sm mb-0">${new Date(order.sop).toLocaleDateString()}</h6>
-                        </div>
-                    </td>
-                    <td class="align-middle text-sm">
-                        <div class="col text-center">
-                            <p class="text-xs font-weight-bold mb-0">Category</p>
-                            <h6 class="text-sm mb-0">${order.category}</h6>
-                        </div>
-                    </td>
-                    <td class="align-middle text-sm">
-                        <div class="col text-center">
-                            <p class="text-xs font-weight-bold mb-0">Working Status</p>
-                            <h6 class="text-sm mb-0">${order.working_status || 'None'}</h6>
-                        </div>
-                    </td>
-                    <td class="align-middle text-sm">
-                        <div class="col text-center">
-                            <p class="text-xs font-weight-bold mb-0">Approval Status</p>
-                            <i class="fa fa-check-circle text-success"> Approved</i>
-                        </div>
-                    </td>
-                    <td class="align-middle text-sm">
-                        <div class="col text-center">
-                            <button type="button" class="btn btn-primary view-btn" data-order='${JSON.stringify(order)}'>View</button>
-                        </div>
-                    </td>
-                </tr>
-            `)
+          orderTable2.innerHTML = orders
+            .map(
+              (order) => `
+                    <tr>
+                        <td>
+                            <div class="text-center">
+                                <p class="text-xs font-weight-bold mb-0">Project Name</p>
+                                <h6 class="text-sm mb-0">${order.pname}</h6>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="text-center">
+                                <p class="text-xs font-weight-bold mb-0">Part Name</p>
+                                <h6 class="text-sm mb-0">${order.Part_Name}</h6>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="text-center">
+                                <p class="text-xs font-weight-bold mb-0">SOP Date:</p>
+                                <h6 class="text-sm mb-0">${new Date(
+                                  order.sop
+                                ).toLocaleDateString()}</h6>
+                            </div>
+                        </td>
+                        <td class="align-middle text-sm">
+                            <div class="col text-center">
+                                <p class="text-xs font-weight-bold mb-0">Category</p>
+                                <h6 class="text-sm mb-0">${order.category}</h6>
+                            </div>
+                        </td>
+                        <td class="align-middle text-sm">
+                            <div class="col text-center">
+                                <p class="text-xs font-weight-bold mb-0">Working Status</p>
+                                <h6 class="text-sm mb-0">${
+                                  order.working_status || "None"
+                                }</h6>
+                            </div>
+                        </td>
+                        <td class="align-middle text-sm">
+                            <div class="col text-center">
+                                <p class="text-xs font-weight-bold mb-0">Approval Status</p>
+                                <i class="fa fa-check-circle text-success"> Approved</i>
+                            </div>
+                        </td>
+                        <td class="align-middle text-sm">
+                            <div class="col text-center">
+                                <button type="button" class="btn btn-primary view-btn" data-order='${JSON.stringify(
+                                  order
+                                )}'>View</button>
+                            </div>
+                        </td>
+                    </tr>
+                `
+            )
             .join("");
 
-        // Attach event listeners to View buttons
-        document.querySelectorAll(".view-btn").forEach(button => {
+          // Attach event listeners to View buttons
+          document.querySelectorAll(".view-btn").forEach((button) => {
             button.addEventListener("click", function () {
-                const orderData = JSON.parse(this.getAttribute("data-order"));
-                openModal(orderData);
+              const orderData = JSON.parse(this.getAttribute("data-order"));
+              openModal(orderData);
             });
-        });
-    }
+          });
+        }
 
-    // Search functionality for approved orders
-    searchInput2.addEventListener("input", function () {
-        const searchTerm = searchInput2.value.toLowerCase();
-        const rows = orderTable2.querySelectorAll("tr");
+        // Search functionality for approved orders
+        searchInput2.addEventListener("input", function () {
+          const searchTerm = searchInput2.value.toLowerCase();
+          const rows = orderTable2.querySelectorAll("tr");
 
-        rows.forEach(row => {
+          rows.forEach((row) => {
             const projectName = row.children[0]?.innerText.toLowerCase() || "";
             row.style.display = projectName.includes(searchTerm) ? "" : "none";
+          });
         });
-    });
 
-    // Modal function
-    function openModal(order) {
-        // Remove existing modal if present
-        const existingModal = document.getElementById("orderModal");
-        if (existingModal) existingModal.remove();
+        // Modal function
+        function openModal(order) {
+          // Remove existing modal if present
+          const existingModal = document.getElementById("orderModal");
+          if (existingModal) existingModal.remove();
 
-        // Bootstrap Modal HTML
-        const modalHtml = `
-        <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Order Details</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">Order Information</h5>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <p><strong>Customer ID:</strong> ${order.customer_id}</p>
-                                        <p><strong>Project ID:</strong> ${order.order_id}</p>
-                                        <p><strong>Company Name:</strong> ${order.cname}</p>
-                                        <p><strong>Project Name:</strong> ${order.pname}</p>
-                                        <p><strong>Part Name:</strong> ${order.Part_Name}</p>
-                                        <p><strong>Category:</strong> ${order.category}</p>
-                                        <p><strong>Email:</strong> ${order.email}</p>
-                                        <p><strong>Phone Number:</strong> ${order.phone_number}</p>
+          // Bootstrap Modal HTML
+          const modalHtml = `
+            <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Order Details</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">Order Information</h5>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <p><strong>Customer ID:</strong> ${
+                                              order.customer_id
+                                            }</p>
+                                            <p><strong>Project ID:</strong> ${
+                                              order.order_id
+                                            }</p>
+                                            <p><strong>Company Name:</strong> ${
+                                              order.cname
+                                            }</p>
+                                            <p><strong>Project Name:</strong> ${
+                                              order.pname
+                                            }</p>
+                                            <p><strong>Part Name:</strong> ${
+                                              order.Part_Name
+                                            }</p>
+                                            <p><strong>Category:</strong> ${
+                                              order.category
+                                            }</p>
+                                            <p><strong>Email:</strong> ${
+                                              order.email
+                                            }</p>
+                                            <p><strong>Phone Number:</strong> ${
+                                              order.phone_number
+                                            }</p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <p><strong>Part Number:</strong> ${
+                                              order.cpno
+                                            }</p>
+                                            <p><strong>Target Value:</strong> ${
+                                              order.tv
+                                            }</p>
+                                            <p><strong>Annual Volume:</strong> ${
+                                              order.av
+                                            }</p>
+                                            <p><strong>Quote Submission:</strong> ${new Date(
+                                              order.qs
+                                            ).toLocaleDateString()}</p>
+                                            <p><strong>Start of Production:</strong> ${new Date(
+                                              order.sop
+                                            ).toLocaleDateString()}</p>
+                                            <p><strong>Status:</strong> ${
+                                              order.working_status
+                                            }</p>
+                                            <p><strong>Approval Status:</strong> ${
+                                              order.isApproved
+                                            }</p>
+                                        </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <p><strong>Part Number:</strong> ${order.cpno}</p>
-                                        <p><strong>Target Value:</strong> ${order.tv}</p>
-                                        <p><strong>Annual Volume:</strong> ${order.av}</p>
-                                        <p><strong>Quote Submission:</strong> ${new Date(order.qs).toLocaleDateString()}</p>
-                                        <p><strong>Start of Production:</strong> ${new Date(order.sop).toLocaleDateString()}</p>
-                                        <p><strong>Status:</strong> ${order.working_status}</p>
-                                        <p><strong>Approval Status:</strong> ${order.isApproved}</p>
+    
+                                    ${
+                                      order.pdf_file &&
+                                      order.pdf_file.trim() !== ""
+                                        ? `
+                                        <div class="mt-3 text-center">
+                                            <a href="${order.pdf_file}" download class="btn btn-success">
+                                                <i class="fas fa-file-download"></i> Download File
+                                            </a>
+                                        </div>
+                                    `
+                                        : `<p class="text-muted text-center mt-3">No file available</p>`
+                                    }
+    
+                                    <div class="text-end mt-3">
+                                        <button class="btn btn-primary" data-bs-dismiss="modal">Close</button>
                                     </div>
-                                </div>
-
-                                ${order.pdf_file && order.pdf_file.trim() !== "" ? `
-                                    <div class="mt-3 text-center">
-                                        <a href="${order.pdf_file}" download class="btn btn-success">
-                                            <i class="fas fa-file-download"></i> Download File
-                                        </a>
-                                    </div>
-                                ` : `<p class="text-muted text-center mt-3">No file available</p>`}
-
-                                <div class="text-end mt-3">
-                                    <button class="btn btn-primary" data-bs-dismiss="modal">Close</button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>`;
+            </div>`;
 
-        // Insert modal HTML into body
-        document.body.insertAdjacentHTML("beforeend", modalHtml);
+          // Insert modal HTML into body
+          document.body.insertAdjacentHTML("beforeend", modalHtml);
 
-        // Show Bootstrap modal
-        const myModal = new bootstrap.Modal(document.getElementById("orderModal"));
-        myModal.show();
+          // Show Bootstrap modal
+          const myModal = new bootstrap.Modal(
+            document.getElementById("orderModal")
+          );
+          myModal.show();
+        }
+
+        fetchApprovedOrders(); // Fetch approved orders on page load
+      });
+    </script>
+    <!-- Orders Modal -->
+<div class="modal fade" id="categoryOrdersModal" tabindex="-1" aria-labelledby="categoryOrdersModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="categoryOrdersModalLabel">Orders</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>Order ID</th>
+              <th>Part Name</th>
+              <th>Status</th>
+              <th>Created</th>
+            </tr>
+          </thead>
+          <tbody id="categoryOrdersTableBody">
+            <!-- Orders will be injected here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  async function fetchOrdersByCategory(categoryName) {
+    const customerData = sessionStorage.getItem("customer");
+    if (!customerData) {
+      alert("Please login first");
+      return;
     }
 
-    fetchApprovedOrders(); // Fetch approved orders on page load
-});
+    const customer = JSON.parse(customerData);
+    const customerId = customer.customer_id;
+
+    try {
+      const response = await fetch(`https://backend-api-k9ts.onrender.com/api/customer/orders/${customerId}`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${sessionStorage.getItem("token") || ""}`
+        }
+      });
+
+      const orders = await response.json();
+      const filtered = orders.filter(
+        (order) =>
+          order.category?.toLowerCase() === categoryName.toLowerCase() &&
+          (order.isApproved === true || order.isApproved === "Approved")
+      );
+
+      const tableBody = document.getElementById("categoryOrdersTableBody");
+      tableBody.innerHTML = filtered.length
+        ? filtered
+            .map(
+              (order) => `
+                <tr>
+                  <td>${order.order_id}</td>
+                  <td>${order.Part_Name}</td>
+                  <td>${order.working_status}</td>
+                  <td>${new Date(order.createdAt).toLocaleDateString()}</td>
+                </tr>
+              `
+            )
+            .join("")
+        : `<tr><td colspan="4" class="text-center text-muted">No orders in this category.</td></tr>`;
+
+      document.getElementById("categoryOrdersModalLabel").textContent = `Orders - ${categoryName}`;
+      const modal = new bootstrap.Modal(document.getElementById("categoryOrdersModal"));
+      modal.show();
+    } catch (err) {
+      console.error("Error loading orders:", err);
+      alert("Failed to load orders.");
+    }
+  }
 </script>
+<script>
+  async function fetchOrdersByStatus(status) {
+    try {
+      // Show loading state
+      const orderList = document.getElementById('statusOrderList');
+      orderList.innerHTML = `
+        <tr>
+          <td colspan="8" class="text-center py-4">
+            <div class="spinner-border text-primary" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </td>
+        </tr>
+      `;
+      
+      // Show modal
+      const modal = new bootstrap.Modal(document.getElementById('statusModal'));
+      modal.show();
+      
+      // Store the modal instance for later use
+      window.statusModal = modal;
+      
+      // Get customer data
+      const customerData = sessionStorage.getItem("customer");
+      if (!customerData) {
+        orderList.innerHTML = `
+          <tr>
+            <td colspan="8" class="text-center text-danger py-4">
+              Please login first
+            </td>
+          </tr>
+        `;
+        return;
+      }
   
+      const customer = JSON.parse(customerData);
+      const customerId = customer.customer_id;
+  
+      // Fetch orders
+      const response = await fetch(`https://backend-api-k9ts.onrender.com/api/customer/orders/${customerId}`, {
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${sessionStorage.getItem("token") || ""}`
+        }
+      });
+  
+      if (!response.ok) throw new Error('Failed to fetch orders');
+      
+      const orders = await response.json();
+      const filtered = orders.filter(
+        order => order.working_status?.toLowerCase() === status.toLowerCase() && 
+        (order.isApproved === true || order.isApproved === "Approved")
+      );
+  
+      // Update UI
+      displayOrders(filtered);
+      
+      // Set up modal close event listener
+      document.getElementById('statusModal').addEventListener('hidden.bs.modal', function () {
+        // Minimal refresh - just update the visible elements if needed
+        updateStatusBadges();
+      });
+      
+    } catch (err) {
+      console.error("Error loading orders:", err);
+      document.getElementById('statusOrderList').innerHTML = `
+        <tr>
+          <td colspan="8" class="text-center text-danger py-4">
+            Error loading orders: ${err.message}
+          </td>
+        </tr>
+      `;
+    }
+  }
+  
+  function displayOrders(orders) {
+    const orderList = document.getElementById('statusOrderList');
+    orderList.innerHTML = '';
+    
+    if (orders.length) {
+      orders.forEach((order) => {
+        const supplierId = order.acceptedSupplier?.supplier_Id || 
+          '<span class="text-muted">Not Assigned</span>';
+        
+        const acceptedDate = order.acceptedSupplier?.acceptedAt ? 
+          new Date(order.acceptedSupplier.acceptedAt).toLocaleDateString() : 
+          '<span class="text-muted">N/A</span>';
+        
+        const statusBadge = {
+          'completed': 'success',
+          'working': 'warning',
+          'pending': 'danger'
+        }[order.working_status.toLowerCase()] || 'secondary';
+  
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td class="text-center">${order.order_id}</td>
+          <td>${order.cname}</td>
+          <td>${order.Part_Name}</td>
+          <td>${order.category}</td>
+          <td class="text-truncate" style="max-width: 200px;" title="${order.desc}">${order.desc}</td>
+          <td class="text-center">
+            <span class="badge bg-${statusBadge}">
+              ${order.working_status}
+            </span>
+          </td>
+          <td>${supplierId}</td>
+          <td>${acceptedDate}</td>
+        `;
+        orderList.appendChild(row);
+      });
+    } else {
+      orderList.innerHTML = `
+        <tr>
+          <td colspan="8" class="text-center text-muted py-4">
+            No orders found
+          </td>
+        </tr>
+      `;
+    }
+  }
+  
+  function updateStatusBadges() {
+    // This function would update any status indicators on the main page
+    // without a full page reload. For example:
+    
+    // 1. Update counts in the status cards
+    fetch('https://backend-api-k9ts.onrender.com/api/customer/status-counts')
+      .then(response => response.json())
+      .then(data => {
+        document.getElementById('completedCount').textContent = data.completed;
+        document.getElementById('workingCount').textContent = data.working;
+        document.getElementById('pendingCount').textContent = data.pending;
+      })
+      .catch(err => console.error('Error updating counts:', err));
+    
+    // 2. Or just refresh the visible elements that might have changed
+    console.log('Modal closed - performing minimal UI update');
+  }
+  </script>
   </body>
 </html>
-

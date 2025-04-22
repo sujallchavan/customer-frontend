@@ -515,6 +515,12 @@
                     >Place Order List</a
                   >
                 </li>
+                <li class="nav-item">
+  <a class="nav-link text-black" href="#" data-bs-toggle="modal" data-bs-target="#signInModal">
+    Profile
+  </a>
+</li>
+
               </ul>
             </div>
           </div>
@@ -2554,31 +2560,34 @@
       });
     </script>
     <!-- Orders Modal -->
-<div class="modal fade" id="categoryOrdersModal" tabindex="-1" aria-labelledby="categoryOrdersModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="categoryOrdersModalLabel">Orders</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <table class="table table-bordered table-hover">
-          <thead>
-            <tr>
-              <th>Order ID</th>
-              <th>Part Name</th>
-              <th>Status</th>
-              <th>Created</th>
-            </tr>
-          </thead>
-          <tbody id="categoryOrdersTableBody">
-            <!-- Orders will be injected here -->
-          </tbody>
-        </table>
+    <div class="modal fade" id="categoryOrdersModal" tabindex="-1" aria-labelledby="categoryOrdersModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="categoryOrdersModalLabel">Orders</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="table-responsive">
+              <table class="table table-bordered table-hover">
+                <thead>
+                  <tr>
+                    <th>Order ID</th>
+                    <th>Part Name</th>
+                    <th>Status</th>
+                    <th>Created</th>
+                  </tr>
+                </thead>
+                <tbody id="categoryOrdersTableBody">
+                  <!-- Orders will be injected here -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
+    
 <script>
   async function fetchOrdersByCategory(categoryName) {
     const customerData = sessionStorage.getItem("customer");

@@ -54,7 +54,7 @@
 
           // 2. Fetch orders from BACKEND
           const response = await fetch(
-            `http://localhost:5000/api/customer/get-my-orders-only/${customer.customer_id}`
+            `https://backend-api-3qcm.onrender.com/api/customer/get-my-orders-only/${customer.customer_id}`
           );
 
           // 3. Handle HTTP errors

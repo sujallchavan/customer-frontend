@@ -642,336 +642,21 @@
                   <table class="table align-items-center mb-0">
                     <thead>
                       <tr>
-                        <th
-                          class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
-                        > 
-                        supplier
-                        </th>
-                        <th
-                        class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
-                      > 
-                      Location
-                      </th>
-                        <th
-                          class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2"
-                        >
-                          commodities
-                        </th>
-                        <th
-                          class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
-                        >
-                          Contact
-                        </th>
-                        <th
-                          class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"
-                        >
-                          Assgin Date
-                        </th>
-                        
-                        <th class="text-secondary opacity-7"></th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Supplier</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Location</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Commodities</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Contact</th>
+                        <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Assign Date</th>
+                        <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Supplier ID</th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="supplierTableBody">
                       <tr>
-                        <td>
-                          <div class="d-flex px-2 py-1">
-                            <div>
-                              <img
-                                src="{% static 'img/team-2.jpg' %}"
-                                class="avatar avatar-sm me-3"
-                                alt="user1"
-                              />
-                            </div>
-                            <div
-                              class="d-flex flex-column justify-content-center"
-                            >
-                              <h6 class="mb-0 text-sm">John Michael</h6>
-                              <p class="text-xs text-secondary mb-0">
-                                john@creative-tim.com
-                              </p>
-                            </div>
+                        <td colspan="6" class="text-center py-4">
+                          <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
                           </div>
-                        </td>
-                        <td>
-                          <p class="text-xs font-weight-bold mb-0">Manager</p>
-                          <p class="text-xs text-secondary mb-0">
-                            Organization
-                          </p>
-                        </td>
-                        <td>
-                          <p class="text-xs font-weight-bold mb-0">Manager</p>
-                          <p class="text-xs text-secondary mb-0">
-                            Organization
-                          </p>
-                        </td>
-                        <td class="align-middle text-center text-sm">
-                          721851518
-                        </td>
-                        <td class="align-middle text-center">
-                          <span class="text-secondary text-xs font-weight-bold"
-                            >23/04/18</span
-                          >
-                        </td>
-                        <td class="align-middle">
-                          <a
-                            href="javascript:;"
-                            class="text-secondary font-weight-bold text-xs"
-                            data-toggle="tooltip"
-                            data-original-title="Edit user"
-                          >
-                            Edit
-                          </a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="d-flex px-2 py-1">
-                            <div>
-                              <img
-                                src="{% static 'img/team-3.jpg' %}"
-                                class="avatar avatar-sm me-3"
-                                alt="user2"
-                              />
-                            </div>
-                            <div
-                              class="d-flex flex-column justify-content-center"
-                            >
-                              <h6 class="mb-0 text-sm">Alexa Liras</h6>
-                              <p class="text-xs text-secondary mb-0">
-                                alexa@creative-tim.com
-                              </p>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <p class="text-xs font-weight-bold mb-0">
-                            Programator
-                          </p>
-                          <p class="text-xs text-secondary mb-0">Developer</p>
-                        </td>
-                        <td>
-                          <p class="text-xs font-weight-bold mb-0">Manager</p>
-                          <p class="text-xs text-secondary mb-0">
-                            Organization
-                          </p>
-                        </td>
-                        <td class="align-middle text-center text-sm">
-                          721851518
-                        </td>
-                        <td class="align-middle text-center">
-                          <span class="text-secondary text-xs font-weight-bold"
-                            >11/01/19</span
-                          >
-                        </td>
-                        <td class="align-middle">
-                          <a
-                            href="javascript:;"
-                            class="text-secondary font-weight-bold text-xs"
-                            data-toggle="tooltip"
-                            data-original-title="Edit user"
-                          >
-                            Edit
-                          </a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="d-flex px-2 py-1">
-                            <div>
-                              <img
-                                src="{% static 'img/team-4.jpg' %}"
-                                class="avatar avatar-sm me-3"
-                                alt="user3"
-                              />
-                            </div>
-                            <div
-                              class="d-flex flex-column justify-content-center"
-                            >
-                              <h6 class="mb-0 text-sm">Laurent Perrier</h6>
-                              <p class="text-xs text-secondary mb-0">
-                                laurent@creative-tim.com
-                              </p>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <p class="text-xs font-weight-bold mb-0">Executive</p>
-                          <p class="text-xs text-secondary mb-0">Projects</p>
-                        </td>
-                        <td>
-                          <p class="text-xs font-weight-bold mb-0">Manager</p>
-                          <p class="text-xs text-secondary mb-0">
-                            Organization
-                          </p>
-                        </td>
-                        <td class="align-middle text-center text-sm">
-                          721851518
-                        </td>
-                        <td class="align-middle text-center">
-                          <span class="text-secondary text-xs font-weight-bold"
-                            >19/09/17</span
-                          >
-                        </td>
-                        <td class="align-middle">
-                          <a
-                            href="javascript:;"
-                            class="text-secondary font-weight-bold text-xs"
-                            data-toggle="tooltip"
-                            data-original-title="Edit user"
-                          >
-                            Edit
-                          </a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="d-flex px-2 py-1">
-                            <div>
-                              <img
-                                src="{% static 'img/team-3.jpg' %}"
-                                class="avatar avatar-sm me-3"
-                                alt="user4"
-                              />
-                            </div>
-                            <div
-                              class="d-flex flex-column justify-content-center"
-                            >
-                              <h6 class="mb-0 text-sm">Michael Levi</h6>
-                              <p class="text-xs text-secondary mb-0">
-                                michael@creative-tim.com
-                              </p>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <p class="text-xs font-weight-bold mb-0">
-                            Programator
-                          </p>
-                          <p class="text-xs text-secondary mb-0">Developer</p>
-                        </td>
-                        <td>
-                          <p class="text-xs font-weight-bold mb-0">Manager</p>
-                          <p class="text-xs text-secondary mb-0">
-                            Organization
-                          </p>
-                        </td>
-                        <td class="align-middle text-center text-sm">
-                          721851518
-                        </td>
-                        <td class="align-middle text-center">
-                          <span class="text-secondary text-xs font-weight-bold"
-                            >24/12/08</span
-                          >
-                        </td>
-                        <td class="align-middle">
-                          <a
-                            href="javascript:;"
-                            class="text-secondary font-weight-bold text-xs"
-                            data-toggle="tooltip"
-                            data-original-title="Edit user"
-                          >
-                            Edit
-                          </a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="d-flex px-2 py-1">
-                            <div>
-                              <img
-                                src="{% static 'img/team-2.jpg' %}"
-                                class="avatar avatar-sm me-3"
-                                alt="user5"
-                              />
-                            </div>
-                            <div
-                              class="d-flex flex-column justify-content-center"
-                            >
-                              <h6 class="mb-0 text-sm">Richard Gran</h6>
-                              <p class="text-xs text-secondary mb-0">
-                                richard@creative-tim.com
-                              </p>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <p class="text-xs font-weight-bold mb-0">Manager</p>
-                          <p class="text-xs text-secondary mb-0">Executive</p>
-                        </td>
-                        <td>
-                          <p class="text-xs font-weight-bold mb-0">Manager</p>
-                          <p class="text-xs text-secondary mb-0">
-                            Organization
-                          </p>
-                        </td>
-                        <td class="align-middle text-center text-sm">
-                          721851518
-                        </td>
-                        <td class="align-middle text-center">
-                          <span class="text-secondary text-xs font-weight-bold"
-                            >04/10/21</span
-                          >
-                        </td>
-                        <td class="align-middle">
-                          <a
-                            href="javascript:;"
-                            class="text-secondary font-weight-bold text-xs"
-                            data-toggle="tooltip"
-                            data-original-title="Edit user"
-                          >
-                            Edit
-                          </a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <div class="d-flex px-2 py-1">
-                            <div>
-                              <img
-                                src="{% static 'img/team-4.jpg' %}"
-                                class="avatar avatar-sm me-3"
-                                alt="user6"
-                              />
-                            </div>
-                            <div
-                              class="d-flex flex-column justify-content-center"
-                            >
-                              <h6 class="mb-0 text-sm">Miriam Eric</h6>
-                              <p class="text-xs text-secondary mb-0">
-                                miriam@creative-tim.com
-                              </p>
-                            </div>
-                          </div>
-                        </td>
-                        <td>
-                          <p class="text-xs font-weight-bold mb-0">
-                            Programtor
-                          </p>
-                          <p class="text-xs text-secondary mb-0">Developer</p>
-                        </td>
-                        <td>
-                          <p class="text-xs font-weight-bold mb-0">Manager</p>
-                          <p class="text-xs text-secondary mb-0">
-                            Organization
-                          </p>
-                        </td>
-                        <td class="align-middle text-center text-sm">
-                          721851518
-                        </td>
-                        <td class="align-middle text-center">
-                          <span class="text-secondary text-xs font-weight-bold"
-                            >14/09/20</span
-                          >
-                        </td>
-                        <td class="align-middle">
-                          <a
-                            href="javascript:;"
-                            class="text-secondary font-weight-bold text-xs"
-                            data-toggle="tooltip"
-                            data-original-title="Edit user"
-                          >
-                            Edit
-                          </a>
+                          <p class="text-sm text-muted mt-2">Loading suppliers...</p>
                         </td>
                       </tr>
                     </tbody>
@@ -981,6 +666,7 @@
             </div>
           </div>
         </div>
+        
         <div class="row">
           <div class="col-12">
               <div class="card mb-4">
@@ -998,6 +684,9 @@
                                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                           PROJECT NAME
                                       </th>
+                                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                        PROJECT ID
+                                    </th>
                                       <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                           PART NAME
                                       </th>
@@ -1028,107 +717,7 @@
                                       </div>
                                   </td>
                               </tr>
-                                  <!-- <tr>
-                                      <td>
-                                          <div class="d-flex px-2">
-                                              <div class="my-auto">
-                                                  <h6 class="mb-0 text-sm">Project Alpha</h6>
-                                              </div>
-                                          </div>
-                                      </td>
-                                      <td>
-                                          <p class="text-sm font-weight-bold mb-0">Part A</p>
-                                      </td>
-                                      <td>
-                                          <p class="text-sm font-weight-bold mb-0">1000</p>
-                                      </td>
-                                      <td>
-                                          <p class="text-sm font-weight-bold mb-0">Metal</p>
-                                      </td>
-                                      <td>
-                                          <p class="text-sm font-weight-bold mb-0">2025-01-15</p>
-                                      </td>
-                                      <td>
-                                          <span class="badge bg-warning rounded-pill text-xs font-weight-bold">Working</span>
-                                      </td>
-                                      <td class="align-middle">
-                                          <a href="edit_project.html?id=1" class="btn btn-link text-secondary mb-0">
-                                              <i class="fa fa-edit text-xs"></i>
-                                          </a>
-                                          
-<a href="#" class="btn btn-link text-secondary mb-0" data-bs-toggle="modal" data-bs-target="#deleteProjectModal">
-  <i class="fa fa-trash text-xs"></i>
-</a>
-
-                                      </td>
-                                  </tr>
-                                  <tr>
-                                      <td>
-                                          <div class="d-flex px-2">
-                                              <div class="my-auto">
-                                                  <h6 class="mb-0 text-sm">Project Beta</h6>
-                                              </div>
-                                          </div>
-                                      </td>
-                                      <td>
-                                          <p class="text-sm font-weight-bold mb-0">Part B</p>
-                                      </td>
-                                      <td>
-                                          <p class="text-sm font-weight-bold mb-0">500</p>
-                                      </td>
-                                      <td>
-                                          <p class="text-sm font-weight-bold mb-0">Plastic</p>
-                                      </td>
-                                      <td>
-                                          <p class="text-sm font-weight-bold mb-0">2024-10-20</p>
-                                      </td>
-                                      <td>
-                                          <span class="badge bg-danger rounded-pill text-xs font-weight-bold">Pending</span>
-                                      </td>
-                                      <td class="align-middle">
-                                          <a href="edit_project.html?id=2" class="btn btn-link text-secondary mb-0">
-                                              <i class="fa fa-edit text-xs"></i>
-                                          </a>
-                                          <a href="delete_project.html?id=2" class="btn btn-link text-secondary mb-0">
-                                              <i class="fa fa-trash text-xs"></i>
-                                          </a>
-                                      </td>
-                                  </tr>
-                                  <tr>
-                                      <td>
-                                          <div class="d-flex px-2">
-                                              <div class="my-auto">
-                                                  <h6 class="mb-0 text-sm">Project Gamma</h6>
-                                              </div>
-                                          </div>
-                                      </td>
-                                      <td>
-                                          <p class="text-sm font-weight-bold mb-0">Part C</p>
-                                      </td>
-                                      <td>
-                                          <p class="text-sm font-weight-bold mb-0">1200</p>
-                                      </td>
-                                      <td>
-                                          <p class="text-sm font-weight-bold mb-0">Composite</p>
-                                      </td>
-                                      <td>
-                                          <p class="text-sm font-weight-bold mb-0">2024-09-05</p>
-                                      </td>
-                                      <td>
-                                          <span class="badge bg-success rounded-pill text-xs font-weight-bold">Completed</span>
-                                      </td>
-                                      <td class="align-middle">
-                                        <a href="#" class="btn btn-link text-secondary mb-0" data-bs-toggle="modal" data-bs-target="#editRequirementModal" onclick="populateEditModal(3)">
-                                          <i class="fa fa-edit text-xs"></i>
-                                        </a>
-                                        <a href="delete_project.html?id=3" class="btn btn-link text-secondary mb-0">
-                                          <i class="fa fa-trash text-xs"></i>
-                                        </a>
-                                      </td>
-                                      
-                                  </tr> -->
-
-
+                                  
                               </tbody>
                           </table>
                       </div>
@@ -1141,7 +730,7 @@
         <div class="col-12">
             <div class="card mb-4">
                 <div class="card-header pb-0">
-                    <h6>Projects Table</h6>
+                    <h6>Order Assgin to you Table</h6>
                 </div>
                 <div class="card-body px-0 pt-0 pb-2">
                     <div class="mb-3" style="margin: 0 15px;">
@@ -1171,8 +760,17 @@
                                         STATUS
                                     </th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                        ACTIONS
+                                      SupplierID
+                                  </th>
+                                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                    Supplier Assgin
+                                </th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                        Approval Status
                                     </th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                      Actions
+                                  </th>
                                 </tr>
                             </thead>
                             <tbody id="customerOrdersTable">
@@ -1187,54 +785,24 @@
     
       </div>
 
-      <div class="row">
-        <div class="col-12">
-          <div class="card mb-4">
-            <div class="card-header pb-0">
-              <h6>Customer Orders</h6>
-            </div>
-            <div class="card-body px-0 pt-0 pb-2">
-              <div class="mb-3" style="margin: 0 15px;">
-                <input type="text" id="searchInputOrders" class="form-control" placeholder="Search Orders">
-              </div>
-              <div class="table-responsive p-0">
-                <table class="table align-items-center justify-content-center mb-0" style="padding-left: 20px; padding-right: 20px;">
-                  <thead>
-                    <tr>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                        ORDER ID
-                      </th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                        PROJECT NAME
-                      </th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                        PART NAME
-                      </th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                        CATEGORY
-                      </th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                        ORDER DATE
-                      </th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                        STATUS
-                      </th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                        ACTIONS
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody id="orderTable">
-                    <tr>
-                      <td colspan="7" class="text-center text-muted">Loading orders...</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
+      
+
+<div class="modal fade" id="supplierDetailsModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Supplier Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+      <div class="modal-body" id="supplierModalBody">
+        <!-- Content will be loaded dynamically -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
       
 
 
@@ -1251,11 +819,11 @@
           if (!customer_id) {
             console.error("❌ No customer ID found in sessionStorage.");
             document.getElementById("customerOrdersTable").innerHTML =
-              `<tr><td colspan="9" class="text-center text-danger">No customer ID found.</td></tr>`;
+              `<tr><td colspan="10" class="text-center text-danger">No customer ID found.</td></tr>`;
             return;
           }
     
-          const response = await fetch(`https://backend-api-k9ts.onrender.com/api/customer/orders/${customer_id}`);
+          const response = await fetch(`https://backend-api-3qcm.onrender.com/api/customer/orders/${customer_id}`);
           if (!response.ok) throw new Error("Failed to fetch orders");
     
           const orders = await response.json();
@@ -1263,7 +831,7 @@
         } catch (error) {
           console.error("❌ Error fetching customer orders:", error);
           document.getElementById("customerOrdersTable").innerHTML =
-            `<tr><td colspan="9" class="text-center text-danger">Failed to load orders.</td></tr>`;
+            `<tr><td colspan="10" class="text-center text-danger">Failed to load orders.</td></tr>`;
         }
       }
     
@@ -1280,17 +848,16 @@
           return;
         }
     
-        ordersTable.innerHTML = approvedOrders
-          .map(order => {
-            const supplierId = order.acceptedSupplier?.supplier_Id ?? 'N/A';
-            const acceptedDate = order.acceptedSupplier?.acceptedAt
-              ? new Date(order.acceptedSupplier.acceptedAt).toLocaleDateString()
-              : 'N/A';
-            const approvedStatus = order.isApproved === "Approved"
-              ? '<span class="badge bg-success text-white">Approved</span>'
-              : '<span class="badge bg-danger text-white">Not Approved</span>';
+        ordersTable.innerHTML = approvedOrders.map(order => {
+          const supplierId = order.acceptedSupplier?.supplier_Id ?? 'N/A';
+          const acceptedDate = order.acceptedSupplier?.acceptedAt
+            ? new Date(order.acceptedSupplier.acceptedAt).toLocaleDateString()
+            : 'N/A';
+          const approvedStatus = order.isApproved === "Approved"
+            ? '<span class="badge bg-success text-white">Approved</span>'
+            : '<span class="badge bg-danger text-white">Not Approved</span>';
     
-            return `
+          return `
             <tr>
               <td class="align-middle ps-4"><h6 class="mb-0 text-sm">${order.order_id || 'N/A'}</h6></td>
               <td class="ps-1"><p class="text-sm font-weight-bold mb-0">${order.pname || 'N/A'}</p></td>
@@ -1302,7 +869,9 @@
                   ${order.working_status ? order.working_status.charAt(0).toUpperCase() + order.working_status.slice(1).toLowerCase() : 'Unknown'}
                 </span>
               </td>
-              <td><p class="text-sm font-weight-bold mb-0">${supplierId}</p></td>
+              <td>
+                <p class="text-sm font-weight-bold mb-0 text-primary" style="cursor:pointer;" onclick="showSupplierDetails('${supplierId}')">${supplierId}</p>
+              </td>
               <td><p class="text-sm font-weight-bold mb-0">${acceptedDate}</p></td>
               <td>${approvedStatus}</td>
               <td class="text-center">
@@ -1311,8 +880,7 @@
                 </button>
               </td>
             </tr>`;
-          })
-          .join("");
+        }).join("");
     
         document.querySelectorAll(".view-btn").forEach(button => {
           button.addEventListener("click", function () {
@@ -1335,6 +903,72 @@
         }
       }
     
+      // Function to show supplier details
+      async function showSupplierDetails(supplierId) {
+        try {
+          const supplierModal = new bootstrap.Modal('#supplierDetailsModal');
+          const supplierModalBody = document.getElementById('supplierModalBody');
+          
+          // Show loading state
+          supplierModalBody.innerHTML = `
+            <div class="text-center py-4">
+              <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+              <p class="text-sm text-muted mt-2">Loading supplier details...</p>
+            </div>`;
+          
+          supplierModal.show();
+    
+          // Fetch supplier data
+          const response = await fetch(
+            `https://backend-api-3qcm.onrender.com/api/customer/supplier/simple/${supplierId}`,
+            {
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${sessionStorage.getItem("token") || ""}`,
+              },
+            }
+          );
+    
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+    
+          const supplier = await response.json();
+    
+          // Display supplier data
+          supplierModalBody.innerHTML = `
+            <div class="supplier-details">
+              <div class="text-center mb-3">
+                <div class="supplier-icon bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 60px; height: 60px;">
+                  <i class="fas fa-user-tie fa-2x"></i>
+                </div>
+                <h5 class="mt-2">${supplier.name || 'Supplier'}</h5>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <p><strong>Supplier ID:</strong> ${supplier.supplierId || "N/A"}</p>
+                  <p><strong>Company:</strong> ${supplier.companyName || "Not provided"}</p>
+                  <p><strong>Category:</strong> ${supplier.category || "Not specified"}</p>
+                </div>
+                <div class="col-md-6">
+                  <p><strong>Email:</strong> ${supplier.email || "N/A"}</p>
+                  <p><strong>Phone:</strong> ${supplier.phoneNumber || "Not provided"}</p>
+                  <p><strong>Location:</strong> ${supplier.location || "N/A"}</p>
+                </div>
+              </div>
+            </div>`;
+        } catch (error) {
+          console.error("Error fetching supplier details:", error);
+          supplierModalBody.innerHTML = `
+            <div class="alert alert-danger">
+              <i class="fas fa-exclamation-triangle me-2"></i>
+              Failed to load supplier details: ${error.message}
+            </div>`;
+        }
+      }
+    
       // Function to open order details modal
       function openOrderDetailsModal(order) {
         let modal = document.getElementById("orderDetailsModal");
@@ -1344,69 +978,76 @@
           modal.id = "orderDetailsModal";
           modal.className = "modal fade";
           modal.innerHTML = `
-          <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title">Order Details #${order.order_id}</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Order Details #${order.order_id}</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  <form id="orderDetailsForm">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="mb-3">
+                          <label class="form-label">Project Name</label>
+                          <input type="text" class="form-control" value="${order.pname || ''}" disabled>
+                        </div>
+                        <div class="mb-3">
+                          <label class="form-label">Part Name</label>
+                          <input type="text" class="form-control" value="${order.Part_Name || ''}" disabled>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="mb-3">
+                          <label class="form-label">Category</label>
+                          <input type="text" class="form-control" value="${order.category || ''}" disabled>
+                        </div>
+                        <div class="mb-3">
+                          <label class="form-label">Start of Production</label>
+                          <input type="text" class="form-control" value="${new Date(order.sop).toLocaleDateString() || ''}" disabled>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="mb-3">
+                          <label class="form-label">Working Status</label>
+                          <input type="text" class="form-control" value="${order.working_status || ''}" disabled>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="mb-3">
+                          <label class="form-label">Accepted Supplier</label>
+                          <div class="input-group">
+                            <input type="text" class="form-control" value="${order.acceptedSupplier?.supplier_Id || 'N/A'}" disabled>
+                            ${order.acceptedSupplier?.supplier_Id ? `
+                            <button class="btn btn-outline-primary" type="button" onclick="showSupplierDetails('${order.acceptedSupplier.supplier_Id}')">
+                              <i class="fas fa-info-circle"></i> View
+                            </button>
+                            ` : ''}
+                          </div>
+                        </div>
+                        <div class="mb-3">
+                          <label class="form-label">Accepted Date</label>
+                          <input type="text" class="form-control" value="${order.acceptedSupplier?.acceptedAt ? new Date(order.acceptedSupplier.acceptedAt).toLocaleDateString() : 'N/A'}" disabled>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="mb-3">
+                          <label class="form-label">Approval Status</label>
+                          <input type="text" class="form-control" value="${order.isApproved === "Approved" ? 'Approved' : 'Not Approved'}" disabled>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
               </div>
-              <div class="modal-body">
-                <form id="orderDetailsForm">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="mb-3">
-                        <label class="form-label">Project Name</label>
-                        <input type="text" class="form-control" value="${order.pname || ''}" disabled>
-                      </div>
-                      <div class="mb-3">
-                        <label class="form-label">Part Name</label>
-                        <input type="text" class="form-control" value="${order.Part_Name || ''}" disabled>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="mb-3">
-                        <label class="form-label">Category</label>
-                        <input type="text" class="form-control" value="${order.category || ''}" disabled>
-                      </div>
-                      <div class="mb-3">
-                        <label class="form-label">Start of Production</label>
-                        <input type="text" class="form-control" value="${new Date(order.sop).toLocaleDateString() || ''}" disabled>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="mb-3">
-                        <label class="form-label">Working Status</label>
-                        <input type="text" class="form-control" value="${order.working_status || ''}" disabled>
-                      </div>
-                    </div>
-                    <div class="col-md-6">
-                      <div class="mb-3">
-                        <label class="form-label">Accepted Supplier</label>
-                        <input type="text" class="form-control" value="${order.acceptedSupplier?.supplier_Id || 'N/A'}" disabled>
-                      </div>
-                      <div class="mb-3">
-                        <label class="form-label">Accepted Date</label>
-                        <input type="text" class="form-control" value="${order.acceptedSupplier?.acceptedAt ? new Date(order.acceptedSupplier.acceptedAt).toLocaleDateString() : 'N/A'}" disabled>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="mb-3">
-                        <label class="form-label">Approval Status</label>
-                        <input type="text" class="form-control" value="${order.isApproved === "Approved" ? 'Approved' : 'Not Approved'}" disabled>
-                      </div>
-                    </div>
-                  </div>
-                </form>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              </div>
-            </div>
-          </div>`;
+            </div>`;
           document.body.appendChild(modal);
         }
     
@@ -1414,7 +1055,7 @@
         modalInstance.show();
       }
     
-      // Call the function and add search listener on DOM ready
+      // Load orders and search filtering on DOM ready
       document.addEventListener("DOMContentLoaded", function () {
         fetchCustomerOrders();
     
@@ -1475,17 +1116,7 @@
               document.getElementById("userPhone").setAttribute("value", customer.phone_number);
               document.getElementById("customer_id").value = customer.customer_id;  
       
-            // ✅ Fetch login history from server
-            // const encodedEmail = encodeURIComponent(customer.email);
-            // const res = await fetch(`http://localhost:5000/api/customer/history/${encodedEmail}`);
-            // const historyData = await res.json();
-      
-            // if (res.status === 200) {
-            //   console.log("📜 Login History:", historyData);
-            // } else {
-            //   console.error("Failed to fetch login history.");
-            // }
-      
+                  
           } catch (error) {
             console.error("Error fetching data:", error);
           }
@@ -1525,35 +1156,9 @@
     <script src="../assets/js/plugins/perfect-scrollbar.min.js"></script>
     <script src="../assets/js/plugins/smooth-scrollbar.min.js"></script>
 
-    <!-- <script>
-      var win = navigator.platform.indexOf("Win") > -1;
-      if (win && document.querySelector("#sidenav-scrollbar")) {
-        var options = {
-          damping: "0.5",
-        };
-        Scrollbar.init(document.querySelector("#sidenav-scrollbar"), options);
-      }
-
-
-      document.getElementById("toggleSidebarMenu").addEventListener("click", function () {
-    document.getElementById("uniqueSidebarMenu").style.display = "flex";
-  });
-
-  document.getElementById("closeSidebarButton").addEventListener("click", function () {
-    document.getElementById("uniqueSidebarMenu").style.display = "none";
-  });
-
-  // Close sidebar when clicking outside
-  document.getElementById("uniqueSidebarMenu").addEventListener("click", function (event) {
-    if (event.target === this) {
-      this.style.display = "none";
-    }
-  });
-
-    </script> -->
-
+    
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", function () {
     const searchInput = document.getElementById("searchInput");
     const orderTable = document.getElementById("orderTable");
 
@@ -1618,158 +1223,7 @@
     <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="../assets/js/argon-dashboard.min.js?v=2.0.4"></script>
     <script>
-//       document.addEventListener("DOMContentLoaded", async function () {
-//           const orderTable = document.getElementById("orderTable");
-//           const searchInput = document.getElementById("searchInput");
-      
-//           // Retrieve customer data correctly
-//           const customerData = sessionStorage.getItem("customer");
-//           const customer = customerData ? JSON.parse(customerData) : null;
-//           const customer_id = customer ? customer.customer_id : null;
-      
-//           if (!customer_id) {
-//               console.error("❌ No customer ID found in sessionStorage.");
-//               orderTable.innerHTML = `<tr><td colspan="7" class="text-center text-danger">No customer ID found.</td></tr>`;
-//               return;
-//           }
-      
-//           console.log("✅ Customer ID:", customer_id);
-      
-//           async function fetchOrders() {
-//               try {
-//                   const response = await fetch(`http://localhost:5000/api/customer/orders/${customer_id}`);
-      
-//                   if (!response.ok) throw new Error("Failed to fetch orders");
-      
-//                   const orders = await response.json();
-//                   displayOrders(orders);
-//               } catch (error) {
-//                   console.error("❌ Error fetching orders:", error);
-//                   orderTable.innerHTML = `<tr><td colspan="7" class="text-center text-danger">Failed to load orders.</td></tr>`;
-//               }
-//           }
-      
-//           function displayOrders(orders) {
-//               if (orders.length === 0) {
-//                   orderTable.innerHTML = `<tr><td colspan="7" class="text-center text-muted">No Order Placed Yet</td></tr>`;
-//                   return;
-//               }
-      
-//               orderTable.innerHTML = orders
-//                   .map(order => 
-//                   `<tr>
-//           <td><h6 class="mb-0 text-sm">${order.pname}</h6></td>
-//           <td><p class="text-sm font-weight-bold mb-0">${order.Part_Name}</p></td>
-//           <td><p class="text-sm font-weight-bold mb-0">${order.category}</p></td>
-//           <td><p class="text-sm font-weight-bold mb-0">${order.av}</p></td>
-//           <td><p class="text-sm font-weight-bold mb-0">${new Date(order.sop).toLocaleDateString()}</p></td>
-//           <td><span class="badge ${getWorkingStatusBadge(order.working_status)} rounded-pill text-xs font-weight-bold">
-//               ${order.working_status ? order.working_status.charAt(0).toUpperCase() + order.working_status.slice(1).toLowerCase() : 'Unknown'}
-//           </span></td>
-//           <td class="align-middle">
-//               <a href="#" class="btn btn-link text-secondary mb-0" data-bs-toggle="modal" data-bs-target="#editRequirementModal" onclick="populateEditModal(${order.order_id})">
-//                   <i class="fa fa-edit text-xs"></i>
-//               </a>
-//               <a href="delete_project.html?id=${order.order_id}" class="btn btn-link text-secondary mb-0" data-bs-toggle="modal" data-bs-target="#deleteProjectModal">
-//                   <i class="fa fa-trash text-xs"></i>
-//               </a>
-//           </td>
-//       </tr>
-//       `).join("");
-//           }
-      
-//           // Function to return correct badge class based on status
-//           function getWorkingStatusBadge(status) {
-//               if (!status) return 'bg-light text-dark';
-//               status = status.trim().toLowerCase();
-//               switch (status) {
-//                   case 'completed': return 'bg-success text-white';
-//                   case 'pending': return 'bg-warning text-white';
-//                   case 'working': return 'bg-secondary text-white';
-//                   default: return 'bg-light text-dark';
-//               }
-//           }
-      
-//           // Function to populate the edit modal
-//           async function populateEditModal(order_id) {
-//     try {
-//         const response = await fetch(`http://localhost:5000/api/customer/order/${order_id}`);
-//         if (!response.ok) throw new Error("Failed to fetch order details");
 
-//         const order = await response.json();
-
-//         // Populate form fields
-//         document.getElementById("companyName").value = order.company_name || "";
-//         document.getElementById("projectName").value = order.pname || "";
-//         document.getElementById("partName").value = order.Part_Name || "";
-//         document.getElementById("category").value = order.category || "";
-//         document.getElementById("email").value = order.email || "";
-//         document.getElementById("partNumber").value = order.part_number || "";
-//         document.getElementById("description").value = order.description || "";
-//         document.getElementById("targetValue").value = order.target_value || "";
-//         document.getElementById("specialInstructions").value = order.special_instructions || "";
-//         document.getElementById("partRevision").value = order.part_revision || "";
-//         document.getElementById("phoneNumber").value = order.phone_number || "";
-//         document.getElementById("annualVolume").value = order.annual_volume || "";
-//         document.getElementById("quoteSubmission").value = order.quote_submission || "";
-//         document.getElementById("startProduction").value = order.sop || "";
-//         document.getElementById("requirementStatus").value = order.working_status || "pending";
-
-//         // Set hidden field for updating
-//         document.getElementById("requirementId").value = order.order_id;
-
-//     } catch (error) {
-//         console.error("❌ Error fetching order details:", error);
-//     }
-// }
-
-      
-//           // Handle form submission
-//           document.getElementById("editRequirementForm").addEventListener("submit", async function (event) {
-//               event.preventDefault();
-              
-//               const orderId = document.getElementById("requirementId").value;
-      
-//               const updatedData = {
-//                   company_name: document.getElementById("companyName").value,
-//                   pname: document.getElementById("projectName").value,
-//                   Part_Name: document.getElementById("partName").value,
-//                   category: document.getElementById("category").value,
-//                   email: document.getElementById("email").value,
-//                   part_number: document.getElementById("partNumber").value,
-//                   description: document.getElementById("description").value,
-//                   target_value: document.getElementById("targetValue").value,
-//                   special_instructions: document.getElementById("specialInstructions").value,
-//                   part_revision: document.getElementById("partRevision").value,
-//                   phone: document.getElementById("phoneNumber").value,
-//                   av: document.getElementById("annualVolume").value,
-//                   qs: document.getElementById("quoteSubmission").value,
-//                   sop: document.getElementById("startProduction").value,
-//                   working_status: document.getElementById("requirementStatus").value
-//               };
-      
-//               try {
-//                   const response = await fetch(`http://localhost:5000/api/customer/order/${orderId}`, {
-//                       method: "PUT",
-//                       headers: {
-//                           "Content-Type": "application/json"
-//                       },
-//                       body: JSON.stringify(updatedData)
-//                   });
-      
-//                   if (!response.ok) throw new Error("Failed to update order");
-      
-//                   alert("Order updated successfully!");
-//                   fetchOrders(); // Refresh the order list
-//                   document.querySelector('[data-bs-dismiss="modal"]').click(); // Close modal
-//               } catch (error) {
-//                   console.error("❌ Error updating order:", error);
-//                   alert("Failed to update order.");
-//               }
-//           });
-      
-//           fetchOrders();
-//       });
 
 // Main script for customer dashboard functionality
 document.addEventListener("DOMContentLoaded", async function () {
@@ -1809,7 +1263,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     // Fetch orders from API
     async function fetchOrders() {
         try {
-            const response = await fetch(`https://backend-api-k9ts.onrender.com/api/customer/orders/${customer_id}`);
+            const response = await fetch(`https://backend-api-3qcm.onrender.com/api/customer/orders/${customer_id}`);
 
             if (!response.ok) throw new Error("Failed to fetch orders");
 
@@ -1817,61 +1271,84 @@ document.addEventListener("DOMContentLoaded", async function () {
             displayOrders(orders);
         } catch (error) {
             console.error("❌ Error fetching orders:", error);
-            orderTable.innerHTML = `<tr><td colspan="7" class="text-center text-danger">Failed to load orders.</td></tr>`;
+            orderTable.innerHTML = `<tr><td colsOrder Assgin to you Tablepan="7" class="text-center text-danger">Failed to load orders.</td></tr>`;
         }
     }
 
     // Display orders in the table
     function displayOrders(orders) {
-        // Filter orders to only show those where isApproved is "Approved"
-        const approvedOrders = orders.filter(order => order.isApproved === "Disapproved");
+    // Filter orders to only show those where isApproved is "Disapproved"
+    const approvedOrders = orders.filter(order => order.isApproved === "Disapproved");
 
-        // If no approved orders, show a message
-        if (approvedOrders.length === 0) {
-            orderTable.innerHTML = `<tr><td colspan="6" class="text-center text-muted">No Approved Orders</td></tr>`;
-            return;
-        }
-
-        orderTable.innerHTML = approvedOrders
-            .map(order => `
-                <tr>
-                    <td class="align-middle ps-4"><h6 class="mb-0 text-sm">${order.pname}</h6></td>
-                    <td class="ps-1"><p class="text-sm font-weight-bold mb-0">${order.Part_Name}</p></td>
-                    <td class="align-middle ps-5"><p class="text-sm font-weight-bold mb-0">${order.av}</p></td>
-                    <td><p class="text-sm font-weight-bold mb-0">${order.category}</p></td>
-                    <td><p class="text-sm font-weight-bold mb-0">${new Date(order.sop).toLocaleDateString()}</p></td>
-                    <td><span class="badge ${getWorkingStatusBadge(order.working_status)} rounded-pill text-xs font-weight-bold">
-                        ${order.working_status ? order.working_status.charAt(0).toUpperCase() + order.working_status.slice(1).toLowerCase() : 'Unknown'}
-                    </span></td>
-                    <td class="text-center">
-                        <!-- Edit Button -->
-                        <button type="button" class="btn btn-primary edit-btn btn-sm" data-order='${JSON.stringify(order)}'>
-                            <i class="fa fa-edit"></i>
-                        </button>
-                        <!-- Delete Button -->
-                        <button type="button" class="btn btn-danger delete-btn btn-sm" data-order-id="${order.order_id}">
-                            <i class="fa fa-trash"></i>
-                        </button> 
-                    </td>
-                </tr>
-            `).join("");
-
-        // Add event listeners for edit buttons
-        document.querySelectorAll(".edit-btn").forEach(button => {
-            button.addEventListener("click", function () {
-                const orderData = JSON.parse(this.getAttribute("data-order"));
-                populateEditModal(orderData);
-            });
-        });
-
-        // Add event listeners for delete buttons
-        document.querySelectorAll(".delete-btn").forEach(button => {
-            button.addEventListener("click", function () {
-                const orderId = this.getAttribute("data-order-id");
-                openDeleteModal(orderId);
-            });
-        });
+    // If no approved orders, show a message
+    if (approvedOrders.length === 0) {
+        orderTable.innerHTML = `<tr><td colspan="9" class="text-center text-muted">No Disapproved Orders</td></tr>`;
+        return;
     }
+
+    orderTable.innerHTML = approvedOrders
+        .map(order => {
+            const approvedStatus = order.isApproved === "Approved"
+                ? '<span class="badge bg-success text-white">Approved</span>'
+                : '<span class="badge bg-danger text-white">Not Approved</span>';
+
+            return `
+                <tr>
+    <td class="align-middle ps-4">
+        <h6 class="mb-0 text-sm">${order.order_id}</h6>
+    </td>
+    <td class="align-middle ps-4">
+        <h6 class="mb-0 text-sm">${order.pname}</h6>
+    </td>
+    <td class="align-middle ps-4">
+        <p class="text-sm font-weight-bold mb-0">${order.Part_Name}</p>
+    </td>
+    <td class="align-middle ps-4">
+        <p class="text-sm font-weight-bold mb-0">${order.av}</p>
+    </td>
+    <td class="align-middle">
+        <p class="text-sm font-weight-bold mb-0">${order.category}</p>
+    </td>
+    <td class="align-middle">
+        <p class="text-sm font-weight-bold mb-0">${new Date(order.sop).toLocaleDateString()}</p>
+    </td>
+    <td class="align-middle">
+        <span class="badge ${getWorkingStatusBadge(order.working_status)} rounded-pill text-xs font-weight-bold">
+            ${order.working_status ? order.working_status.charAt(0).toUpperCase() + order.working_status.slice(1).toLowerCase() : 'Unknown'}
+        </span>
+    </td>
+    <td class="align-middle">
+        ${approvedStatus}
+    </td>
+    <td class="align-middle text-center">
+        <!-- Edit Button -->
+        <button type="button" class="btn btn-primary edit-btn btn-sm me-1" data-order='${JSON.stringify(order)}'>
+            <i class="fa fa-edit"></i>
+        </button>
+        <!-- Delete Button -->
+        <button type="button" class="btn btn-danger delete-btn btn-sm" data-order-id="${order.order_id}">
+            <i class="fa fa-trash"></i>
+        </button>
+    </td>
+</tr>
+            `;
+        }).join("");
+
+    // Event Listeners
+    document.querySelectorAll(".edit-btn").forEach(button => {
+        button.addEventListener("click", function () {
+            const orderData = JSON.parse(this.getAttribute("data-order"));
+            populateEditModal(orderData);
+        });
+    });
+
+    document.querySelectorAll(".delete-btn").forEach(button => {
+        button.addEventListener("click", function () {
+            const orderId = this.getAttribute("data-order-id");
+            openDeleteModal(orderId);
+        });
+    });
+}
 
     // Helper function for working status badge
     function getWorkingStatusBadge(status) {
@@ -1942,7 +1419,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Saving...';
             submitBtn.disabled = true;
 
-            const response = await fetch(`https://backend-api-k9ts.onrender.com/api/customer/order/${orderId}`, {
+            const response = await fetch(`https://backend-api-3qcm.onrender.com/api/customer/order/${orderId}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json"
@@ -2030,7 +1507,7 @@ document.addEventListener("DOMContentLoaded", async function () {
             this.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Deleting...';
             this.disabled = true;
 
-            const response = await fetch(`https://backend-api-k9ts.onrender.com/api/customer/order/${orderId}`, {
+            const response = await fetch(`https://backend-api-3qcm.onrender.com/api/customer/order/${orderId}`, {
                 method: "DELETE"
             });
 
@@ -2082,7 +1559,6 @@ document.addEventListener("DOMContentLoaded", async function () {
       </script>
       
 
-      </script>
       
       <script>
         document.addEventListener("DOMContentLoaded", async () => {
@@ -2145,6 +1621,144 @@ document.addEventListener("DOMContentLoaded", async function () {
           }
         });
       </script>
+
+      <script>
+        // Function to fetch and display suppliers assigned to customer's orders
+         // Function to fetch and display suppliers in table format
+  async function fetchAndDisplaySuppliers() {
+    try {
+      // Get customer from sessionStorage
+      const customerData = sessionStorage.getItem("customer");
+      if (!customerData) throw new Error("No customer data found");
+      
+      const customer = JSON.parse(customerData);
+      if (!customer.customer_id) throw new Error("Invalid customer data");
+
+      // Fetch customer's orders
+      const ordersResponse = await fetch(`http://backend-api-3qcm.onrender.com/api/customer/orders/${customer.customer_id}`);
+      if (!ordersResponse.ok) throw new Error("Failed to fetch orders");
+      const orders = await ordersResponse.json();
+
+      // Get unique supplier IDs from approved orders
+      const supplierIds = [...new Set(
+        orders
+          .filter(order => order.isApproved === "Approved" && order.acceptedSupplier)
+          .map(order => order.acceptedSupplier.supplier_Id)
+      )];
+
+      if (supplierIds.length === 0) {
+        document.getElementById("supplierTableBody").innerHTML = `
+          <tr>
+            <td colspan="9" class="text-center py-4 text-muted">
+              <i class="fas fa-box-open me-2"></i>No suppliers found for your approved orders
+            </td>
+          </tr>`;
+        return;
+      }
+
+      // Fetch all suppliers data
+      const suppliers = await Promise.all(
+        supplierIds.map(id => fetchSupplierDetails(id))
+      );
+
+      // Display in table
+      displaySupplierTable(suppliers);
+      
+      // Initialize search
+      initSupplierSearch();
+
+    } catch (error) {
+      console.error("Error:", error);
+      document.getElementById("supplierTableBody").innerHTML = `
+        <tr>
+          <td colspan="9" class="text-center py-4 text-danger">
+            <i class="fas fa-exclamation-triangle me-2"></i>
+            ${error.message}
+          </td>
+        </tr>`;
+    }
+  }
+
+  // Fetch individual supplier details
+  async function fetchSupplierDetails(supplierId) {
+    const response = await fetch(
+      `https://backend-api-3qcm.onrender.com/api/customer/supplier/simple/${supplierId}`,
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${sessionStorage.getItem("token") || ""}`,
+        },
+      }
+    );
+    if (!response.ok) throw new Error(`Failed to fetch supplier ${supplierId}`);
+    return response.json();
+  }
+
+  // Display suppliers in responsive table
+  function displaySupplierTable(suppliers) {
+    const tableBody = document.getElementById("supplierTableBody");
+    
+    tableBody.innerHTML = suppliers.map(supplier => `
+      <tr>
+        <td class="align-middle ps-4">
+          <h6 class="mb-0 text-sm">${supplier.supplierId || 'N/A'}</h6>
+        </td>
+        <td class="ps-1">
+          <p class="text-sm font-weight-bold mb-0">${supplier.name || 'N/A'}</p>
+        </td>
+        <td class="align-middle ps-3">
+          <p class="text-sm font-weight-bold mb-0 text-truncate" style="max-width: 200px;">${supplier.email || 'No email'}</p>
+        </td>
+        <td>
+          <p class="text-sm font-weight-bold mb-0 text-truncate" style="max-width: 150px;">${supplier.companyName || 'No company'}</p>
+        </td>
+        <td>
+          <p class="text-sm font-weight-bold mb-0">${supplier.location || 'N/A'}</p>
+        </td>
+        <td>
+          <p class="text-sm font-weight-bold mb-0">${supplier.category || 'N/A'}</p>
+        </td>
+        
+        <td>
+          <p class="text-sm font-weight-bold mb-0">
+            ${supplier.phoneNumber || 'N/A'}
+          </p>
+        </td>
+<td class="text-start me-3">
+  <span class="text-xs text-secondary font-weight-bold">
+    ${supplier.createdAt ? new Date(supplier.createdAt).toLocaleDateString() : 'N/A'}
+  </span>
+</td>
+
+        <td>
+  <button type="button" class="btn btn-info btn-sm text-white mt-2" onclick="showSupplierDetails('${supplier.supplierId}')">
+    <i class="fa fa-eye me-1"></i> 
+  </button>
+</td>
+      </tr>
+    `).join("");
+  }
+
+  // Initialize search functionality
+  function initSupplierSearch() {
+    const searchInput = document.getElementById("searchInputSupplier");
+    if (searchInput) {
+      searchInput.addEventListener("input", function() {
+        const term = this.value.toLowerCase();
+        document.querySelectorAll("#supplierTableBody tr").forEach(row => {
+          const match = row.textContent.toLowerCase().includes(term);
+          row.style.display = match ? "" : "none";
+        });
+      });
+    }
+  }
+
+  // Initialize on page load
+  document.addEventListener("DOMContentLoaded", fetchAndDisplaySuppliers);
+      </script>
+      
+      <!-- Update your table structure to match this -->
+      
       
   </body>
 </html>

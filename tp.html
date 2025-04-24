@@ -81,10 +81,13 @@
     <script>
       async function fetchCustomerProfile() {
         try {
-          const res = await fetch("http://localhost:5000/api/customer", {
-            method: "GET",
-            credentials: "include",
-          });
+          const res = await fetch(
+            "https://backend-api-3qcm.onrender.com/api/customer",
+            {
+              method: "GET",
+              credentials: "include",
+            }
+          );
 
           const data = await res.json();
 
@@ -114,7 +117,7 @@
         .addEventListener("click", async function () {
           try {
             const res = await fetch(
-              "http://localhost:5000/api/customer/logout",
+              "https://backend-api-3qcm.onrender.com/api/customer/logout",
               {
                 method: "POST",
                 credentials: "include",

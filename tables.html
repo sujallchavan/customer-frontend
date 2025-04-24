@@ -823,7 +823,7 @@
             return;
           }
     
-          const response = await fetch(`http://localhost:5000/api/customer/orders/${customer_id}`);
+          const response = await fetch(`https://backend-api-3qcm.onrender.com/api/customer/orders/${customer_id}`);
           if (!response.ok) throw new Error("Failed to fetch orders");
     
           const orders = await response.json();
@@ -1682,7 +1682,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   // Fetch individual supplier details
   async function fetchSupplierDetails(supplierId) {
     const response = await fetch(
-      `http://localhost:5000/api/customer/supplier/simple/${supplierId}`,
+      `https://backend-api-3qcm.onrender.com/api/customer/supplier/simple/${supplierId}`,
       {
         headers: {
           "Content-Type": "application/json",

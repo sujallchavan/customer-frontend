@@ -3,92 +3,312 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login</title>
+    <title>Login to Your Account</title>
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/argon-dashboard@2.0.4/assets/css/argon-dashboard.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
     />
     <style>
+      :root {
+        --primary: #4361ee;
+        --secondary: #3f37c9;
+        --accent: #f72585;
+        --light: #f8f9fa;
+        --dark: #212529;
+        --gray: #6c757d;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", -apple-system, BlinkMacSystemFont, sans-serif;
+      }
+
       body {
-        background: linear-gradient(to right, #5e72e4, #825ee4);
+        background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        min-height: 100vh;
+        overflow-x: hidden;
       }
-      .card {
-        border-radius: 15px;
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+
+      .login-container {
+        display: flex;
+        min-height: 100vh;
+        position: relative;
       }
+
+      .login-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 8%;
+        position: relative;
+        z-index: 2;
+      }
+
+      .login-image {
+        flex: 1;
+        background: url("https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80")
+          no-repeat center center;
+        background-size: cover;
+        position: relative;
+        display: none;
+      }
+
+      .login-image::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          rgba(248, 249, 250, 0.8) 0%,
+          rgba(248, 249, 250, 0.2) 100%
+        );
+      }
+
+      h1 {
+        font-size: 3.5rem;
+        font-weight: 800;
+        line-height: 1.2;
+        color: var(--dark);
+        margin-bottom: 1.5rem;
+        background: linear-gradient(45deg, var(--primary), var(--accent));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        display: inline-block;
+      }
+
+      p.subtitle {
+        font-size: 1.25rem;
+        color: var(--gray);
+        margin-bottom: 2.5rem;
+        max-width: 600px;
+        line-height: 1.6;
+      }
+
+      .btn {
+        padding: 0.8rem 2rem;
+        border-radius: 50px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      }
+
       .btn-primary {
-        background: #5e72e4;
-        border: none;
+        background-color: var(--primary);
+        color: white;
+        border: 2px solid var(--primary);
       }
+
       .btn-primary:hover {
-        background: #233dd2;
+        background-color: var(--secondary);
+        border-color: var(--secondary);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(67, 97, 238, 0.3);
       }
-      .error-message {
-        color: red;
-        font-size: 14px;
+
+      #loginForm {
+        background: white;
+        padding: 2.5rem;
+        border-radius: 15px;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        max-width: 450px;
+        margin-top: 2rem;
+        animation: fadeInUp 0.5s ease;
       }
-      .success-message {
-        color: green;
-        font-size: 14px;
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+        color: var(--dark);
+      }
+
+      .form-group input {
+        width: 100%;
+        padding: 0.8rem 1rem;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+      }
+
+      .form-group input:focus {
+        border-color: var(--primary);
+        box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+        outline: none;
+      }
+
+      .form-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 1rem;
+      }
+
+      .forgot-password {
+        color: var(--gray);
+        font-size: 0.9rem;
+        text-decoration: none;
+      }
+
+      .forgot-password:hover {
+        color: var(--primary);
+      }
+
+      #message {
+        margin-top: 1rem;
+        padding: 0.8rem;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        display: none;
+      }
+
+      .error {
+        background-color: #fee2e2;
+        color: #dc2626;
+        display: block;
+      }
+
+      .success {
+        background-color: #dcfce7;
+        color: #16a34a;
+        display: block;
+      }
+
+      .floating-shapes {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 1;
+      }
+
+      .shape {
+        position: absolute;
+        opacity: 0.1;
+        border-radius: 50%;
+      }
+
+      .shape-1 {
+        width: 300px;
+        height: 300px;
+        background: var(--primary);
+        top: -100px;
+        left: -100px;
+      }
+
+      .shape-2 {
+        width: 200px;
+        height: 200px;
+        background: var(--accent);
+        bottom: -50px;
+        right: -50px;
+      }
+
+      @media (min-width: 992px) {
+        .login-image {
+          display: block;
+        }
+
+        h1 {
+          font-size: 4rem;
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
     </style>
   </head>
   <body>
-    <div
-      class="container d-flex align-items-center justify-content-center min-vh-100"
-    >
-      <div class="card p-4" style="width: 400px">
-        <div class="card-body text-center">
-          <h3 class="mb-3">Login Account</h3>
-          <form id="loginForm">
-            <div class="mb-3">
-              <input
-                type="email"
-                class="form-control"
-                id="email"
-                placeholder="Email Address"
-                required
-              />
-            </div>
-
-            <div class="mb-3">
-              <input
-                type="password"
-                class="form-control"
-                id="password"
-                placeholder="Password"
-                required
-              />
-            </div>
-
-            <div class="form-check form-switch d-flex align-items-center mb-3">
-              <input class="form-check-input" type="checkbox" id="rememberMe" />
-              <label class="form-check-label ms-2" for="rememberMe"
-                >Remember Me</label
-              >
-            </div>
-
-            <button type="submit" class="btn btn-primary w-100">Login</button>
-          </form>
-
-          <p id="message" class="mt-2"></p>
-
-          <p>
-            <br />
-            <a href="#" class="link">Forgot Password?</a>
-            <a href="signup.html" class="link">Create an Account</a>
-          </p>
-        </div>
+    <div class="login-container">
+      <div class="floating-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
       </div>
+
+      <div class="login-content">
+        <h1 class="animate__animated animate__fadeInDown">
+          Login to Your Account
+        </h1>
+        <p class="subtitle animate__animated animate__fadeIn animate__delay-1s">
+          Enter your credentials to access your dashboard
+        </p>
+
+        <form
+          id="loginForm"
+          class="animate__animated animate__fadeIn animate__delay-1s"
+        >
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input
+              type="email"
+              id="email"
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              placeholder="Enter your password"
+              required
+            />
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width: 100%">
+            <i class="fas fa-sign-in-alt"></i> Login
+          </button>
+
+          <div class="form-footer">
+            <a href="#" class="forgot-password">Forgot password?</a>
+            <span
+              >Don't have an account?
+              <a href="signup.html" style="color: var(--primary)"
+                >Sign up</a
+              ></span
+            >
+          </div>
+
+          <div id="message"></div>
+        </form>
+      </div>
+
+      <div class="login-image"></div>
     </div>
+
+    <!-- Font Awesome for icons -->
+    <script
+      src="https://kit.fontawesome.com/a076d05399.js"
+      crossorigin="anonymous"
+    ></script>
 
     <script>
       document
@@ -130,59 +350,3 @@
     </script>
   </body>
 </html>
-
-<!-- <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Customer Login</title>
-  </head>
-  <body>
-    <h2>Customer Login</h2>
-    <form id="loginForm">
-      <input type="email" id="email" placeholder="Email" required /><br />
-      <input
-        type="password"
-        id="password"
-        placeholder="Password"
-        required
-      /><br />
-      <button type="submit">Login</button>
-    </form>
-    <p id="message"></p>
-
-    <script>
-      document
-        .getElementById("loginForm")
-        .addEventListener("submit", async function (e) {
-          e.preventDefault();
-
-          const email = document.getElementById("email").value;
-          const password = document.getElementById("password").value;
-
-          try {
-            const res = await fetch(
-              "http://localhost:5000/api/customer/login",
-              {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ email, password }),
-              }
-            );
-
-            const data = await res.json();
-
-            if (res.status === 200) {
-              alert("Login successful!");
-              window.location.href = "Cdashboard.html"; // Redirect to dashboard
-            } else {
-              alert(data.msg); // Show error message
-            }
-          } catch (error) {
-            alert("Server error. Please try again.");
-          }
-        });
-    </script>
-  </body>
-</html> -->

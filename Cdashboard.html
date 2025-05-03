@@ -871,7 +871,7 @@
           const downloadUrl = order.pdf_file 
             ? order.pdf_file.startsWith('http') 
               ? order.pdf_file 
-              : `http://localhost:5000${order.pdf_file}`
+              : `https://backend-api-3qcm.onrender.com${order.pdf_file}`
             : null;
       
           // Modal HTML
@@ -1830,7 +1830,7 @@
           const downloadUrl = order.pdf_file 
             ? order.pdf_file.startsWith('http') 
               ? order.pdf_file 
-              : `http://localhost:5000${order.pdf_file}`
+              : `https://backend-api-3qcm.onrender.com${order.pdf_file}`
             : null;
       
           // Modal HTML
@@ -1992,7 +1992,7 @@
         async function fetchTotalOrders() {
           try {
             const response = await fetch(
-              `http://localhost:5000/api/customer/orders/${customer_id}`
+              `https://backend-api-3qcm.onrender.com/api/customer/orders/${customer_id}`
             );
 
             if (!response.ok) throw new Error("Failed to fetch orders");

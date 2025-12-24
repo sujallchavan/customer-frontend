@@ -682,7 +682,7 @@ aria-hidden="true"
         console.log("📨 Sending Data:", Object.fromEntries(formData)); // Debugging log
 
         try {
-            const response = await fetch("https://backend-api-zz1t.onrender.com/api/customer/submit-requirement", {
+            const response = await fetch("https://backend-api-hu8l.onrender.com/api/customer/submit-requirement", {
                 method: "POST",
                 body: formData,
             });
@@ -789,7 +789,7 @@ aria-hidden="true"
 
       // ✅ Fetch login history from server
       const encodedEmail = encodeURIComponent(customer.email);
-      const res = await fetch(`https://backend-api-zz1t.onrender.com/api/customer/history/${encodedEmail}`);
+      const res = await fetch(`https://backend-api-hu8l.onrender.com/api/customer/history/${encodedEmail}`);
       const historyData = await res.json();
 
       if (res.status === 200) {
